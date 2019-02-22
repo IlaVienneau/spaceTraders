@@ -61,4 +61,12 @@ public class Player implements Serializable {
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
+
+    public String toString() {
+        return ("Player Name: " + name + "\n" +
+                "Pilot Skill:" + pilotSkill + "\n" +
+                "Fighter Skill:" + fighterSkill + "\n" +
+                "Trader Skill:" + traderSkill + "\n" +
+                "Engineer Skill:" + engineerSkill);
+    }
 }
