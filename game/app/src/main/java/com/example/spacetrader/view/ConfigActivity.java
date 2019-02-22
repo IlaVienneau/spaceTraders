@@ -1,6 +1,7 @@
 package com.example.spacetrader.view;
 
 import android.content.Intent;
+import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,10 @@ import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Ship;
 import com.example.spacetrader.viewModel.ConfigViewModel;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+
+
 
 
 import java.lang.reflect.Array;
@@ -38,6 +43,7 @@ public class ConfigActivity extends AppCompatActivity {
     private Spinner difficultySpinner = null;
 
     private Player player;
+
 
     private int totalPointsAvailable = 16;
     private int remainingPoints = 0;
