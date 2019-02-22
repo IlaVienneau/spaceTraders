@@ -13,6 +13,12 @@ bin/
 gen/
 out/
 
+# Windows thubnail db
+Thumbs.db
+
+#OSX files
+.DS_Store
+
 # Gradle files
 .gradle/
 build/
