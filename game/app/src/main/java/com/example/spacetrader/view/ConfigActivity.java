@@ -17,11 +17,7 @@ import com.example.spacetrader.entity.Ship;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 
 public class ConfigActivity extends AppCompatActivity {
     private ConfigViewModel viewModel;
