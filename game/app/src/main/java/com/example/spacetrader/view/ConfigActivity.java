@@ -41,8 +41,9 @@ public class ConfigActivity extends AppCompatActivity {
     private Player player;
 
 
-    private int totalPointsAvailable = 16;
+    private final int totalPointsAvailable = 16;
     private int remainingPoints = 0;
+    //private int currentPoints = 0;
     private int pilotSkill = 0;
     private int fighterSkill = 0;
     private int traderSkill = 0;
@@ -69,34 +70,26 @@ public class ConfigActivity extends AppCompatActivity {
         int currentPoints = 0;
         for (int i = 0; i < arr.size(); i++) {
             if (arr.get(i).type.equals(type)) {
-                if (change + arr.get(i).data > 16) {
-                    arr.get(i).data = 16;
-                } else if (change + arr.get(i).data < 0) {
-                    arr.get(i).data = 0;
+                if (change >= 0) {
+                    arr.get(i).data = Math.min(change, 16);
                 } else {
-                    arr.get(i).data = arr.get(i).data + change;
+                    arr.get(i).data = Math.max(change, 0);
                 }
             }
             currentPoints += arr.get(i).data;
         }
 
-        remainingPoints = totalPointsAvailable - currentPoints;
-
-        double overflow = Math.min(0, remainingPoints);
-
-        if (overflow < 0) {
-            int delta = 0;
-            int i = 0;
-            while (delta > overflow) {
-                if (arr.get(i).type.equals(type) || arr.get(i).data == 0) {
-                    i = (i + 1) % arr.size();
+        while (currentPoints > 16) {
+            for (int i = 0; i < arr.size(); i++) {
+                if (!arr.get(i).type.equals(type) && arr.get(i).data > 0) {
+                    arr.get(i).data--;
+                    currentPoints--;
                 }
-                arr.get(i).data -= 1;
-                delta -= 1;
-                remainingPoints--;
-                i = (i + 1) % arr.size();
             }
         }
+
+        remainingPoints = totalPointsAvailable - currentPoints;
+
 
         pilotSkill = arr.get(0).data;
         fighterSkill = arr.get(1).data;
