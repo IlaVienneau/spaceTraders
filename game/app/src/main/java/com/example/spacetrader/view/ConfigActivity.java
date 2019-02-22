@@ -216,6 +216,7 @@ public class ConfigActivity extends AppCompatActivity {
                 player = new Player(nameEditText.getText().toString(), Ship.GNAT, pilotSkill,
                         fighterSkill,traderSkill, engineerSkill, difficulty);
                 System.out.println("player created");
+                System.out.println(player.toString());
             }
         });
 
