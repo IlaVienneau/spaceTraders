@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Space Trader</string>
+    <string name="title_activity_config">New Game</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="new_game">New Game</string>
+    <string name="loadGameButton">Load Game</string>
+    <string name="skill_points_label">Skill Points</string>
+    <string name="pilotLabel">Pilot</string>
+    <string name="engineer_label">Engineer</string>
+    <string name="trader_label">Trader</string>
+    <string name="fighter_label">Fighter</string>
+</resources>
