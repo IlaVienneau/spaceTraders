@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -15,6 +16,10 @@ import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Ship;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 
+import java.util.Arrays;
+import java.util.List;
+
+
 public class ConfigActivity extends AppCompatActivity {
     private ConfigViewModel viewModel;
     private EditText nameEditText = null;
@@ -25,9 +30,35 @@ public class ConfigActivity extends AppCompatActivity {
     private SeekBar traderSeekBar = null;
     private SeekBar engineerSeekBar = null;
 
+    private Toolbar toolbar;
+
     private Spinner difficultySpinner = null;
 
     private Player player;
+
+    private int totalPointsAvailable = 16;
+    private int remainingPoints = 0;
+    private int pilotSkill = 0;
+    private int fighterSkill = 0;
+    private int traderSkill = 0;
+    private int engineerSkill = 0;
+
+    private void updateSkill(int skill, int change) {
+        int[] skills = new int[]{pilotSkill, fighterSkill, traderSkill, engineerSkill};
+
+        skill = change;
+
+        int currentPoints = 0;
+        for (int i : skills) {
+            currentPoints += i;
+        }
+
+        remainingPoints = totalPointsAvailable - currentPoints;
+
+        int overflow = Math.min(0, totalPointsAvailable - currentPoints);
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +79,24 @@ public class ConfigActivity extends AppCompatActivity {
         traderSeekBar = findViewById(R.id.traderSeekBar);
         engineerSeekBar = findViewById(R.id.engineerSeekBar);
 
-        pilotSeekBar.setOnSeekBarChangeListener(seekBarChangedListener);
+
+
+        pilotSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressBar.setProgress
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         Button createButton = findViewById(R.id.createButton);
         createButton.setOnClickListener(new View.OnClickListener() {
