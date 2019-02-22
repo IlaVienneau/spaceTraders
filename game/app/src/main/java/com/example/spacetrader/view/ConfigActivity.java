@@ -43,7 +43,6 @@ public class ConfigActivity extends AppCompatActivity {
 
     private final int totalPointsAvailable = 16;
     private int remainingPoints = 0;
-    //private int currentPoints = 0;
     private int pilotSkill = 0;
     private int fighterSkill = 0;
     private int traderSkill = 0;
