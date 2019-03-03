@@ -223,16 +223,17 @@ public class ConfigActivity extends AppCompatActivity {
 //                String universeSize = universeSizeSpinner.getSelectedItem().toString();
 //                Universe universe;
 //                switch(universeSize) {
-//                    case 1: universeSize.equals("Small Universe");
+//                    case "Small Universe":
 //                        universe = new Universe(50);
 //                        break;
-//                    case 2:  universeSize.equals("Medium Universe");
+//                    case "Medium Universe":
 //                        universe = new Universe(75);
 //                        break;
-//                    case 3:  universeSize.equals("Large Universe");
+//                    case "Large Universe":
 //                        universe = new Universe(100);
 //                        break;
 //                    default:
+//                        universe = new Universe(75);
 //                        break;
 //                }
 
