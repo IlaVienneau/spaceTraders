@@ -8,11 +8,26 @@
     tools:context=".view.ConfigActivity"
     tools:showIn="@layout/activity_config">
 
+    <Spinner
+        android:id="@+id/universeSizeSpinner"
+        android:layout_width="0dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="15dp"
+        android:minWidth="200dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/createButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/gnatLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="48dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="30dp"
         android:text="Gnat"
         app:layout_constraintStart_toStartOf="@+id/engineerSeekBar"
         app:layout_constraintTop_toBottomOf="@+id/engineerLabel" />
@@ -63,8 +78,8 @@
         android:layout_marginLeft="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/createButton"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/universeSizeSpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -135,7 +150,7 @@
         android:id="@+id/shipTypeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="294dp"
         android:layout_marginRight="294dp"
         android:text="Ship Type:"

@@ -3,11 +3,7 @@ package com.example.spacetrader.view;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
@@ -17,9 +13,6 @@ import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Ship;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-
-
 
 
 import java.util.ArrayList;
@@ -36,6 +29,7 @@ public class ConfigActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+    private Spinner universeSizeSpinner = null;
     private Spinner difficultySpinner = null;
 
     private Player player;
@@ -108,6 +102,14 @@ public class ConfigActivity extends AppCompatActivity {
         ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
+
+        // TODO: hardcoded sizes
+        String[] sizes = {"Small Universe", "Medium Universe", "Large Universe"};
+        universeSizeSpinner = findViewById(R.id.universeSizeSpinner);
+        ArrayAdapter universeSizeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sizes);
+        universeSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        universeSizeSpinner.setAdapter(universeSizeAdapter);
+
 
         pointCountTextView = findViewById(R.id.pointCountTextView);
         pilotSeekBar = findViewById(R.id.pilotSeekBar);
@@ -217,6 +219,25 @@ public class ConfigActivity extends AppCompatActivity {
                         fighterSkill,traderSkill, engineerSkill, difficulty);
                 System.out.println("player created");
                 System.out.println(player.toString());
+
+//                String universeSize = universeSizeSpinner.getSelectedItem().toString();
+//                Universe universe;
+//                switch(universeSize) {
+//                    case 1: universeSize.equals("Small Universe");
+//                        universe = new Universe(50);
+//                        break;
+//                    case 2:  universeSize.equals("Medium Universe");
+//                        universe = new Universe(75);
+//                        break;
+//                    case 3:  universeSize.equals("Large Universe");
+//                        universe = new Universe(100);
+//                        break;
+//                    default:
+//                        break;
+//                }
+
+                Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
+                startActivity(intent);
             }
         });
 
