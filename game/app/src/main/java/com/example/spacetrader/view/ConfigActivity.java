@@ -11,6 +11,7 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Ship;
+import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.SeekBar;
 
@@ -220,25 +221,28 @@ public class ConfigActivity extends AppCompatActivity {
                 System.out.println("player created");
                 System.out.println(player.toString());
 
-//                String universeSize = universeSizeSpinner.getSelectedItem().toString();
-//                Universe universe;
-//                switch(universeSize) {
-//                    case "Small Universe":
-//                        universe = new Universe(50);
-//                        break;
-//                    case "Medium Universe":
-//                        universe = new Universe(75);
-//                        break;
-//                    case "Large Universe":
-//                        universe = new Universe(100);
-//                        break;
-//                    default:
-//                        universe = new Universe(75);
-//                        break;
-//                }
+                String universeSize = universeSizeSpinner.getSelectedItem().toString();
+                Universe universe;
+                switch(universeSize) {
+                    case "Small Universe":
+                        universe = new Universe(50);
+                        break;
+                    case "Medium Universe":
+                        universe = new Universe(75);
+                        break;
+                    case "Large Universe":
+                        universe = new Universe(100);
+                        break;
+                    default:
+                        universe = new Universe(75);
+                        break;
+                }
 
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 startActivity(intent);
+                System.out.println("Universe Created");
+                System.out.println(universe.toString());
+
             }
         });
 

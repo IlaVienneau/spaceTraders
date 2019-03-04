@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Universe {
     Star[] stars;
-    int numTypes;
+    int numTypes = 6;
 
     /*
      * Creates a universe with 'size' # of stars
@@ -17,6 +17,7 @@ public class Universe {
      *      star to empty space e.g. 50*5 = 250
      */
     public Universe(int size) {
+        stars = new Star[size];
         int max;
         if (size <= 50) {
             max = 15; //sqrt of 250
@@ -36,9 +37,7 @@ public class Universe {
 
         Random rand = new Random();
         HashMap<Integer, Integer> coordinates = new HashMap<>();
-        int i = 0;
-        for (int col = 0; col < max; col++) {
-            for (int row = 0; row < max; row++) {
+        for (int i = 0; i < size; i++) {
                 int t = rand.nextInt(101);
                 StarType star;
                 if (t <= 55) {
@@ -57,14 +56,14 @@ public class Universe {
                 //each key is x + y, each value is x
                 int x = rand.nextInt(max);
                 int y = rand.nextInt(max);
-                while (coordinates.get(x+y) == x) {
-                    x = rand.nextInt(max);
-                    y = rand.nextInt(max);
+                if (!coordinates.isEmpty()) {
+                    while (coordinates.get(x+y) != null && coordinates.get(x+y) == x) {
+                        x = rand.nextInt(max);
+                        y = rand.nextInt(max);
+                    }
                 }
                 coordinates.put(x+y, x);
                 stars[i] = new Star("name", star, x, y);
-                i++;
-            }
         }
     }
 
