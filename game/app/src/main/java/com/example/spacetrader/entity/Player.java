@@ -29,7 +29,7 @@ public class Player implements Serializable {
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
         this.difficulty = difficulty;
-        this.wallet = wallet;
+        //this.wallet = wallet;
         System.out.println(toString());
     }
 
