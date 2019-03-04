@@ -21,7 +21,7 @@ public class Player implements Serializable {
     private Difficulty difficulty;
 
     public Player(String name, Ship ship, int pilotSkill, int fighterSkill,
-                  int traderSkill, int engineerSkill, Difficulty difficulty, int wallet) {
+                  int traderSkill, int engineerSkill, Difficulty difficulty) {
         this.name = name;
         this.ship = ship;
         this.pilotSkill = pilotSkill;
@@ -29,7 +29,7 @@ public class Player implements Serializable {
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
         this.difficulty = difficulty;
-        this.wallet = wallet;
+        //this.wallet = wallet;
         System.out.println(toString());
     }
 
