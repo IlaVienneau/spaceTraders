@@ -1,4 +1,5 @@
 package com.example.spacetrader.entity;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Universe {
@@ -13,16 +14,16 @@ public class Universe {
      *      large: 100 -> 800 planets
      *
      *      creates enough space for a 1:4 ratio of
-     *      planet to empty space
+     *      star to empty space e.g. 50*5 = 250
      */
     public Universe(int size) {
         int max;
         if (size <= 50) {
-            max = 8;//15; //sqrt of 250
+            max = 15; //sqrt of 250
         } else if (size <= 75) {
-            max = 9;//20; //sqrt of 375
+            max = 20; //sqrt of 375
         } else {
-            max = 10;//25; //sqrt of 500
+            max = 25; //sqrt of 500
         }
         //create a random integer btwn 0 and 100, if it falls btwn 0 and 55 make it main etc
         //index into the array of the enum to get star types
@@ -34,6 +35,7 @@ public class Universe {
         }
 
         Random rand = new Random();
+        HashMap<Integer, Integer> coordinates = new HashMap<>();
         int i = 0;
         for (int col = 0; col < max; col++) {
             for (int row = 0; row < max; row++) {
@@ -52,11 +54,26 @@ public class Universe {
                 } else {
                     star = types[5];
                 }
-                //row, col
-                stars[i] = new Star("name", star, row*3, col*3);
+                //each key is x + y, each value is x
+                int x = rand.nextInt(max);
+                int y = rand.nextInt(max);
+                while (coordinates.get(x+y) == x) {
+                    x = rand.nextInt(max);
+                    y = rand.nextInt(max);
+                }
+                coordinates.put(x+y, x);
+                stars[i] = new Star("name", star, x, y);
                 i++;
             }
         }
+    }
+
+    public String toString() {
+        String str = "Fire Cobra-verse:  \n";
+        for (Star s: stars) {
+            str += s.toString() + "\n";
+        }
+        return str;
     }
 
 }
