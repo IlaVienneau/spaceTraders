@@ -14,25 +14,28 @@ public class Star {
 
 
     public Star(
-            String name, StarType starType, int xCord, int yCord,
+            String name, StarType starType, int x, int y,
             ArrayList<Planet> planets) {
         this.name = name;
         this.starType = starType;
 
-        this.xCord = xCord;
-        this. yCord = yCord;
+        this.xCord = x;
+        this.yCord =  y;
 
         this.planets = planets;
     }
 
     public Star(
-            String name, StarType starType, int xCord, int yCord) {
+            String name, StarType starType, int x, int y) {
         this.name = name;
         this.starType = starType;
 
-        this.xCord = xCord;
-        this. yCord = yCord;
+        this.xCord = x;
+        this.yCord =  y;
+
+        //create planets.
     }
+
 
     // Getters
     public String getName() {
@@ -60,4 +63,7 @@ public class Star {
         this.planets = planets;
     }
 
+    public String toString() {
+        return "Name:  " + name + ";  Coordinates:  (" + xCord + "," + yCord + ")";
+    }
 }
