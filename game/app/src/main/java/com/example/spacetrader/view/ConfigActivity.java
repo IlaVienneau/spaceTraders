@@ -37,6 +37,7 @@ public class ConfigActivity extends AppCompatActivity {
 
 
     private final int totalPointsAvailable = 16;
+
     private int remainingPoints = 0;
     private int pilotSkill = 0;
     private int fighterSkill = 0;
@@ -90,6 +91,7 @@ public class ConfigActivity extends AppCompatActivity {
         traderSkill = arr.get(2).data;
         engineerSkill = arr.get(3).data;
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
