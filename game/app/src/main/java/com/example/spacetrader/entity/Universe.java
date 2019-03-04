@@ -65,7 +65,9 @@ public class Universe {
                     }
                 }
                 coordinates.put(x+y, x);
+
                 stars[i] = new Star(getStarName(), star, x, y);
+
         }
     }
 
