@@ -1,7 +1,6 @@
 package com.example.spacetrader.entity;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Star {
 
@@ -15,30 +14,24 @@ public class Star {
 
 
     public Star(
-            String name, StarType starType, int row, int col,
+            String name, StarType starType, int x, int y,
             ArrayList<Planet> planets) {
-        Random rand = new Random();
-        int num = rand.nextInt(9);
-
         this.name = name;
         this.starType = starType;
 
-        this.xCord = col + num % 3;
-        this.yCord =  row + (int) java.lang.Math.floor(num/3);
+        this.xCord = x;
+        this.yCord =  y;
 
         this.planets = planets;
     }
 
     public Star(
-            String name, StarType starType, int row, int col) {
-        Random rand = new Random();
-        int num = rand.nextInt(9);
-
+            String name, StarType starType, int x, int y) {
         this.name = name;
         this.starType = starType;
 
-        this.xCord = col + num % 3;
-        this.yCord =  row + (int) java.lang.Math.floor(num/3);
+        this.xCord = x;
+        this.yCord =  y;
 
         //create planets.
     }
@@ -70,4 +63,7 @@ public class Star {
         this.planets = planets;
     }
 
+    public String toString() {
+        return "Name:  " + name + ";  Coordinates:  (" + xCord + "," + yCord + ")";
+    }
 }
