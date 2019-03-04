@@ -2,6 +2,7 @@ package com.example.spacetrader.entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -27,7 +28,16 @@ public class StarNameGenerator {
 
     public static String getStarName() {
         Random rand = new Random();
+        HashMap<Integer, String> names = new HashMap<>();
         int index = rand.nextInt(132);
+
+        if (!names.isEmpty()) {
+            while (names.get(index) != null && names.get(index).equals(starNames.get(index))) {
+                index = rand.nextInt(132);
+            }
+        }
+        names.put(index, starNames.get(index));
+
         return starNames.get(index);
     }
 
