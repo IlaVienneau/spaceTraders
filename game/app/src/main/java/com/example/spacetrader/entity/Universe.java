@@ -7,6 +7,9 @@ import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 public class Universe {
     Star[] stars;
     int numTypes = 6;
+    int numLevels = 6;
+    int numResources = 13;
+
 
     /*
      * Creates a universe with 'size' # of stars
@@ -30,6 +33,8 @@ public class Universe {
         }
         //create a random integer btwn 0 and 100, if it falls btwn 0 and 55 make it main etc
         //index into the array of the enum to get star types
+        Random rand = new Random();
+
         StarType[] types = new StarType[numTypes];
         int k = 0;
         for (StarType type : StarType.values()) {
@@ -37,10 +42,28 @@ public class Universe {
             k++;
         }
 
-        Random rand = new Random();
+        TechLevel[] levels = new TechLevel[numLevels];
+        k = 0;
+        for (TechLevel level : TechLevel.values()) {
+            levels[k] = (level);
+            k++;
+        }
+
+
+        Resource[] res = new Resource[numResources];
+        k = 0;
+        for (Resource r : Resource.values()) {
+            res[k] = (r);
+            k++;
+        }
+
+
         HashMap<Integer, Integer> coordinates = new HashMap<>();
         for (int i = 0; i < size; i++) {
                 int t = rand.nextInt(101);
+                TechLevel tech = levels[rand.nextInt(numLevels)];
+                Resource rezie = res[rand.nextInt(numResources)];
+
                 StarType star;
                 if (t <= 55) {
                     star = types[0];
@@ -66,7 +89,7 @@ public class Universe {
                 }
                 coordinates.put(x+y, x);
 
-                stars[i] = new Star(getStarName(), star, x, y);
+                stars[i] = new Star(getStarName(), star, x, y, rezie, tech);
 
         }
     }

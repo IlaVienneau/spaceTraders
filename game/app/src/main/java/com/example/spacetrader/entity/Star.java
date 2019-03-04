@@ -6,6 +6,8 @@ public class Star {
 
     private String name;
     private StarType starType;
+    private Resource resourceType;
+    private TechLevel techType;
 
     private int xCord;
     private int yCord;
@@ -26,12 +28,14 @@ public class Star {
     }
 
     public Star(
-            String name, StarType starType, int x, int y) {
+            String name, StarType starType, int x, int y, Resource res, TechLevel lev) {
         this.name = name;
         this.starType = starType;
 
         this.xCord = x;
         this.yCord =  y;
+        this.techType = lev;
+        this.resourceType = res;
 
         //create planets.
     }
@@ -64,6 +68,7 @@ public class Star {
     }
 
     public String toString() {
-        return "Name:  " + name + ";  Coordinates:  (" + xCord + "," + yCord + ")";
+        return "Name:  " + name + ";  Coordinates:  (" + xCord + "," + yCord + ")" +
+                "  Star Type:  "+ starType + "  Tech Level:  " + techType + "  Resource Level:  " + resourceType;
     }
 }
