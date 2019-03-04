@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class StarNameGenerator {
-    List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
+    static List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
             "Andevian", "Antedi", "Annabelle", "Balosnee", "Baratas", "Brax", "Bretel",
             "Beasley", "Calondia", "Campor", "Capellius", "Carzon", "Castor", "Cestus",
             "Cheron", "Courteney", "Daled", "Damast", "Davlos", "Deneb", "Deneva", "Devidia",
@@ -25,7 +25,7 @@ public class StarNameGenerator {
             "Ventaxus", "Xenon", "Rufaas", "Xerxes", "Yewl", "Sourin", "Yojimbo", "Zalcon",
             "Zejuul"));
 
-    public String getStarName() {
+    public static String getStarName() {
         Random rand = new Random();
         int index = rand.nextInt(132);
         return starNames.get(index);

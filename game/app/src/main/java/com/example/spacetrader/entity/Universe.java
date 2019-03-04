@@ -2,6 +2,8 @@ package com.example.spacetrader.entity;
 import java.util.HashMap;
 import java.util.Random;
 
+import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
+
 public class Universe {
     Star[] stars;
     int numTypes = 6;
@@ -63,7 +65,7 @@ public class Universe {
                     }
                 }
                 coordinates.put(x+y, x);
-                stars[i] = new Star("name", star, x, y);
+                stars[i] = new Star(getStarName(), star, x, y);
         }
     }
 
