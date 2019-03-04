@@ -15,20 +15,6 @@ public class Planet {
     // Constructors
     public Planet(
             String name, TechLevel techLevel, PoliticalSystem politicalSystem,
-            Resource resource, Star star, boolean visited) {
-        this.name = name;
-
-        this.techLevel = techLevel;
-        this.politicalSystem = politicalSystem;
-        this.resource = resource;
-
-        this.star = star;
-
-        this.visited = visited;
-    }
-
-    public Planet(
-            String name, TechLevel techLevel, PoliticalSystem politicalSystem,
             Resource resource, Star star) {
         this.name = name;
         this.techLevel = techLevel;
