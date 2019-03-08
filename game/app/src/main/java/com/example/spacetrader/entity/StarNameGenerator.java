@@ -24,12 +24,12 @@ public class StarNameGenerator {
             "Styris", "Talani", "Tamus", "Tantalos", "Tanuga", "Tungaska", "Triacus", "Tarin",
             "Royazmuth", "Modthovan", "Thera", "Terosa", "Umberlyke", "Vagra", "Vadera", "Vandor",
             "Ventaxus", "Xenon", "Rufaas", "Xerxes", "Yewl", "Sourin", "Yojimbo", "Zalcon",
-            "Zejuul"));
+            "Zejuul", "Where's Bob"));
 
     public static String getStarName() {
         Random rand = new Random();
         HashMap<Integer, String> names = new HashMap<>();
-        int index = rand.nextInt(132);
+        int index = rand.nextInt(133);
 
         if (!names.isEmpty()) {
             while (names.get(index) != null && names.get(index).equals(starNames.get(index))) {
