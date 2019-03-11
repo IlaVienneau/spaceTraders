@@ -15,6 +15,7 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Ship;
+import com.example.spacetrader.entity.TradeGood;
 import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.SeekBar;
@@ -48,7 +49,7 @@ public class MarketActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //do stuff to edit inventory
+                        position.buy(); //figure out how to do buy and update on that thing
                     }
                 }
         );
