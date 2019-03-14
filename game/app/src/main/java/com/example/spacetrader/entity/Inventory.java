@@ -24,7 +24,7 @@ public abstract class Inventory {
         int price = updatePrice(good, this.techLevel);
         price *= quantity;
         updateWallet(player, price);
-        
+
     }
     public void sell (Player player, String good, int quantity) {
 
