@@ -15,6 +15,7 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Ship;
+import com.example.spacetrader.entity.TradeGood;
 import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.SeekBar;
@@ -23,6 +24,7 @@ import android.widget.ListAdapter;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.view.View;
+import com.example.spacetrader.entity.TradeGood;
 
 
 
@@ -40,6 +42,8 @@ public class MarketActivity extends AppCompatActivity {
 
         //converts an array into a list UI
         //android.R.layout is how i want the list to look
+
+
         ListAdapter tradeGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, tradeGoods);
         ListView tradeGoodsListView = findViewById(R.id.tradeGoodsListView);
         tradeGoodsListView.setAdapter(tradeGoodsAdapter);
@@ -48,9 +52,12 @@ public class MarketActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //do stuff to edit inventory
+                        position.buy(); //figure out how to do buy and update on that thing
                     }
                 }
         );
     }
 }
+
+//get planet inventory
+//loop thru the hashmap of that inventory to get each tradeGood

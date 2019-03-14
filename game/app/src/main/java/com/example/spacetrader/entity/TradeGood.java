@@ -1,4 +1,5 @@
 package com.example.spacetrader.entity;
+import java.util.ArrayList;
 
 public class TradeGood {
     private String name;    //trade good name
@@ -267,5 +268,29 @@ public class TradeGood {
     public void setMth(int mth) {
         this.mth = mth;
     }
+
+    public static ArrayList<TradeGood> getMTLPs(int m) {
+        ArrayList<TradeGood> tarr= new ArrayList<>();
+        if (m >= 0) {
+            tarr.add(new TradeGood("water"));
+            tarr.add(new TradeGood("furs"));
+        } if (m >= 1) {
+            tarr.add(new TradeGood("food"));
+        } if (m >= 2) {
+            tarr.add(new TradeGood("ore"));
+        } if (m >= 3) {
+            tarr.add(new TradeGood("games"));
+            tarr.add(new TradeGood("firearms"));
+        } if (m >=4) {
+            tarr.add(new TradeGood("medicines"));
+            tarr.add(new TradeGood("marchines"));
+        } if (m >= 5) {
+            tarr.add(new TradeGood("narcotics"));
+        } if (m >= 6) {
+            tarr.add(new TradeGood("robots"));
+        }
+        return tarr;
+    }
+
 
 }
