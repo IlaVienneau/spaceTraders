@@ -12,8 +12,9 @@ public abstract class Inventory {
     public int updatePrice (String good, TechLevel techLevel) {
         Random rand = new Random();
         TradeGood tradeGood = inventory.get(good);
-        int price = tradeGood.getBasePrice() + (tradeGood.getIPL() * (techLevel.ordinal() - tradeGood.getMTLP()));
-        int var = rand.nextInt(tradeGood.getVariance() + 1);
+        int price = tradeGood.getPrice() + (tradeGood.getIpl() * (techLevel.ordinal() - tradeGood.getMtlp()));
+        //should it be base price? if so make getBasePrice
+        int var = rand.nextInt(tradeGood.getVar() + 1);
         if (rand.nextInt(2) == 0) {
             var *= -1;
         }
