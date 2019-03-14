@@ -23,6 +23,7 @@ import android.widget.ListAdapter;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
 import android.view.View;
+import com.example.spacetrader.entity.TradeGood;
 
 
 
@@ -40,6 +41,8 @@ public class MarketActivity extends AppCompatActivity {
 
         //converts an array into a list UI
         //android.R.layout is how i want the list to look
+
+
         ListAdapter tradeGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, tradeGoods);
         ListView tradeGoodsListView = findViewById(R.id.tradeGoodsListView);
         tradeGoodsListView.setAdapter(tradeGoodsAdapter);
@@ -54,3 +57,6 @@ public class MarketActivity extends AppCompatActivity {
         );
     }
 }
+
+//get planet inventory
+//loop thru the hashmap of that inventory to get each tradeGood
