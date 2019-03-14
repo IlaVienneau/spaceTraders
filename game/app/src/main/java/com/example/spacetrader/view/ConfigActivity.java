@@ -10,7 +10,9 @@ import android.widget.*;
 import com.example.spacetrader.R;
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.Ship;
+import com.example.spacetrader.entity.ShipType;
+import com.example.spacetrader.entity.ShipInventory;
+import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.SeekBar;
@@ -218,7 +220,7 @@ public class ConfigActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                player = new Player(nameEditText.getText().toString(), Ship.GNAT, pilotSkill,
+                player = new Player(nameEditText.getText().toString(), ShipType.GNAT, pilotSkill,
                         fighterSkill,traderSkill, engineerSkill, difficulty);
                 System.out.println("player created");
                 System.out.println(player.toString());

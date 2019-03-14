@@ -3,14 +3,12 @@ package com.example.spacetrader.entity;
 public class Planet {
 
     private String name;
-
     private TechLevel techLevel;
     private PoliticalSystem politicalSystem;
     private Resource resource;
-
     private Star star;
-
     private boolean visited;
+    private Inventory inventory;
 
     // Constructors
     public Planet(
@@ -20,10 +18,9 @@ public class Planet {
         this.techLevel = techLevel;
         this.politicalSystem = politicalSystem;
         this.resource = resource;
-
         this.star = star;
-
         this.visited = false;
+        this.inventory = new PlanetInventory(techLevel);
     }
 
 
