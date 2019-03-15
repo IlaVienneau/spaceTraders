@@ -22,6 +22,7 @@ public class UniverseMapActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final Universe universe = (Universe)intent.getSerializableExtra("Universe");
         final Player player = (Player)intent.getSerializableExtra("Player");
+        System.out.println("Current planet in UniverseAct:  "+ player.getCurrplanet());
 
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {

@@ -2,6 +2,7 @@ package com.example.spacetrader.entity;
 
 import java.util.HashMap;
 import java.io.Serializable;
+import java.util.Random;
 
 public class ShipInventory extends Inventory implements Serializable{
     private int cargo;
@@ -9,6 +10,7 @@ public class ShipInventory extends Inventory implements Serializable{
     private Ship ship;
     private int wallet;
     private Planet currentplanet;
+    private HashMap<String, TradeGood> inventory;
 
     public ShipInventory(ShipType type) {
         this.type = type;
@@ -18,32 +20,62 @@ public class ShipInventory extends Inventory implements Serializable{
         this.currentplanet = Player.getPlanet();
     }
 
-    public void buy(TradeGood item, int num) {
+    @Override
+    public int updatePrice(String good, TechLevel techLevel) {
+        Random rand = new Random();
+        TradeGood tradeGood = inventory.get(good);
+        int price = tradeGood.getPrice() + (tradeGood.getIpl() * (techLevel.ordinal() - tradeGood.getMtlp()));
+
+        int var = rand.nextInt(tradeGood.getVar() + 1);
+        if (rand.nextInt(2) == 0) {
+            var *= -1;
+        }
+        price += var;
+        return price;
+    }
+
+    public void buy(TradeGood item, int num, Planet current_planet) {
+        //TradeGood item = current_planet.getInventory().getInventory().get(thisbread);
+
+        System.out.println("Curr planet" + current_planet);
+        System.out.println("Curr invent" + current_planet.getInventory());
+        System.out.println("Curr tradeGoods" + current_planet.getInventory().getInventory());
+        System.out.println("the good: " + item);
+
         if (cargo < ship.getCapacity() &&
-                currentplanet.getInventory().getInventory().containsKey(item.getName()) &&
-                wallet > num*updatePrice(item.getName(), currentplanet.getTechLevel())) {
-            if (inventory.containsKey(item.getName())) {
-                TradeGood add = inventory.get(item.getName());
-                add.setNum(add.getNum() + num);
-                inventory.put(item.getName(), item);
-            }
-            item.setNum(num);
+                current_planet.getInventory().getInventory().containsKey(item.getName()) &&
+                wallet > num*current_planet.getInventory().updatePrice(item.getName(), current_planet.getTechLevel())) {
+//            if (inventory.containsKey(item.getName())) {
+//                TradeGood add = inventory.get(item.getName());
+//                add.setNum(add.getNum() + num);
+//                inventory.put(item.getName(), item);
+//            }
+//            item.setNum(num);
             inventory.put(item.getName(), item);
             cargo += num;
-            wallet -= num*updatePrice(item.getName(), currentplanet.getTechLevel());
+            wallet -= num*updatePrice(item.getName(), current_planet.getTechLevel());
         }
     }
 
-    public void sell(TradeGood item, int num) {
-        if (inventory.containsKey(item.getName()) && inventory.get(item).getNum() >= num){
-            TradeGood sell = inventory.get(item.getName());
-            sell.setNum(num);
-            wallet += num*updatePrice(item.getName(), currentplanet.getTechLevel());
+    public void sell(TradeGood item, int num, Planet current_planet) {
+        System.out.println("Trying to sell, curr inventory:  " + inventory);
+        if (inventory.containsKey(item.getName())){
+            TradeGood sell = inventory.remove(item.getName());
+ //           sell.setNum(num);
+            wallet += num*current_planet.getInventory().updatePrice(item.getName(), current_planet.getTechLevel());
         }
     }
 
     public HashMap<String, TradeGood> getInventory() {
         return inventory;
+    }
+
+    public String toString() {
+        String str = "";
+        for (TradeGood trade : inventory.values()) {
+            str += trade.toString();
+        }
+        return str;
     }
 
 }

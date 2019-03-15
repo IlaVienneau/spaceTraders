@@ -3,6 +3,7 @@ package com.example.spacetrader.entity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.Serializable;
+import java.util.Random;
 
 public class PlanetInventory extends Inventory implements Serializable {
 
@@ -42,7 +43,29 @@ public class PlanetInventory extends Inventory implements Serializable {
 
     }
 
+    @Override
+    public int updatePrice(String good, TechLevel techLevel) {
+        Random rand = new Random();
+        TradeGood tradeGood = inventory.get(good);
+        int price = tradeGood.getPrice() + (tradeGood.getIpl() * (techLevel.ordinal() - tradeGood.getMtlp()));
+
+        int var = rand.nextInt(tradeGood.getVar() + 1);
+        if (rand.nextInt(2) == 0) {
+            var *= -1;
+        }
+        price += var;
+        return price;
+    }
+
     public HashMap<String, TradeGood> getInventory() {
         return inventory;
+    }
+
+    public String toString() {
+        String str = "";
+        for (TradeGood trade : inventory.values()) {
+            str += trade.toString();
+        }
+        return str;
     }
 }

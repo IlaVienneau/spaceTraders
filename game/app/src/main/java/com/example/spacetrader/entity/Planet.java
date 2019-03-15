@@ -46,5 +46,9 @@ public class Planet implements Serializable {
         return inventory;
     }
 
+    public String toString() {
+        return name;
+    }
+
 
 }
