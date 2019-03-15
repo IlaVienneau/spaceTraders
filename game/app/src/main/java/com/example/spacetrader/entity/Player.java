@@ -17,6 +17,7 @@ public class Player implements Serializable {
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
+    private Planet  currplanet;
 
     private Difficulty difficulty;
 
@@ -29,6 +30,7 @@ public class Player implements Serializable {
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
         this.difficulty = difficulty;
+        this.currplanet = Universe.getPlanet("Paradise");
         //this.wallet = wallet;
         System.out.println(toString());
     }

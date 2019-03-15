@@ -58,7 +58,7 @@ public class ConfigActivity extends AppCompatActivity {
             }
 
         }
-        ArrayList<skillNode> arr = new ArrayList<skillNode>();
+        ArrayList<skillNode> arr = new ArrayList<>();
         arr.add(new skillNode(pilotSkill,"pilot"));
         arr.add(new skillNode(fighterSkill,"fighter"));
         arr.add(new skillNode(traderSkill, "trader"));
