@@ -1,10 +1,11 @@
 package com.example.spacetrader.entity;
 import java.util.HashMap;
 import java.util.Random;
+import java.io.Serializable;
 
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
-public class Universe {
+public class Universe implements Serializable {
     private static HashMap<String, Star> stars;
     private static int numTypes = 6;
     private static int numLevels = 8;
@@ -110,8 +111,8 @@ public class Universe {
         return str;
     }
 
-    public static Planet getPlanet(String name) {
-        return stars.get(name).getPlanet(name + "-1" );
+    public static Planet getPlanet(String name, int num) {
+        return stars.get(name).getPlanet(name + "-" + num);
     }
 
 

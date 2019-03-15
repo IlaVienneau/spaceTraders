@@ -33,7 +33,9 @@ public class PlanetInventory extends Inventory {
             inventory.put(t.getName(), t);
         }
 
+    }
 
-
+    public HashMap<String, TradeGood> getInventory() {
+        return inventory;
     }
 }

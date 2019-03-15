@@ -42,4 +42,9 @@ public class Planet {
         this.visited = visited;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+
 }

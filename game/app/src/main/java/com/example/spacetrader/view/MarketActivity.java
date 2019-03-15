@@ -1,5 +1,6 @@
 package com.example.spacetrader.view;
 
+import android.media.Image;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ListAdapter;
@@ -13,8 +14,13 @@ import android.view.View;
 import android.widget.*;
 import com.example.spacetrader.R;
 import com.example.spacetrader.entity.Difficulty;
+import com.example.spacetrader.entity.Planet;
+import com.example.spacetrader.entity.PlanetInventory;
 import com.example.spacetrader.entity.Player;
+import com.example.spacetrader.entity.PoliticalSystem;
+import com.example.spacetrader.entity.Resource;
 import com.example.spacetrader.entity.Ship;
+import com.example.spacetrader.entity.TechLevel;
 import com.example.spacetrader.entity.TradeGood;
 import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.viewModel.ConfigViewModel;
@@ -35,6 +41,21 @@ public class MarketActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
 
+        Intent intent = getIntent();
+        Universe universe = (Universe)intent.getSerializableExtra("Universe");
+
+        Planet home = universe.getPlanet("Paradise", 1);
+
+        PlanetInventory inventory = (PlanetInventory) home.getInventory();
+
+        TradeGood[] tradeGoods = new TradeGood[inventory.getInventory().size()];
+
+        int i = 0;
+        for (TradeGood trade : inventory.getInventory().values()) {
+            tradeGoods[i] = trade;
+            i++;
+        }
+
         // need to make a for loop to put hash map keys and values in an array called tradeGoods
         // or make a HashMap adapter
 
@@ -42,6 +63,7 @@ public class MarketActivity extends AppCompatActivity {
 
         //converts an array into a list UI
         //android.R.layout is how i want the list to look
+
 
 
         ListAdapter tradeGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, tradeGoods);
@@ -52,7 +74,7 @@ public class MarketActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        position.buy(); //figure out how to do buy and update on that thing
+                        position.buy(); //figure out how to do buy and update on that
                     }
                 }
         );

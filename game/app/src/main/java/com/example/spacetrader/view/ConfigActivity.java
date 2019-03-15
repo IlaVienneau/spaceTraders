@@ -247,15 +247,17 @@ public class ConfigActivity extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
+                intent.putExtra("Universe", universe);
                 startActivity(intent);
                 System.out.println("Universe Created");
                 System.out.println(universe.toString());
 
             }
         });
-
         update();
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
     public void update() {
