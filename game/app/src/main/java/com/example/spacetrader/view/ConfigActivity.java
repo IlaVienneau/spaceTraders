@@ -94,6 +94,10 @@ public class ConfigActivity extends AppCompatActivity {
         engineerSkill = arr.get(3).data;
     }
 
+    protected Player getPlayer() {
+        return player;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

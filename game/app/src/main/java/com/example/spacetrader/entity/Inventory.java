@@ -14,6 +14,7 @@ public abstract class Inventory {
         Random rand = new Random();
         TradeGood tradeGood = inventory.get(good);
         int price = tradeGood.getPrice() + (tradeGood.getIpl() * (techLevel.ordinal() - tradeGood.getMtlp()));
+
         int var = rand.nextInt(tradeGood.getVar() + 1);
         if (rand.nextInt(2) == 0) {
             var *= -1;
