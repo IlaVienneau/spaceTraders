@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
+import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Universe;
 
 public class UniverseMapActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class UniverseMapActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final Universe universe = (Universe)intent.getSerializableExtra("Universe");
+        final Player player = (Player)intent.getSerializableExtra("Player");
 
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {
@@ -27,6 +29,7 @@ public class UniverseMapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UniverseMapActivity.this, MarketActivity.class);
                 intent.putExtra("Universe", universe);
+                intent.putExtra("Player", player);
                 startActivity(intent);
             }
         });

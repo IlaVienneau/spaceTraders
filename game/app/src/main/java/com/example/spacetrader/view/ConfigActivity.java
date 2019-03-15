@@ -248,6 +248,7 @@ public class ConfigActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 intent.putExtra("Universe", universe);
+                intent.putExtra("Player", player);
                 startActivity(intent);
                 System.out.println("Universe Created");
                 System.out.println(universe.toString());
