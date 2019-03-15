@@ -31,6 +31,7 @@ public abstract class Inventory {
 
     }
     public void updateWallet (Player player, int change) {
-
+        int money = player.getWallet();
+        money += change;
     }
 }
