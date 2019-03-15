@@ -6,8 +6,24 @@ import java.util.Random;
 public abstract class Inventory {
     TechLevel techLevel;
     HashMap<String, TradeGood> inventory;
-    public Inventory () {
-
+    public Inventory (TechLevel tech) {
+        this.techLevel = tech;
+        this.inventory = new HashMap<>();
+        switch (tech) {
+            case PREAGRICULTURAL:
+                inventory.put("")
+                break;
+            case AGRICULTURAL:
+                break;
+            case MIDIEVAL:
+                break;
+            case RENAISSANCE:
+                break;
+            case EARLYINDUSTRIAL:
+                break;
+            case HITECH:
+                break;
+        }
     }
     public int updatePrice (String good, TechLevel techLevel) {
         Random rand = new Random();
