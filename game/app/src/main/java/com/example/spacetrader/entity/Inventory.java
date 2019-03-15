@@ -8,8 +8,6 @@ public abstract class Inventory {
     TechLevel techLevel;
     HashMap<String, TradeGood> inventory;
 
-
-
     int updatePrice(String good, TechLevel techLevel) {
         Random rand = new Random();
         TradeGood tradeGood = inventory.get(good);
@@ -22,6 +20,7 @@ public abstract class Inventory {
         price += var;
         return price;
     }
+
     public void buy (Player player, String good, int quantity) {
         int price = updatePrice(good, this.techLevel);
         price *= quantity;
