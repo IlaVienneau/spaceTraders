@@ -12,6 +12,7 @@ public class Player implements Serializable {
     private String name;
 
     private ShipType ship;
+    private ShipInventory shipInventory;
 
     private int pilotSkill;
     private int fighterSkill;
@@ -30,7 +31,8 @@ public class Player implements Serializable {
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
         this.difficulty = difficulty;
-        this.currplanet = Universe.getPlanet("Paradise");
+        this.currplanet = Universe.getPlanet("Paradise", 1);
+        this.shipInventory = new ShipInventory(this.ship);
         //this.wallet = wallet;
         System.out.println(toString());
     }
@@ -51,6 +53,10 @@ public class Player implements Serializable {
         this.name = name;
     }
 
+    public int getWallet() { return this.wallet; };
+
+    public void setWallet(int change) { this.wallet += change; }
+
     public ShipType getShip() {
         return ship;
     }
@@ -58,6 +64,10 @@ public class Player implements Serializable {
     public void setShip(ShipType ship) {
         this.ship = ship;
     }
+
+    public ShipInventory getShipInventory() { return this.shipInventory; }
+
+    public void setShipInventory(ShipInventory inventory) { this.shipInventory = inventory; }
 
     public Difficulty getDifficulty() {
         return difficulty;

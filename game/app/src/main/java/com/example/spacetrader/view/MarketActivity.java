@@ -70,6 +70,10 @@ public class MarketActivity extends AppCompatActivity {
         ListView tradeGoodsListView = findViewById(R.id.tradeGoodsListView);
         tradeGoodsListView.setAdapter(tradeGoodsAdapter);
 
+        ListAdapter cargoGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, cargoGoods);
+        ListView cargoGoodsListView = findViewById(R.id.cargoGoodsListView);
+        cargoGoodsListView.setAdapter(cargoGoodsAdapter);
+
         tradeGoodsListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override

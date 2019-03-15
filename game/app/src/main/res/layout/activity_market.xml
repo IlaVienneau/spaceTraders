@@ -6,10 +6,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<android.support.v7.widget.ListView
-    android:id="@+id/tradeGoodsListView"
-    android:scrollbars="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    <android.support.v7.widget.ListView
+        android:id="@+id/tradeGoodsListView"
+        android:layout_width="348dp"
+        android:layout_height="459dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.ListView
+        android:id="@+id/cargoGoodsListView"
+        android:layout_width="357dp"
+        android:layout_height="248dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tradeGoodsListView" />
 
 
+</android.support.constraint.ConstraintLayout>
