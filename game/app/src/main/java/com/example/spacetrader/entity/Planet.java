@@ -1,6 +1,7 @@
 package com.example.spacetrader.entity;
+import java.io.Serializable;
 
-public class Planet {
+public class Planet implements Serializable {
 
     private String name;
     private TechLevel techLevel;
@@ -13,12 +14,11 @@ public class Planet {
     // Constructors
     public Planet(
             String name, TechLevel techLevel, PoliticalSystem politicalSystem,
-            Resource resource, Star star) {
+            Resource resource) {
         this.name = name;
         this.techLevel = techLevel;
         this.politicalSystem = politicalSystem;
         this.resource = resource;
-        this.star = star;
         this.visited = false;
         this.inventory = new PlanetInventory(techLevel);
     }

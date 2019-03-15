@@ -1,12 +1,14 @@
 package com.example.spacetrader.entity;
 
 import java.util.HashMap;
+import java.io.Serializable;
 
-public class Star {
+public class Star implements Serializable {
 
     private String name;
     private StarType starType;
     private Resource resourceType;
+    private PoliticalSystem politicalType;
     private TechLevel techType;
 
     private int xCord;
@@ -28,7 +30,7 @@ public class Star {
     }
 
     public Star(
-            String name, StarType starType, int x, int y, Resource res, TechLevel lev) {
+            String name, StarType starType, int x, int y, Resource res, TechLevel lev, PoliticalSystem poly) {
         this.name = name;
         this.starType = starType;
 
@@ -36,8 +38,12 @@ public class Star {
         this.yCord =  y;
         this.techType = lev;
         this.resourceType = res;
+        this.politicalType = poly;
+        this.planets = new HashMap<>();
 
-        //create planets.
+        for (int i = 0; i < 10; i++) {
+            planets.put(name, new Planet(name, techType, politicalType, resourceType));
+        }
     }
 
 

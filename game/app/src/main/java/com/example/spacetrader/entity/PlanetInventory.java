@@ -2,8 +2,9 @@ package com.example.spacetrader.entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.Serializable;
 
-public class PlanetInventory extends Inventory {
+public class PlanetInventory extends Inventory implements Serializable {
 
     public PlanetInventory (TechLevel tech) {
         this.techLevel = tech;

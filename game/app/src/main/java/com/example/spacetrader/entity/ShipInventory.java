@@ -1,8 +1,9 @@
 package com.example.spacetrader.entity;
 
 import java.util.HashMap;
+import java.io.Serializable;
 
-public class ShipInventory extends Inventory {
+public class ShipInventory extends Inventory implements Serializable{
     private int cargo;
     private ShipType type;
     private Ship ship;
@@ -41,6 +42,8 @@ public class ShipInventory extends Inventory {
         }
     }
 
-
+    public HashMap<String, TradeGood> getInventory() {
+        return inventory;
+    }
 
 }
