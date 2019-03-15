@@ -18,7 +18,7 @@ public class Player implements Serializable {
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
-    private static Planet  currplanet;
+    private static Planet currplanet;
 
     private Difficulty difficulty;
 
@@ -90,5 +90,6 @@ public class Player implements Serializable {
         currplanet = planet;
     }
 
+    public Planet getCurrplanet() { return currplanet;}
 
 }
