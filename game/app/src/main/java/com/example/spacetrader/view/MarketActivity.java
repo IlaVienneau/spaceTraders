@@ -54,7 +54,7 @@ public class MarketActivity extends AppCompatActivity {
        // Planet home = universe.getPlanet("Paradise", 1);
         Planet home = player.getCurrplanet();
         System.out.println(home.getInventory());
-        PlanetInventory inventory = (PlanetInventory) home.getInventory();
+        final PlanetInventory inventory = (PlanetInventory) home.getInventory();
 
         final String[] tradeGoods = new String[inventory.getInventory().size()];
         final TradeGood[] planetGoods = new TradeGood[inventory.getInventory().size()];
@@ -67,11 +67,14 @@ public class MarketActivity extends AppCompatActivity {
         }
 
         final ArrayList<TradeGood> cargoGoods = new ArrayList<>();
+        final ArrayList<String> cargoNames = new ArrayList<>();
         //final TradeGood[] cargoGoods = new TradeGood[player.getShipInventory().getInventory().size()];
 
 
         for (TradeGood good : player.getShipInventory().getInventory().values()) {
             cargoGoods.add(good);
+            cargoNames.add(good.getName() + "[" + good.getNum() + "]" + "  Price:  $" +
+                    inventory.updatePrice(good.getName(), player.getCurrplanet().getTechLevel()));
         }
 
         // temporary if-else for cargo inventory status
@@ -84,7 +87,7 @@ public class MarketActivity extends AppCompatActivity {
           //      j++;
           //  }
 
-            final ListAdapter cargoGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, cargoGoods);
+            final ListAdapter cargoGoodsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cargoNames);
             ListView cargoGoodsListView = findViewById(R.id.cargoGoodsListView);
             cargoGoodsListView.setAdapter(cargoGoodsAdapter);
 
@@ -97,11 +100,15 @@ public class MarketActivity extends AppCompatActivity {
                             //player.buy, get player here too
                             player.getShipInventory().sell(cargoGoods.get(position), 1, player.getCurrplanet());
                             cargoGoods.clear();
+                            cargoNames.clear();
                             for (TradeGood good : player.getShipInventory().getInventory().values()) {
                                 System.out.println("Current good:  " + good);
                                 cargoGoods.add(good);
+                                cargoNames.add(good.getName() + "[" + good.getNum() + "]" + "  Price:  $" +
+                                        inventory.updatePrice(good.getName(), player.getCurrplanet().getTechLevel()));
                             }
                             ((ArrayAdapter) cargoGoodsAdapter).notifyDataSetChanged();
+                            System.out.println(cargoNames);
                         }
                     }
             );
@@ -170,9 +177,12 @@ public class MarketActivity extends AppCompatActivity {
                         player.getShipInventory().buy(planetGoods[position], 1, player.getCurrplanet());
                         System.out.println(player.getShipInventory().getInventory());
                         cargoGoods.clear();
+                        cargoNames.clear();
                         for (TradeGood good : player.getShipInventory().getInventory().values()) {
                             System.out.println("Current good:  " + good);
                             cargoGoods.add(good);
+                            cargoNames.add(good.getName() + "[" + good.getNum() + "]" + "  Price:  $" +
+                                    inventory.updatePrice(good.getName(), player.getCurrplanet().getTechLevel()));
                         }
                         ((ArrayAdapter) cargoGoodsAdapter).notifyDataSetChanged();
 

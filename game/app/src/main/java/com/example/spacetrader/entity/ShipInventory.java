@@ -45,13 +45,14 @@ public class ShipInventory extends Inventory implements Serializable{
         if (cargo < ship.getCapacity() &&
                 current_planet.getInventory().getInventory().containsKey(item.getName()) &&
                 wallet > num*current_planet.getInventory().updatePrice(item.getName(), current_planet.getTechLevel())) {
-//            if (inventory.containsKey(item.getName())) {
-//                TradeGood add = inventory.get(item.getName());
-//                add.setNum(add.getNum() + num);
-//                inventory.put(item.getName(), item);
-//            }
-//            item.setNum(num);
-            inventory.put(item.getName(), item);
+            if (inventory.containsKey(item.getName())) {
+                TradeGood add = inventory.get(item.getName());
+                add.setNum(add.getNum() + 1);
+                inventory.put(add.getName(), add);
+            } else {
+                item.setNum(num);
+                inventory.put(item.getName(), item);
+            }
             cargo += num;
             wallet -= num*updatePrice(item.getName(), current_planet.getTechLevel());
         }
@@ -60,8 +61,13 @@ public class ShipInventory extends Inventory implements Serializable{
     public void sell(TradeGood item, int num, Planet current_planet) {
         System.out.println("Trying to sell, curr inventory:  " + inventory);
         if (inventory.containsKey(item.getName())){
-            TradeGood sell = inventory.remove(item.getName());
- //           sell.setNum(num);
+            TradeGood sold = inventory.get(item.getName());
+            sold.setNum(inventory.get(item.getName()).getNum() - 1);
+            if (sold.getNum() <= 0) {
+                inventory.remove(item.getName());
+            } else {
+                inventory.put(sold.getName(), sold);
+            }
             wallet += num*current_planet.getInventory().updatePrice(item.getName(), current_planet.getTechLevel());
         }
     }
