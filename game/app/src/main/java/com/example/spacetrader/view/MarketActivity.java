@@ -43,13 +43,13 @@ public class MarketActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Universe universe = (Universe)intent.getSerializableExtra("Universe");
-        Player player = (Player)intent.getSerializableExtra("Player");
+        final Player player = (Player)intent.getSerializableExtra("Player");
 
         Planet home = universe.getPlanet("Paradise", 1);
 
         PlanetInventory inventory = (PlanetInventory) home.getInventory();
 
-        TradeGood[] tradeGoods = new TradeGood[inventory.getInventory().size()];
+        final TradeGood[] tradeGoods = new TradeGood[inventory.getInventory().size()];
 
         int i = 0;
         for (TradeGood trade : inventory.getInventory().values()) {
