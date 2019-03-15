@@ -1,7 +1,8 @@
 package com.example.spacetrader.entity;
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class TradeGood {
+public class TradeGood implements Serializable {
     private String name;    //trade good name
     private String type;    //natural or industrial
     private int price;      //base price

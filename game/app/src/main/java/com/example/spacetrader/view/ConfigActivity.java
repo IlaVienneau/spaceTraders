@@ -246,6 +246,7 @@ public class ConfigActivity extends AppCompatActivity {
                         break;
                 }
 
+                player.setCurrplanet(universe.getPlanet("Paradise", 1));
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 intent.putExtra("Universe", universe);
                 intent.putExtra("Player", player);

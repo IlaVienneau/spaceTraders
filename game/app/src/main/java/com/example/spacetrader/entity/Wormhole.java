@@ -1,6 +1,7 @@
 package com.example.spacetrader.entity;
+import java.io.Serializable;
 
-public class Wormhole {
+public class Wormhole implements Serializable {
     Star startpoint;
     Star endpoint;
     int tax;
