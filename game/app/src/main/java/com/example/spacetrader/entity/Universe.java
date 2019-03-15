@@ -5,10 +5,10 @@ import java.util.Random;
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
 public class Universe {
-    Star[] stars;
-    int numTypes = 6;
-    int numLevels = 6;
-    int numResources = 13;
+    private static HashMap<String, Star> stars;
+    private static int numTypes = 6;
+    private static int numLevels = 8;
+    private static int numResources = 13;
 
 
     /*
@@ -22,7 +22,7 @@ public class Universe {
      *      star to empty space e.g. 50*5 = 250
      */
     public Universe(int size) {
-        stars = new Star[size];
+        stars = new HashMap<>();
         int max;
         if (size <= 50) {
             max = 15; //sqrt of 250
@@ -62,7 +62,7 @@ public class Universe {
         for (int i = 0; i < size; i++) {
                 int t = rand.nextInt(101);
                 TechLevel tech = levels[rand.nextInt(numLevels)];
-                Resource rezie = res[rand.nextInt(numResources)];
+                Resource resource = res[rand.nextInt(numResources)];
 
                 StarType star;
                 if (t <= 55) {
@@ -89,17 +89,30 @@ public class Universe {
                 }
                 coordinates.put(x+y, x);
 
-                stars[i] = new Star(getStarName(), star, x, y, rezie, tech);
-
+                if (i == 0) {
+                    Star paradise = new Star("Paradise", star, x, y,  Resource.NOSPECIALRESOURCES,
+                            TechLevel.POSTINDUSTRIAL);
+                    paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY,
+                            Resource.NOSPECIALRESOURCES, paradise));
+                    stars.put("Paradise", paradise);
+                } else {
+                    String str = getStarName();
+                    stars.put(str, new Star(str, star, x, y, resource, tech));
+                }
         }
     }
 
     public String toString() {
         String str = "Fire Cobra-verse:  \n";
-        for (Star s: stars) {
+        for (Star s: stars.values()) {
             str += s.toString() + "\n";
         }
         return str;
     }
+
+    public static Planet getPlanet(String name) {
+        return stars.get(name).getPlanet(name + "-1" );
+    }
+
 
 }

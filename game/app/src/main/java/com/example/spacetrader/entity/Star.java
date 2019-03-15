@@ -1,6 +1,6 @@
 package com.example.spacetrader.entity;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Star {
 
@@ -12,12 +12,12 @@ public class Star {
     private int xCord;
     private int yCord;
 
-    private ArrayList<Planet> planets;
+    private HashMap<String, Planet> planets;
 
 
     public Star(
             String name, StarType starType, int x, int y,
-            ArrayList<Planet> planets) {
+            HashMap<String, Planet> planets) {
         this.name = name;
         this.starType = starType;
 
@@ -58,17 +58,25 @@ public class Star {
         return yCord;
     }
 
-    public ArrayList<Planet> getPlanets() {
+    public HashMap<String, Planet> getPlanets() {
         return planets;
     }
 
     // Setters
-    public void setPlanets(ArrayList<Planet> planets) {
+    public void setPlanets(HashMap<String, Planet> planets) {
         this.planets = planets;
     }
 
     public String toString() {
         return "Name:  " + name + ";  Coordinates:  (" + xCord + "," + yCord + ")" +
                 "  Star Type:  "+ starType + "  Tech Level:  " + techType + "  Resource Level:  " + resourceType;
+    }
+
+    public void addPlanet(Planet plan) {
+        planets.put(plan.getName(), plan);
+    }
+
+    public Planet getPlanet(String name) {
+        return planets.get(name);
     }
 }

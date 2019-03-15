@@ -10,7 +10,9 @@ import android.widget.*;
 import com.example.spacetrader.R;
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.Ship;
+import com.example.spacetrader.entity.ShipType;
+import com.example.spacetrader.entity.ShipInventory;
+import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.SeekBar;
@@ -56,7 +58,7 @@ public class ConfigActivity extends AppCompatActivity {
             }
 
         }
-        ArrayList<skillNode> arr = new ArrayList<skillNode>();
+        ArrayList<skillNode> arr = new ArrayList<>();
         arr.add(new skillNode(pilotSkill,"pilot"));
         arr.add(new skillNode(fighterSkill,"fighter"));
         arr.add(new skillNode(traderSkill, "trader"));
@@ -90,6 +92,10 @@ public class ConfigActivity extends AppCompatActivity {
         fighterSkill = arr.get(1).data;
         traderSkill = arr.get(2).data;
         engineerSkill = arr.get(3).data;
+    }
+
+    protected Player getPlayer() {
+        return player;
     }
 
 
@@ -218,7 +224,7 @@ public class ConfigActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                player = new Player(nameEditText.getText().toString(), Ship.GNAT, pilotSkill,
+                player = new Player(nameEditText.getText().toString(), ShipType.GNAT, pilotSkill,
                         fighterSkill,traderSkill, engineerSkill, difficulty);
                 System.out.println("player created");
                 System.out.println(player.toString());
