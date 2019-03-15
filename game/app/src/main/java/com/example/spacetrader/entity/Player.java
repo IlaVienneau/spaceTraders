@@ -18,7 +18,7 @@ public class Player implements Serializable {
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
-    private Planet  currplanet;
+    private static Planet  currplanet;
 
     private Difficulty difficulty;
 
@@ -33,7 +33,7 @@ public class Player implements Serializable {
         this.difficulty = difficulty;
         this.currplanet = Universe.getPlanet("Paradise", 1);
         this.shipInventory = new ShipInventory(this.ship);
-        //this.wallet = wallet;
+        this.wallet = 1000;
         System.out.println(toString());
     }
 
@@ -76,6 +76,8 @@ public class Player implements Serializable {
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
+
+    public static Planet getPlanet() {return currplanet;}
 
     public String toString() {
         return ("Player Name: " + name + "\n" +

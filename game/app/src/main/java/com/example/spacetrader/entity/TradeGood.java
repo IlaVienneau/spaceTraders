@@ -15,6 +15,7 @@ public class TradeGood {
     private Resource er;    //When this condition is present, the resource is expensive
     private int mtl;        //Min price offered in space trade with random trader (not on a planet)
     private int mth;        // Max price offered in space trade with random trader (not on a planet)
+    private int num;        //numer of this good in inventory
 
     //tech level increases -> $ natural goods increases
     //tech level increases -> $ industrial goods decreases
@@ -197,6 +198,8 @@ public class TradeGood {
         return var;
     }
 
+    public int getNum() {return num;}
+
     public RadicalEvent getIe() {
         return ie;
     }
@@ -269,6 +272,8 @@ public class TradeGood {
         this.mth = mth;
     }
 
+    public void setNum(int num) {this.num = num;}
+
     public static ArrayList<TradeGood> getMTLPs(int m) {
         ArrayList<TradeGood> tarr= new ArrayList<>();
         if (m >= 0) {
@@ -292,5 +297,8 @@ public class TradeGood {
         return tarr;
     }
 
+    public String toString() {
+        return name;
+    }
 
 }

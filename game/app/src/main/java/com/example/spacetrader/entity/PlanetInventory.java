@@ -25,6 +25,12 @@ public class PlanetInventory extends Inventory {
             case EARLYINDUSTRIAL:
                 arr = TradeGood.getMTLPs(TechLevel.EARLYINDUSTRIAL.ordinal());
                 break;
+            case INDUSTRIAL:
+                arr = TradeGood.getMTLPs(TechLevel.INDUSTRIAL.ordinal());
+                break;
+            case POSTINDUSTRIAL:
+                arr = TradeGood.getMTLPs(TechLevel.POSTINDUSTRIAL.ordinal());
+                break;
             case HITECH:
                 arr = TradeGood.getMTLPs(TechLevel.HITECH.ordinal());
                 break;

@@ -8,7 +8,7 @@ public class Planet {
     private Resource resource;
     private Star star;
     private boolean visited;
-    private Inventory inventory;
+    private PlanetInventory inventory;
 
     // Constructors
     public Planet(
@@ -42,7 +42,7 @@ public class Planet {
         this.visited = visited;
     }
 
-    public Inventory getInventory() {
+    public PlanetInventory getInventory() {
         return inventory;
     }
 

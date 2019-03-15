@@ -43,6 +43,7 @@ public class MarketActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Universe universe = (Universe)intent.getSerializableExtra("Universe");
+        Player player = (Player)intent.getSerializableExtra("Player");
 
         Planet home = universe.getPlanet("Paradise", 1);
 
@@ -78,7 +79,9 @@ public class MarketActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        position.buy(); //figure out how to do buy and update on that
+                        //buy trade good at position
+                        //player.buy, get player here too
+                        player.getShipInventory().buy(tradeGoods[position], 1);
                     }
                 }
         );
