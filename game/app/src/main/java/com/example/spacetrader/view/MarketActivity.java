@@ -1,5 +1,6 @@
 package com.example.spacetrader.view;
 
+import android.annotation.TargetApi;
 import android.media.Image;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -20,6 +21,7 @@ import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.PoliticalSystem;
 import com.example.spacetrader.entity.Resource;
 import com.example.spacetrader.entity.Ship;
+import com.example.spacetrader.entity.ShipInventory;
 import com.example.spacetrader.entity.TechLevel;
 import com.example.spacetrader.entity.TradeGood;
 import com.example.spacetrader.entity.Universe;
@@ -32,6 +34,8 @@ import android.widget.AdapterView;
 import android.view.View;
 import com.example.spacetrader.entity.TradeGood;
 
+import java.util.HashMap;
+import java.util.Optional;
 
 
 public class MarketActivity extends AppCompatActivity {
@@ -46,12 +50,10 @@ public class MarketActivity extends AppCompatActivity {
         final Player player = (Player)intent.getSerializableExtra("Player");
 
         Planet home = universe.getPlanet("Paradise", 1);
-
         PlanetInventory inventory = (PlanetInventory) home.getInventory();
 
         final TradeGood[] tradeGoods = new TradeGood[inventory.getInventory().size()];
 
-        final TradeGood[] cargoGoods = new TradeGood[player.getShipInventory().getInventory().size()];
 
         int i = 0;
         for (TradeGood trade : inventory.getInventory().values()) {
@@ -59,11 +61,51 @@ public class MarketActivity extends AppCompatActivity {
             i++;
         }
 
-        int j = 0;
-        for (TradeGood good : player.getShipInventory().getInventory().values()) {
-            cargoGoods[j] = good;
-            j++;
+        // temporary if-else for cargo inventory status
+        if (player.getShipInventory().getInventory() != null) {
+            final TradeGood[] cargoGoods = new TradeGood[player.getShipInventory().getInventory().size()];
+
+            int j = 0;
+            for (TradeGood good : player.getShipInventory().getInventory().values()) {
+                cargoGoods[j] = good;
+                j++;
+            }
+
+            ListAdapter cargoGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, cargoGoods);
+            ListView cargoGoodsListView = findViewById(R.id.cargoGoodsListView);
+            cargoGoodsListView.setAdapter(cargoGoodsAdapter);
+
+            cargoGoodsListView.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //buy trade good at position
+                            //player.buy, get player here too
+                            player.getShipInventory().sell(cargoGoods[position], 1);
+                        }
+                    }
+            );
+
+        } else {
+            String[] emptyCargo = {"No items in cargo"};
+
+            ListAdapter cargoGoodsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, emptyCargo);
+            ListView cargoGoodsListView = findViewById(R.id.cargoGoodsListView);
+            cargoGoodsListView.setAdapter(cargoGoodsAdapter);
+
+            cargoGoodsListView.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            //buy trade good at position
+                            //player.buy, get player here too
+                            Toast.makeText(MarketActivity.this, "Your cargo is empty", Toast.LENGTH_SHORT).show();;
+                        }
+                    }
+            );
         }
+
+
 
         // need to make a for loop to put hash map keys and values in an array called tradeGoods
         // or make a HashMap adapter
@@ -79,9 +121,13 @@ public class MarketActivity extends AppCompatActivity {
         ListView tradeGoodsListView = findViewById(R.id.tradeGoodsListView);
         tradeGoodsListView.setAdapter(tradeGoodsAdapter);
 
-        ListAdapter cargoGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, cargoGoods);
-        ListView cargoGoodsListView = findViewById(R.id.cargoGoodsListView);
-        cargoGoodsListView.setAdapter(cargoGoodsAdapter);
+//        Moved this up to if-else block for now 
+//
+//        ListAdapter cargoGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, cargoGoods);
+//        ListView cargoGoodsListView = findViewById(R.id.cargoGoodsListView);
+//        cargoGoodsListView.setAdapter(cargoGoodsAdapter);
+
+
 
         tradeGoodsListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
@@ -94,16 +140,16 @@ public class MarketActivity extends AppCompatActivity {
                 }
         );
 
-        cargoGoodsListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //buy trade good at position
-                        //player.buy, get player here too
-                        player.getShipInventory().sell(cargoGoods[position], 1);
-                    }
-                }
-        );
+//        cargoGoodsListView.setOnItemClickListener(
+//                new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        //buy trade good at position
+//                        //player.buy, get player here too
+//                        player.getShipInventory().sell(cargoGoods[position], 1);
+//                    }
+//                }
+//        );
     }
 }
 
