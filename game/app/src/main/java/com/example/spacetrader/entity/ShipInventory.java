@@ -1,22 +1,30 @@
 package com.example.spacetrader.entity;
 
 import java.util.HashMap;
+import java.io.Serializable;
+import java.util.Random;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
-public class ShipInventory extends Inventory {
-    private int cargo;
-    private ShipType type;
-    private Ship ship;
+public class ShipInventory implements Serializable {
 
-    public ShipInventory(ShipType type) {
-        this.type = type;
-        this.ship = new Ship(type);
-        this.inventory = new HashMap<>();
+    private HashMap<TradeGood, Integer> inventory;
+
+    public ShipInventory() {
+        this.inventory = new HashMap<TradeGood, Integer>() {
+        };
     }
 
-    public void addItem(TradeGood item) {
-        if (cargo < ship.getCapacity()) {
-            inventory.put(item.getName(), item);
-            cargo++;
+    public HashMap<TradeGood, Integer> getInventory() {
+        return inventory;
+    }
+
+    public String toString() {
+        String str = "";
+        for (TradeGood trade : inventory.keySet()) {
+            str += trade.toString();
         }
+        return str;
     }
+
 }
