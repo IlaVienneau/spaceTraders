@@ -112,6 +112,10 @@ public class Universe implements Serializable {
         }
     }
 
+    public HashMap<String, Star> getStars() {
+        return stars;
+    }
+
     public String toString() {
         String str = "Fire Cobra-verse:  \n";
         for (Star s: stars.values()) {
