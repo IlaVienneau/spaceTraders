@@ -13,13 +13,8 @@ import android.view.View;
 import android.widget.*;
 import com.example.spacetrader.R;
 import com.example.spacetrader.entity.Difficulty;
-import com.example.spacetrader.entity.Planet;
 import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.PoliticalSystem;
-import com.example.spacetrader.entity.Resource;
 import com.example.spacetrader.entity.Ship;
-import com.example.spacetrader.entity.Star;
-import com.example.spacetrader.entity.TechLevel;
 import com.example.spacetrader.entity.TradeGood;
 import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.viewModel.ConfigViewModel;
@@ -47,11 +42,6 @@ public class MarketActivity extends AppCompatActivity {
 
         //converts an array into a list UI
         //android.R.layout is how i want the list to look
-
-        Star paradise = new Star("Paradise", star, x, y,  Resource.NOSPECIALRESOURCES,
-                TechLevel.POSTINDUSTRIAL);
-        paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY,
-                Resource.NOSPECIALRESOURCES, paradise));
 
 
         ListAdapter tradeGoodsAdapter = new ArrayAdapter<TradeGood>(this, android.R.layout.simple_list_item_1, tradeGoods);
