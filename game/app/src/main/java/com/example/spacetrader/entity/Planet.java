@@ -14,9 +14,13 @@ public class Planet implements Serializable {
 
     // Constructors
     public Planet(
-            String name, TechLevel techLevel, PoliticalSystem politicalSystem,
-            Resource resource) {
+            String name,
+            TechLevel techLevel,
+            PoliticalSystem politicalSystem,
+            Resource resource,
+            Star star) {
         this.name = name;
+        this.star = star;
         this.techLevel = techLevel;
         this.politicalSystem = politicalSystem;
         this.resource = resource;

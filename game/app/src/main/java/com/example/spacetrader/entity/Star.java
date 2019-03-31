@@ -42,10 +42,9 @@ public class Star implements Serializable {
         this.planets = new HashMap<>();
 
         for (int i = 0; i < 10; i++) {
-            planets.put(name, new Planet(name, techType, politicalType, resourceType));
+            planets.put(name, new Planet(name, techType, politicalType, resourceType, this));
         }
     }
-
 
     // Getters
     public String getName() {

@@ -103,7 +103,7 @@ public class Universe implements Serializable {
                     Star paradise = new Star("Paradise", star, x, y,  Resource.NOSPECIALRESOURCES,
                             TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY);
                     paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY,
-                            Resource.NOSPECIALRESOURCES));
+                            Resource.NOSPECIALRESOURCES, paradise));
                     stars.put("Paradise", paradise);
                 } else {
                     String str = getStarName();
