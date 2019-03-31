@@ -8,27 +8,30 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
+import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Universe;
+import com.example.spacetrader.model.AppModule;
+
+import javax.inject.Inject;
 
 public class UniverseMapActivity extends AppCompatActivity {
+
+    @Inject
+    AppModule.SpaceTraderModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_universe_map);
+        ((SpaceTrader) getApplication()).getAppComponent().inject(this);
 
-        Intent intent = getIntent();
-        final Universe universe = (Universe)intent.getSerializableExtra("Universe");
-        final Player player = (Player)intent.getSerializableExtra("Player");
-        System.out.println("Current planet in UniverseAct:  "+ player.getCurrplanet());
+        setContentView(R.layout.activity_universe_map);
 
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UniverseMapActivity.this, MarketActivity.class);
-                intent.putExtra("Player", player);
                 startActivity(intent);
             }
         });

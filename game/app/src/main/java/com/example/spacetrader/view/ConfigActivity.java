@@ -8,19 +8,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import com.example.spacetrader.R;
+import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.ShipInventory;
 import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.Universe;
+import com.example.spacetrader.model.AppComponent;
+import com.example.spacetrader.model.AppModule;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.SeekBar;
 
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 public class ConfigActivity extends AppCompatActivity {
+    @Inject AppModule.SpaceTraderModel model;
+
     private ConfigViewModel viewModel;
     private EditText nameEditText = null;
 
@@ -35,9 +42,6 @@ public class ConfigActivity extends AppCompatActivity {
     private Spinner universeSizeSpinner = null;
     private Spinner difficultySpinner = null;
 
-    private Player player;
-
-
     private final int totalPointsAvailable = 16;
 
     private int remainingPoints = 0;
@@ -46,7 +50,6 @@ public class ConfigActivity extends AppCompatActivity {
     private int traderSkill = 0;
     private int engineerSkill = 0;
     private Difficulty difficulty = Difficulty.BEGINNER;
-
 
     private void updateSkill(int skill, int change, String type) {
         class skillNode {
@@ -94,14 +97,11 @@ public class ConfigActivity extends AppCompatActivity {
         engineerSkill = arr.get(3).data;
     }
 
-    protected Player getPlayer() {
-        return player;
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((SpaceTrader) getApplication()).getAppComponent().inject(this);
+
         setContentView(R.layout.activity_config);
         setSupportActionBar(toolbar);
 
@@ -224,7 +224,7 @@ public class ConfigActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                player = new Player(nameEditText.getText().toString(), ShipType.GNAT, pilotSkill,
+                Player player = new Player(nameEditText.getText().toString(), ShipType.GNAT, pilotSkill,
                         fighterSkill,traderSkill, engineerSkill, difficulty);
                 System.out.println("player created");
                 System.out.println(player.toString());
@@ -249,18 +249,16 @@ public class ConfigActivity extends AppCompatActivity {
                 player.setCurrplanet(universe.getPlanet("Paradise", 1));
                 System.out.print("Set player to:  " + universe.getPlanet("Paradise", 1).toString());
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
-                intent.putExtra("Universe", universe);
-                intent.putExtra("Player", player);
                 startActivity(intent);
                 System.out.println("Universe Created");
                 System.out.println(universe.toString());
 
+                model.player = player;
+                model.universe = universe;
             }
         });
+
         update();
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
     }
 
     public void update() {
