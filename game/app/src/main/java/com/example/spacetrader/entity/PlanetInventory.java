@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.Serializable;
 import java.util.Random;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class PlanetInventory implements Serializable {
-    class TradeStock {
-        int quantity;
-        int price;
+    public class TradeStock {
+        public int quantity;
+        public int price;
     }
 
     private HashMap<TradeGood, TradeStock> inventory;
@@ -73,6 +75,10 @@ public class PlanetInventory implements Serializable {
             price += var;
             stock.price = price;
         }
+    }
+
+    public HashMap<TradeGood, TradeStock> getInventory() {
+        return inventory;
     }
 
     public String toString() {

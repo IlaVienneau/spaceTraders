@@ -1,5 +1,6 @@
 package com.example.spacetrader.entity;
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Planet implements Serializable {
 
@@ -42,8 +43,8 @@ public class Planet implements Serializable {
         this.visited = visited;
     }
 
-    public PlanetInventory getInventory() {
-        return inventory;
+    public HashMap<TradeGood, PlanetInventory.TradeStock> getInventory() {
+        return inventory.getInventory();
     }
 
     public String toString() {
