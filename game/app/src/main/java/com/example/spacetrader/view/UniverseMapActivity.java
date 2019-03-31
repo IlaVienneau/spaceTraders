@@ -15,7 +15,6 @@ public class UniverseMapActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_universe_map);
 
@@ -29,11 +28,9 @@ public class UniverseMapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UniverseMapActivity.this, MarketActivity.class);
-                intent.putExtra("Universe", universe);
                 intent.putExtra("Player", player);
                 startActivity(intent);
             }
         });
-
     }
 }

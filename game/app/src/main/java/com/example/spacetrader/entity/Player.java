@@ -11,7 +11,7 @@ public class Player implements Serializable {
 
     private String name;
 
-    private ShipType ship;
+    private ShipType shipType;
     private ShipInventory shipInventory;
 
     private int pilotSkill;
@@ -22,18 +22,22 @@ public class Player implements Serializable {
 
     private Difficulty difficulty;
 
-    public Player(String name, ShipType ship, int pilotSkill, int fighterSkill,
-                  int traderSkill, int engineerSkill, Difficulty difficulty) {
+    public Player(String name,
+                  ShipType shipType,
+                  int pilotSkill,
+                  int fighterSkill,
+                  int traderSkill,
+                  int engineerSkill,
+                  Difficulty difficulty) {
         this.name = name;
-        this.ship = ship;
+        this.shipType = shipType;
         this.pilotSkill = pilotSkill;
         this.fighterSkill = fighterSkill;
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
         this.difficulty = difficulty;
-        this.shipInventory = new ShipInventory(this.ship);
+        this.shipInventory = new ShipInventory();
         this.wallet = 1000;
-        System.out.println(toString());
     }
 
     public int getId() {
@@ -56,12 +60,12 @@ public class Player implements Serializable {
 
     public void setWallet(int change) { this.wallet += change; }
 
-    public ShipType getShip() {
-        return ship;
+    public ShipType getShipType() {
+        return shipType;
     }
 
-    public void setShip(ShipType ship) {
-        this.ship = ship;
+    public void setShipType(ShipType shipType) {
+        this.shipType = shipType;
     }
 
     public ShipInventory getShipInventory() { return this.shipInventory; }
@@ -78,6 +82,12 @@ public class Player implements Serializable {
 
     public static Planet getPlanet() {return currplanet;}
 
+    public void setCurrplanet(Planet planet) {
+        currplanet = planet;
+    }
+
+    public Planet getCurrplanet() { return currplanet;}
+
     public String toString() {
         return ("Player Name: " + name + "\n" +
                 "Pilot Skill:" + pilotSkill + "\n" +
@@ -85,11 +95,5 @@ public class Player implements Serializable {
                 "Trader Skill:" + traderSkill + "\n" +
                 "Engineer Skill:" + engineerSkill);
     }
-
-    public void setCurrplanet(Planet planet) {
-        currplanet = planet;
-    }
-
-    public Planet getCurrplanet() { return currplanet;}
 
 }

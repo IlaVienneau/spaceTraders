@@ -5,11 +5,19 @@ import java.util.HashMap;
 import java.io.Serializable;
 import java.util.Random;
 
-public class PlanetInventory extends Inventory implements Serializable {
+public class PlanetInventory implements Serializable {
+    class TradeStock {
+        int quantity;
+        int price;
+    }
 
-    public PlanetInventory (TechLevel tech) {
-        this.techLevel = tech;
+    private HashMap<TradeGood, TradeStock> inventory;
+    private TechLevel techLevel;
+
+    public PlanetInventory(TechLevel tech) {
         this.inventory = new HashMap<>();
+        this.techLevel = tech;
+
         ArrayList<TradeGood> arr = new ArrayList<>();
         switch (tech) {
             case PREAGRICULTURAL:
@@ -37,35 +45,42 @@ public class PlanetInventory extends Inventory implements Serializable {
                 arr = TradeGood.getMTLPs(TechLevel.HITECH.ordinal());
                 break;
         }
-        for (TradeGood t: arr) {
-            inventory.put(t.getName(), t);
+
+        for (TradeGood t : arr) {
+            TradeStock stock = new TradeStock();
+            stock.price = 0;
+            stock.quantity = 10;
+
+            inventory.put(t, stock);
         }
 
+        updatePrices();
     }
 
-    @Override
-    public int updatePrice(String good, TechLevel techLevel) {
+    public void updatePrices() {
         Random rand = new Random();
-        TradeGood tradeGood = inventory.get(good);
-        int price = tradeGood.getPrice() + (tradeGood.getIpl() * (techLevel.ordinal() - tradeGood.getMtlp()));
+        for (TradeGood good : inventory.keySet()) {
+            TradeStock stock = inventory.get(good);
 
-        int var = rand.nextInt(tradeGood.getVar() + 1);
-        if (rand.nextInt(2) == 0) {
-            var *= -1;
+            int price = good.getBasePrice()
+                    + (good.getIpl() * (techLevel.ordinal() - good.getMtlp()));
+
+            int var = rand.nextInt(good.getVar() + 1);
+            if (rand.nextInt(2) == 0) {
+                var *= -1;
+            }
+
+            price += var;
+            stock.price = price;
         }
-        price += var;
-        return price;
-    }
-
-    public HashMap<String, TradeGood> getInventory() {
-        return inventory;
     }
 
     public String toString() {
         String str = "";
-        for (TradeGood trade : inventory.values()) {
+        for (TradeGood trade : inventory.keySet()) {
             str += trade.toString();
         }
+
         return str;
     }
 }
