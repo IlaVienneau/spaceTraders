@@ -19,7 +19,7 @@ android:layout_height="match_parent">
 
 </android.support.design.widget.AppBarLayout>
 
-<include layout="@layout/content_market" />
+<include layout="@layout/content_ship" />
 
 </android.support.design.widget.CoordinatorLayout>
 

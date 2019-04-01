@@ -43,9 +43,9 @@ public class ShipInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ship);
 
         toolbar = (Toolbar) findViewById(R.id.shipToolBar);
-        this.player = model.player;
-        this.ship = player.getShip();
-        this.shipType = player.getShipType();
+        player = model.player;
+        ship = player.getShip();
+        shipType = player.getShipType();
 
         toolbar.setTitle("Ship Information");
         toolbar.setSubtitle("" + player.getShipType() + "");
@@ -59,9 +59,9 @@ public class ShipInfoActivity extends AppCompatActivity {
     }
 
     private void update() {
-        currCapTextView.setText("Cargo Capacity Available: " + player.getShip().getCurrCapacity() + "");
+        currCapTextView.setText("Cargo Capacity Available: " + player.getShipCurrentCapacity() + "");
         currFuelTextView.setText("Fuel available" + player.getShip().getCurrFuel() + "");
         fuelTextView.setText("Fuel Capacity: " + player.getShip().getFuel() + "");
-        capTextView.setText("Cargo Capacity: " + player.getShip().getCapacity() + "");
+        capTextView.setText("Cargo Capacity: " + model.player.getShip().getCapacity() + "");
     }
 }

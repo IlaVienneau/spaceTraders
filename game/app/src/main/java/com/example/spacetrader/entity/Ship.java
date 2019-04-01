@@ -1,7 +1,7 @@
 package com.example.spacetrader.entity;
 import java.io.Serializable;
 
-public class Ship implements Serializable {
+public class Ship {
     private ShipType type;
     private int capacity;
     private int fuel; //in parsecs/tank
@@ -9,71 +9,72 @@ public class Ship implements Serializable {
     private int currFuel;
 
     public Ship(){
-        new Ship(ShipType.GNAT);
+        this(ShipType.GNAT);
     }
 
     public Ship(ShipType type) {
         this.type = type;
         switch(type) {
             case FLEA:
-                capacity = 0;   //not sure how many it actually has, just says few in centre
-                currCapacity = 0;
-                fuel = 20;
-                currFuel = 20;
+                this.capacity = 0;   //not sure how many it actually has, just says few in centre
+                this.currCapacity = 0;
+                this.fuel = 20;
+                this.currFuel = 20;
                 break;
             case GNAT:
-                capacity = 15;
-                fuel = 14;
-                currCapacity = 15;
-                currFuel = 14;
+                this.capacity = 15;
+                this.fuel = 14;
+                this.currCapacity = 15;
+                this.currFuel = 14;
                 break;
             case WASP:
-                capacity = 35;
-                fuel = 14;
-                currCapacity = 35;
-                currFuel = 14;
+                this.capacity = 35;
+                this.fuel = 14;
+                this.currCapacity = 35;
+                this.currFuel = 14;
                 break;
             case BEETLE:
-                capacity = 50;
-                fuel = 14;
-                currCapacity = 50;
-                currFuel = 14;
+                this.capacity = 50;
+                this.fuel = 14;
+                this.currCapacity = 50;
+                this.currFuel = 14;
                 break;
             case HORNET:
-                capacity = 20;
-                fuel = 16;
-                currCapacity = 20;
-                currFuel = 16;
+                this.capacity = 20;
+                this.fuel = 16;
+                this.currCapacity = 20;
+                this.currFuel = 16;
                 break;
             case FIREFLY:
-                capacity = 20;
-                fuel = 17;
-                currCapacity = 20;
-                currFuel = 17;
+                this.capacity = 20;
+                this.fuel = 17;
+                this.currCapacity = 20;
+                this.currFuel = 17;
                 break;
             case TERMITE:
-                capacity = 60;
-                fuel = 14;
-                currCapacity = 60;
-                currFuel = 14;
+                this.capacity = 60;
+                this.fuel = 14;
+                this.currCapacity = 60;
+                this.currFuel = 14;
                 break;
             case MOSQUITO:
-                capacity = 15;
-                fuel = 13;
-                currCapacity = 15;
-                currFuel = 13;
+                this.capacity = 15;
+                this.fuel = 13;
+                this.currCapacity = 15;
+                this.currFuel = 13;
                 break;
             case BUMBLEBEE:
-                capacity = 20;
-                fuel = 15;
-                currCapacity = 20;
-                currFuel = 15;
+                this.capacity = 20;
+                this.fuel = 15;
+                this.currCapacity = 20;
+                this.currFuel = 15;
                 break;
             case GRASSHOPPER:
-                capacity = 30;
-                fuel = 15;
-                currCapacity = 30;
-                currFuel = 15;
+                this.capacity = 30;
+                this.fuel = 15;
+                this.currCapacity = 30;
+                this.currFuel = 15;
+                break;
         }
     }
 
