@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.example.spacetrader.view.ConfigActivity;
 import com.example.spacetrader.view.MarketActivity;
+import com.example.spacetrader.view.TravelActivity;
 import com.example.spacetrader.view.ShipInfoActivity;
 import com.example.spacetrader.view.UniverseMapActivity;
 
@@ -17,5 +18,6 @@ public interface AppComponent {
     void inject(ConfigActivity activity);
     void inject(UniverseMapActivity activity);
     void inject(MarketActivity activity);
+    void inject(TravelActivity activity);
     void inject(ShipInfoActivity activity);
 }

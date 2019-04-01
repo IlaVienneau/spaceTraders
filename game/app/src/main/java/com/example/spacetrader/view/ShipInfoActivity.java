@@ -35,9 +35,6 @@ public class ShipInfoActivity extends AppCompatActivity {
     @Inject
     AppModule.SpaceTraderModel model;
 
-    public ShipInfoActivity() {
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +43,7 @@ public class ShipInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ship);
 
         toolbar = (Toolbar) findViewById(R.id.shipToolBar);
-        this.player = model.player;
-        this.ship = player.getShip();
-        this.shipType = player.getShipType();
+        player = model.player;
 
         toolbar.setTitle("Ship Information");
         toolbar.setSubtitle("" + player.getShipType() + "");
@@ -58,11 +53,18 @@ public class ShipInfoActivity extends AppCompatActivity {
         fuelTextView = (TextView) findViewById(R.id.shipFuelTextView);
         capTextView = (TextView) findViewById(R.id.shipCapTextView);
 
-        currCapTextView.setText("Cargo Capacity Available: " + player.getShip().getCurrCapacity() + "");
-        currFuelTextView.setText("Fuel available" + player.getShip().getCurrFuel() + "");
-        fuelTextView.setText("Fuel Capacity: " + player.getShip().getFuel() + "");
-        capTextView.setText("Cargo Capacity: " + player.getShip().getCapacity() + "");
+        update();
+    }
 
+    private void update() {
+        int currCargoLoad = player.getShipCurrentCapacity();
+        int maxCargoCapacity = player.getShip().getMaxCapacity();
+        int maxFuelCapacity = player.getShip().getFuel();
+        int currFuel = player.getShip().getCurrFuel();
 
+        currCapTextView.setText("Cargo Space Available: " + (maxCargoCapacity - currCargoLoad) + "");
+        currFuelTextView.setText("Fuel available" + currFuel + "");
+        fuelTextView.setText("Fuel Capacity: " + maxFuelCapacity + "");
+        capTextView.setText("Max Cargo Capacity: " + maxCargoCapacity + "");
     }
 }

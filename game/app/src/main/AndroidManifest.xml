@@ -41,6 +41,12 @@
             android:parentActivityName=".view.UniverseMapActivity">
         </activity>
         <activity
+            android:name=".view.TravelActivity"
+            android:label="Travel"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".view.UniverseMapActivity">
+        </activity>
+        <activity
             android:name=".view.ShipInfoActivity"
             android:label="ShipInfo"
             android:theme="@style/AppTheme.NoActionBar"
