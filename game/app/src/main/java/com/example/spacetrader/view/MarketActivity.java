@@ -92,7 +92,7 @@ public class MarketActivity extends AppCompatActivity {
 
                 if (stock == null) {
                     Toast.makeText(
-                            MarketActivity.this, "This planet cannot buy " + good.getName() + "s",
+                            MarketActivity.this, "This planet cannot buy " + good.getName(),
                             Toast.LENGTH_SHORT
                     ).show();
 
@@ -124,8 +124,8 @@ public class MarketActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Buying
 
-                // TODO: ship capacity
-//                if (player.getShipCurrentCapacity() < player.getShipType().getMaxCapacity()) {
+                // TODO: capacity
+//                if (player.getShipCurrentCapacity() <= player.getShip().getCapacity()) {
 //                    Toast.makeText(
 //                            MarketActivity.this, "Ship is out of room!",
 //                            Toast.LENGTH_SHORT

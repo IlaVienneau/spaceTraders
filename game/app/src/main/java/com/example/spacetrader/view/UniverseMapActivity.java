@@ -45,12 +45,6 @@ public class UniverseMapActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         travelListView = (ListView) findViewById(R.id.travelListView);
 
-
-        Planet planet = model.player.getCurrplanet();
-        Star star = planet.getStar();
-        toolbar.setTitle("Current Location: " + planet.getName());
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getxCord() + ")");
-
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,21 +62,20 @@ public class UniverseMapActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        update();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        update();
     }
 
     private void update() {
-        ArrayList<String> planetsAvailable = new ArrayList<>();
-        for (Map.Entry<String, Star> entry: model.universe.getStars().entrySet()) {
-
-        }
-
-        ListAdapter planetsAvailableAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                planetsAvailable
-        );
-
-        travelListView.setAdapter(planetsAvailableAdapter);
+        Planet planet = model.player.getCurrplanet();
+        Star star = planet.getStar();
+        toolbar.setTitle("Current Location: " + planet.getName());
+        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getxCord() + ")");
 
     }
 }
