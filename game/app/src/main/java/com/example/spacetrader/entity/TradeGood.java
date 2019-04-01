@@ -291,4 +291,20 @@ public class TradeGood implements Serializable {
         return name;
     }
 
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof TradeGood) {
+            TradeGood good = (TradeGood)obj;
+            return name.equals(good.name);
+        }
+
+        return false;
+    }
+
+
 }
