@@ -1,6 +1,8 @@
 package com.example.spacetrader.entity;
+import java.io.Serializable;
+import java.util.HashMap;
 
-public class Planet {
+public class Planet implements Serializable {
 
     private String name;
     private TechLevel techLevel;
@@ -8,17 +10,20 @@ public class Planet {
     private Resource resource;
     private Star star;
     private boolean visited;
-    private Inventory inventory;
+    private PlanetInventory inventory;
 
     // Constructors
     public Planet(
-            String name, TechLevel techLevel, PoliticalSystem politicalSystem,
-            Resource resource, Star star) {
+            String name,
+            TechLevel techLevel,
+            PoliticalSystem politicalSystem,
+            Resource resource,
+            Star star) {
         this.name = name;
+        this.star = star;
         this.techLevel = techLevel;
         this.politicalSystem = politicalSystem;
         this.resource = resource;
-        this.star = star;
         this.visited = false;
         this.inventory = new PlanetInventory(techLevel);
     }
@@ -41,5 +46,14 @@ public class Planet {
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
+
+    public HashMap<TradeGood, PlanetInventory.TradeStock> getInventory() {
+        return inventory.getInventory();
+    }
+
+    public String toString() {
+        return name;
+    }
+
 
 }

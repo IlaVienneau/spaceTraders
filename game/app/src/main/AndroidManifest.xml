@@ -4,6 +4,7 @@
     package="com.example.spacetrader">
 
     <application
+        android:name=".SpaceTrader"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="SpaceTrader"
@@ -36,6 +37,12 @@
         <activity
             android:name=".view.MarketActivity"
             android:label="Market"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".view.UniverseMapActivity">
+        </activity>
+        <activity
+            android:name=".view.TravelActivity"
+            android:label="Travel"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".view.UniverseMapActivity">
         </activity>

@@ -2,7 +2,10 @@ package com.example.spacetrader.entity;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class Player implements Serializable {
 
@@ -11,28 +14,33 @@ public class Player implements Serializable {
 
     private String name;
 
-    private ShipType ship;
+    private ShipType shipType;
+    private ShipInventory shipInventory;
 
     private int pilotSkill;
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
-    private Planet  currplanet;
+    private static Planet currplanet;
 
     private Difficulty difficulty;
 
-    public Player(String name, ShipType ship, int pilotSkill, int fighterSkill,
-                  int traderSkill, int engineerSkill, Difficulty difficulty) {
+    public Player(String name,
+                  ShipType shipType,
+                  int pilotSkill,
+                  int fighterSkill,
+                  int traderSkill,
+                  int engineerSkill,
+                  Difficulty difficulty) {
         this.name = name;
-        this.ship = ship;
+        this.shipType = shipType;
         this.pilotSkill = pilotSkill;
         this.fighterSkill = fighterSkill;
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
         this.difficulty = difficulty;
-        this.currplanet = Universe.getPlanet("Paradise");
-        //this.wallet = wallet;
-        System.out.println(toString());
+        this.shipInventory = new ShipInventory();
+        this.wallet = 1000;
     }
 
     public int getId() {
@@ -51,13 +59,30 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-    public ShipType getShip() {
-        return ship;
+    public int getWallet() { return this.wallet; };
+
+    public void setWallet(int wallet) { this.wallet = wallet; }
+
+    public ShipType getShipType() {
+        return shipType;
     }
 
-    public void setShip(ShipType ship) {
-        this.ship = ship;
+    public void setShipType(ShipType shipType) {
+        this.shipType = shipType;
     }
+
+    public int getShipCurrentCapacity() {
+        int currentCapacity = 0;
+        for (Integer amount : getShipInventory().values()) {
+            currentCapacity += amount;
+        }
+
+        return currentCapacity;
+    }
+
+    public HashMap<TradeGood, Integer> getShipInventory() { return this.shipInventory.getInventory(); }
+
+    public void setShipInventory(ShipInventory inventory) { this.shipInventory = inventory; }
 
     public Difficulty getDifficulty() {
         return difficulty;
@@ -66,6 +91,14 @@ public class Player implements Serializable {
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
+
+    public static Planet getPlanet() {return currplanet;}
+
+    public void setCurrplanet(Planet planet) {
+        currplanet = planet;
+    }
+
+    public Planet getCurrplanet() { return currplanet;}
 
     public String toString() {
         return ("Player Name: " + name + "\n" +

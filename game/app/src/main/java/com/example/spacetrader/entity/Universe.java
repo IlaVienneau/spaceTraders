@@ -1,13 +1,15 @@
 package com.example.spacetrader.entity;
 import java.util.HashMap;
 import java.util.Random;
+import java.io.Serializable;
 
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
-public class Universe {
+public class Universe implements Serializable {
     private static HashMap<String, Star> stars;
     private static int numTypes = 6;
     private static int numLevels = 8;
+    private static int numPolitical = 17;
     private static int numResources = 13;
 
 
@@ -57,12 +59,20 @@ public class Universe {
             k++;
         }
 
+        PoliticalSystem[] poly = new PoliticalSystem[numPolitical];
+        k = 0;
+        for (PoliticalSystem p : PoliticalSystem.values()) {
+            poly[k] = (p);
+            k++;
+        }
+
 
         HashMap<Integer, Integer> coordinates = new HashMap<>();
         for (int i = 0; i < size; i++) {
                 int t = rand.nextInt(101);
                 TechLevel tech = levels[rand.nextInt(numLevels)];
                 Resource resource = res[rand.nextInt(numResources)];
+                PoliticalSystem political = poly[rand.nextInt(numPolitical)];
 
                 StarType star;
                 if (t <= 55) {
@@ -91,15 +101,19 @@ public class Universe {
 
                 if (i == 0) {
                     Star paradise = new Star("Paradise", star, x, y,  Resource.NOSPECIALRESOURCES,
-                            TechLevel.POSTINDUSTRIAL);
+                            TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY);
                     paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY,
                             Resource.NOSPECIALRESOURCES, paradise));
                     stars.put("Paradise", paradise);
                 } else {
                     String str = getStarName();
-                    stars.put(str, new Star(str, star, x, y, resource, tech));
+                    stars.put(str, new Star(str, star, x, y, resource, tech, political));
                 }
         }
+    }
+
+    public HashMap<String, Star> getStars() {
+        return stars;
     }
 
     public String toString() {
@@ -110,8 +124,8 @@ public class Universe {
         return str;
     }
 
-    public static Planet getPlanet(String name) {
-        return stars.get(name).getPlanet(name + "-1" );
+    public static Planet getPlanet(String name, int num) {
+        return stars.get(name).getPlanet(name + "-" + num);
     }
 
 
