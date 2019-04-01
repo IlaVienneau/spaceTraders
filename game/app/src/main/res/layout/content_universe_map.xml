@@ -46,6 +46,35 @@
         app:layout_constraintTop_toBottomOf="@+id/tradeButton" />
 
     <TextView
+        android:id="@+id/shipInfoTextView"
+        android:layout_width="201dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginBottom="5dp"
+        android:text="Ship Information"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/shipInfoButton"
+        app:layout_constraintEnd_toStartOf="@+id/shipInfoButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marketplaceTextView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/shipInfoButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="see ship info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/TravelTextView"
         android:layout_width="201dp"
         android:layout_height="31dp"
