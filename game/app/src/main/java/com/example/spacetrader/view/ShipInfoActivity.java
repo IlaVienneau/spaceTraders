@@ -59,9 +59,14 @@ public class ShipInfoActivity extends AppCompatActivity {
     }
 
     private void update() {
-        currCapTextView.setText("Cargo Capacity Available: " + player.getShipCurrentCapacity() + "");
-        currFuelTextView.setText("Fuel available" + player.getShip().getCurrFuel() + "");
-        fuelTextView.setText("Fuel Capacity: " + player.getShip().getFuel() + "");
-        capTextView.setText("Cargo Capacity: " + model.player.getShip().getCapacity() + "");
+        int currCargoLoad = player.getShipCurrentCapacity();
+        int maxCargoCapacity = player.getShip().getMaxCapacity();
+        int maxFuelCapacity = player.getShip().getFuel();
+        int currFuel = player.getShip().getCurrFuel();
+
+        currCapTextView.setText("Cargo Space Available: " + (maxCargoCapacity - currCargoLoad) + "");
+        currFuelTextView.setText("Fuel available" + currFuel + "");
+        fuelTextView.setText("Fuel Capacity: " + maxFuelCapacity + "");
+        capTextView.setText("Max Cargo Capacity: " + maxCargoCapacity + "");
     }
 }
