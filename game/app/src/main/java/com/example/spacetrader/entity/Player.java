@@ -15,6 +15,7 @@ public class Player implements Serializable {
     private String name;
 
     private ShipType shipType;
+    private Ship ship;
     private ShipInventory shipInventory;
 
     private int pilotSkill;
@@ -34,6 +35,7 @@ public class Player implements Serializable {
                   Difficulty difficulty) {
         this.name = name;
         this.shipType = shipType;
+        this.ship = new Ship(shipType);
         this.pilotSkill = pilotSkill;
         this.fighterSkill = fighterSkill;
         this.traderSkill = traderSkill;
@@ -66,6 +68,8 @@ public class Player implements Serializable {
     public ShipType getShipType() {
         return shipType;
     }
+
+    public Ship getShip() { return ship;}
 
     public void setShipType(ShipType shipType) {
         this.shipType = shipType;

@@ -59,6 +59,16 @@ public class UniverseMapActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        Button shipInfoButton = findViewById(R.id.shipInfoButton);
+        shipInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UniverseMapActivity.this, ShipInfoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void update() {

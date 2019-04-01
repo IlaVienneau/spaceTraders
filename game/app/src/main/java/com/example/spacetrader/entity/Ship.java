@@ -5,6 +5,8 @@ public class Ship implements Serializable {
     private ShipType type;
     private int capacity;
     private int fuel; //in parsecs/tank
+    private int currCapacity;
+    private int currFuel;
 
     public Ship(){
         new Ship(ShipType.GNAT);
@@ -56,6 +58,10 @@ public class Ship implements Serializable {
     }
 
     public int getCapacity() {return capacity;}
+
+    public int getCurrCapacity() { return currCapacity;}
+
+    public int getCurrFuel() { return currFuel;}
 
     public int getFuel() {return fuel;}
 
