@@ -59,6 +59,15 @@ public class UniverseMapActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button travelButton = findViewById(R.id.travelButton);
+        travelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UniverseMapActivity.this, TravelActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void update() {
