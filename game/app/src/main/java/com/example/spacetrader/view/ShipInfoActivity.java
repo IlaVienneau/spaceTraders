@@ -44,8 +44,6 @@ public class ShipInfoActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.shipToolBar);
         player = model.player;
-        ship = player.getShip();
-        shipType = player.getShipType();
 
         toolbar.setTitle("Ship Information");
         toolbar.setSubtitle("" + player.getShipType() + "");
