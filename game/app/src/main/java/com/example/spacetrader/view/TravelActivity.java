@@ -15,6 +15,7 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Planet;
 import com.example.spacetrader.entity.Star;
+import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.model.AppModule;
 
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class TravelActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ListView travelListView;
     private ArrayList<Star> starsAvailable;
+    private Player player;
+    private int currFuel;
 
     @Inject
     AppModule.SpaceTraderModel model;
@@ -37,15 +40,27 @@ public class TravelActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_travel);
 
+        player = model.player;
+        currFuel = player.getShip().getCurrFuel();
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         travelListView = (ListView) findViewById(R.id.travelListView);
 
         travelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Planet currentPlanet = model.player.getCurrplanet();
+                int prevX = currentPlanet.getStar().getxCord();
+                int prevY = currentPlanet.getStar().getyCord();
                 Star star = starsAvailable.get(position);
                 model.player.setCurrplanet(star.getPlanets().values().iterator().next());
                 update();
+                int currXCoord = currentPlanet.getStar().getxCord();
+                int currYCoord = currentPlanet.getStar().getyCord();
+                int change = (int) Math.pow((Math.pow(Math.abs(currYCoord - prevY),2) + Math.pow(Math.abs(currXCoord - prevX),2)),.5);
+                model.player.getShip().setCurrFuel(currFuel - change);
+                update();
+                System.out.println(model.player.getShip().getCurrFuel());
             }
         });
 
@@ -67,7 +82,7 @@ public class TravelActivity extends AppCompatActivity {
             int nextXCoord = nextStar.getxCord();
             int nextYCoord = nextStar.getyCord();
 
-            if (Math.abs(nextXCoord - currXCoord) <= 10 && Math.abs(nextYCoord - currYCoord) <= 10) {
+            if (Math.abs(nextXCoord - currXCoord) <= currFuel && Math.abs(nextYCoord - currYCoord) <= currFuel && Math.pow((Math.pow(Math.abs(nextYCoord - currYCoord),2) + Math.pow(Math.abs(nextXCoord - currXCoord),2)),.5) <= currFuel) {
                 starsAvailable.add(nextStar);
                 String description = nextStar.getName() + "  |  " + nextStar.getStarType().toFormattedString() + " at " + nextXCoord + ", " + nextYCoord;
                 starDescriptions.add(description);

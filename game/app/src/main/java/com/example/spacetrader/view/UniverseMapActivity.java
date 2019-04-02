@@ -54,6 +54,15 @@ public class UniverseMapActivity extends AppCompatActivity {
             }
         });
 
+        Button shipInfoButton = findViewById(R.id.shipInfoButton);
+        shipInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UniverseMapActivity.this, ShipInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button travelButton = findViewById(R.id.travelButton);
         travelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +84,7 @@ public class UniverseMapActivity extends AppCompatActivity {
         Planet planet = model.player.getCurrplanet();
         Star star = planet.getStar();
         toolbar.setTitle("Current Location: " + planet.getName());
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getxCord() + ")");
+        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getyCord() + ")");
 
     }
 }
