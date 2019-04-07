@@ -92,7 +92,7 @@ public class Universe implements Serializable {
                 int x = rand.nextInt(max);
                 int y = rand.nextInt(max);
                 if (!coordinates.isEmpty()) {
-                    while (coordinates.get(x+y) != null && coordinates.get(x+y) == x) {
+                    while ((coordinates.get(x + y) != null) && (coordinates.get(x + y) == x)) {
                         x = rand.nextInt(max);
                         y = rand.nextInt(max);
                     }
@@ -117,7 +117,9 @@ public class Universe implements Serializable {
     }
 
     public Planet getPlanet(String name, int num) {
-        return stars.get(name).getPlanet(name + "-" + num);
+        Star star = stars.get(name);
+        Planet planet = star.getPlanet(name + "-" + num);
+        return planet;
     }
 
     public String toString() {
@@ -127,5 +129,6 @@ public class Universe implements Serializable {
         }
         return str;
     }
+
 
 }

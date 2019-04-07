@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
-import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.model.AppModule;
 
 import javax.inject.Inject;
@@ -22,8 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     @Inject
     AppModule.SpaceTraderModel model;
 
-    private EditText nameEditText = null;
-    private EditText passwordEditText = null;
+    private EditText nameEditText;
+    private EditText passwordEditText;
 
     private Toolbar toolbar;
 
@@ -55,7 +53,8 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, UniverseMapActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(LoginActivity.this, "No save file, or incorrect username/password", Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(LoginActivity.this, "No save file, or incorrect username/password", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });

@@ -2,17 +2,13 @@ package com.example.spacetrader.entity;
 
 import java.util.HashMap;
 import java.io.Serializable;
-import java.util.Random;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 public class ShipInventory implements Serializable {
 
     private HashMap<TradeGood, Integer> inventory;
 
     public ShipInventory() {
-        this.inventory = new HashMap<TradeGood, Integer>() {
-        };
+        this.inventory = new HashMap<TradeGood, Integer>();
     }
 
     public HashMap<TradeGood, Integer> getInventory() {

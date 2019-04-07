@@ -1,7 +1,5 @@
 package com.example.spacetrader.entity;
 
-import java.io.Serializable;
-
-public enum ShipType implements Serializable {
+public enum ShipType {
     FLEA, GNAT, FIREFLY, MOSQUITO, BUMBLEBEE, BEETLE, HORNET, GRASSHOPPER, TERMITE, WASP
 }

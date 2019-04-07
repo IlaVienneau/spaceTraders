@@ -1,8 +1,6 @@
 package com.example.spacetrader.entity;
 
-import java.io.Serializable;
-
-public enum PoliticalSystem implements Serializable {
+public enum PoliticalSystem {
     ANARCHY, CAPITALISTSTATE, COMMUNISTSTATE, CONFEDERACY,
     CORPORATESTATE, CYBERNETICSTATE, DEMOCRACY, DICTATORSHIP,
     FASCISTSTATE, FEUDALSTATE, MILITARYSTATE, MONARCHY,

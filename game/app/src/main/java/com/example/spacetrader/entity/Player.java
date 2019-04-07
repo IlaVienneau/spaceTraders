@@ -1,12 +1,7 @@
 package com.example.spacetrader.entity;
 
-import java.io.PrintWriter;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 public class Player implements Serializable {
 
@@ -64,7 +59,7 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-    public int getWallet() { return this.wallet; };
+    public int getWallet() { return this.wallet; }
 
     public void setWallet(int wallet) { this.wallet = wallet; }
 
@@ -80,7 +75,9 @@ public class Player implements Serializable {
 
     public int getShipCurrentCapacity() {
         int currentCapacity = 0;
-        for (Integer amount : getShipInventory().values()) {
+        HashMap<TradeGood, Integer> shipInventory = getShipInventory();
+
+        for (Integer amount : shipInventory.values()) {
             currentCapacity += amount;
         }
 

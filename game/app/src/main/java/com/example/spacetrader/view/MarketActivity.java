@@ -1,7 +1,5 @@
 package com.example.spacetrader.view;
 
-import android.annotation.TargetApi;
-import android.media.Image;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ListAdapter;
@@ -9,40 +7,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
-import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Planet;
 import com.example.spacetrader.entity.PlanetInventory;
 import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.PoliticalSystem;
-import com.example.spacetrader.entity.Resource;
-import com.example.spacetrader.entity.Ship;
-import com.example.spacetrader.entity.ShipInventory;
-import com.example.spacetrader.entity.TechLevel;
 import com.example.spacetrader.entity.TradeGood;
-import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.model.AppModule;
-import com.example.spacetrader.viewModel.ConfigViewModel;
-import android.widget.SeekBar;
-import android.widget.ListView;
-import android.widget.ListAdapter;
-import android.widget.ArrayAdapter;
 import android.widget.AdapterView;
-import android.view.View;
-import com.example.spacetrader.entity.TradeGood;
-
-import org.w3c.dom.Text;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.inject.Inject;
 
@@ -88,23 +67,27 @@ public class MarketActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Selling
                 TradeGood good = cargoGoods.get(position);
-                PlanetInventory.TradeStock stock = planet.getInventory().get(good);
+                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
+                PlanetInventory.TradeStock stock = planetInventory.get(good);
 
                 if (stock == null) {
-                    Toast.makeText(
+                    Toast toast = Toast.makeText(
                             MarketActivity.this, "This planet cannot buy " + good.getName(),
                             Toast.LENGTH_SHORT
-                    ).show();
+                    );
+                    toast.show();
 
                     return;
                 }
 
-                int owned = player.getShipInventory().get(good);
+                HashMap<TradeGood, Integer> shipInventory = player.getShipInventory();
+                int owned = shipInventory.get(good);
                 if (owned == 0) {
-                    Toast.makeText(
-                            MarketActivity.this, "You got none!",
+                    Toast toast = Toast.makeText(
+                            MarketActivity.this, "You don't have any!",
                             Toast.LENGTH_SHORT
-                    ).show();
+                    );
+                    toast.show();
 
                     return;
                 }
@@ -112,7 +95,7 @@ public class MarketActivity extends AppCompatActivity {
 
                 stock.quantity += 1;
 
-                player.getShipInventory().put(good, owned - 1);
+                shipInventory.put(good, owned - 1);
                 player.setWallet(player.getWallet() + stock.price);
                 AppModule.save(getApplicationContext(), model);
                 update();
@@ -135,7 +118,8 @@ public class MarketActivity extends AppCompatActivity {
 //                }
 
                 TradeGood good = planetGoods.get(position);
-                PlanetInventory.TradeStock stock = planet.getInventory().get(good);
+                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
+                PlanetInventory.TradeStock stock = planetInventory.get(good);
 
                 if (stock.quantity == 0) {
                     Toast.makeText(
@@ -155,12 +139,13 @@ public class MarketActivity extends AppCompatActivity {
 
                 stock.quantity -= 1;
 
-                Integer owned = player.getShipInventory().get(good);
+                HashMap<TradeGood, Integer> shipInventory = player.getShipInventory();
+                Integer owned = shipInventory.get(good);
                 if (owned == null) {
                     owned = 0;
                 }
 
-                player.getShipInventory().put(good, owned + 1);
+                shipInventory.put(good, owned + 1);
                 player.setWallet(player.getWallet() - stock.price);
                 AppModule.save(getApplicationContext(), model);
                 update();
@@ -176,7 +161,9 @@ public class MarketActivity extends AppCompatActivity {
 
         planetGoods = new ArrayList<>();
         ArrayList<String> planetGoodDescriptions = new ArrayList<>();
-        for (Map.Entry<TradeGood, PlanetInventory.TradeStock> entry : planet.getInventory().entrySet()) {
+        HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
+
+        for (Map.Entry<TradeGood, PlanetInventory.TradeStock> entry : planetInventory.entrySet()) {
             TradeGood good = entry.getKey();
             PlanetInventory.TradeStock stock = entry.getValue();
 
@@ -195,10 +182,11 @@ public class MarketActivity extends AppCompatActivity {
         );
 
         planetGoodsListView.setAdapter(planetGoodsAdapter);
+        HashMap<TradeGood, Integer> shipInventory = player.getShipInventory();
 
         cargoGoods = new ArrayList<>();
         ArrayList<String> cargoGoodDescriptions = new ArrayList<>();
-        for (Map.Entry<TradeGood, Integer> entry : player.getShipInventory().entrySet()) {
+        for (Map.Entry<TradeGood, Integer> entry : shipInventory.entrySet()) {
             TradeGood good = entry.getKey();
             Integer stock = entry.getValue();
 
