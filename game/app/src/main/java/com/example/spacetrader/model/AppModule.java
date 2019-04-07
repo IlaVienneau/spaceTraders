@@ -2,20 +2,16 @@ package com.example.spacetrader.model;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Space;
 
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Universe;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Scanner;
 
 import javax.inject.Singleton;
 
@@ -43,7 +39,10 @@ public class AppModule {
             SpaceTraderModel restoredModule = (SpaceTraderModel) in.readObject();
             in.close();
 
-            if (restoredModule.player != null && restoredModule.player.getName().equals(username) && restoredModule.player.isCorrectPassword(password)) {
+            Player restoredPlayer = restoredModule.player;
+            String name = restoredPlayer.getName();
+
+            if ((restoredPlayer != null) && name.equals(username) && restoredPlayer.isCorrectPassword(password)) {
                 module.player = restoredModule.player;
                 module.universe = restoredModule.universe;
                 return true;

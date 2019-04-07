@@ -1,7 +1,5 @@
 package com.example.spacetrader.model;
 
-import android.app.Activity;
-
 import com.example.spacetrader.view.ConfigActivity;
 import com.example.spacetrader.view.LoginActivity;
 import com.example.spacetrader.view.MarketActivity;

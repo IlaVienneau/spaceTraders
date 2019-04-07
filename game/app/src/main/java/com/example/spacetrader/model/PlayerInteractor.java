@@ -8,7 +8,12 @@ public class PlayerInteractor extends Interactor {
 
     public PlayerInteractor(Repository repo) { super(repo); }
 
-    public List<Player> getAllPlayers() { return getRepository().getAllPlayers(); }
+    public List<Player> getAllPlayers() {
+        Repository repository = getRepository();
+        return repository.getAllPlayers();
+    }
 
-    public void addPlayer(Player s) { getRepository().addPlayer(s); }
+    public void addPlayer(Player s) {
+        Repository repository = getRepository();
+        repository.addPlayer(s); }
 }
