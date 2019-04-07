@@ -19,10 +19,9 @@ class Repository {
     private static int next_id = 1;
 
     private static int getNextUniqueID() {
-        return next_id++;
+        next_id++;
+        return next_id;
     }
-
-    /***************************************************************/
 
     /** all the students known in the application */
     private List<Player> allPlayers;

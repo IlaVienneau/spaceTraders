@@ -33,7 +33,7 @@ public class StarNameGenerator implements Serializable {
         int index = rand.nextInt(133);
 
         if (!names.isEmpty()) {
-            while (names.get(index) != null && names.get(index).equals(starNames.get(index))) {
+            while ((names.get(index) != null) && names.get(index).equals(starNames.get(index))) {
                 index = rand.nextInt(132);
             }
         }

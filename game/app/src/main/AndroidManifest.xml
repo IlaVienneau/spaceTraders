@@ -29,6 +29,12 @@
             android:parentActivityName=".view.MainActivity">
         </activity>
         <activity
+            android:name=".view.LoginActivity"
+            android:label="Load Game"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".view.LoginActivity">
+        </activity>
+        <activity
             android:name=".view.UniverseMapActivity"
             android:label="Map"
             android:theme="@style/AppTheme.NoActionBar"

@@ -6,7 +6,7 @@ import java.io.Serializable;
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
 public class Universe implements Serializable {
-    private static HashMap<String, Star> stars;
+    private HashMap<String, Star> stars;
     private static int numTypes = 6;
     private static int numLevels = 8;
     private static int numPolitical = 17;
@@ -92,7 +92,7 @@ public class Universe implements Serializable {
                 int x = rand.nextInt(max);
                 int y = rand.nextInt(max);
                 if (!coordinates.isEmpty()) {
-                    while (coordinates.get(x+y) != null && coordinates.get(x+y) == x) {
+                    while ((coordinates.get(x + y) != null) && (coordinates.get(x + y) == x)) {
                         x = rand.nextInt(max);
                         y = rand.nextInt(max);
                     }
@@ -116,16 +116,18 @@ public class Universe implements Serializable {
         return stars;
     }
 
+    public Planet getPlanet(String name, int num) {
+        Star star = stars.get(name);
+        Planet planet = star.getPlanet(name + "-" + num);
+        return planet;
+    }
+
     public String toString() {
         String str = "Fire Cobra-verse:  \n";
         for (Star s: stars.values()) {
             str += s.toString() + "\n";
         }
         return str;
-    }
-
-    public static Planet getPlanet(String name, int num) {
-        return stars.get(name).getPlanet(name + "-" + num);
     }
 
 

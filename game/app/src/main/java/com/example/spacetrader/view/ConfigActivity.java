@@ -6,22 +6,24 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.ShipType;
-import com.example.spacetrader.entity.ShipInventory;
-import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.Universe;
-import com.example.spacetrader.model.AppComponent;
 import com.example.spacetrader.model.AppModule;
 import com.example.spacetrader.viewModel.ConfigViewModel;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -29,26 +31,27 @@ public class ConfigActivity extends AppCompatActivity {
     @Inject AppModule.SpaceTraderModel model;
 
     private ConfigViewModel viewModel;
-    private EditText nameEditText = null;
+    private EditText nameEditText;
+    private EditText passwordEditText;
 
-    private TextView pointCountTextView = null;
-    private SeekBar pilotSeekBar = null;
-    private SeekBar fighterSeekBar = null;
-    private SeekBar traderSeekBar = null;
-    private SeekBar engineerSeekBar = null;
+    private TextView pointCountTextView;
+    private SeekBar pilotSeekBar;
+    private SeekBar fighterSeekBar;
+    private SeekBar traderSeekBar;
+    private SeekBar engineerSeekBar;
 
     private Toolbar toolbar;
 
-    private Spinner universeSizeSpinner = null;
-    private Spinner difficultySpinner = null;
+    private Spinner universeSizeSpinner;
+    private Spinner difficultySpinner;
 
     private final int totalPointsAvailable = 16;
 
-    private int remainingPoints = 0;
-    private int pilotSkill = 0;
-    private int fighterSkill = 0;
-    private int traderSkill = 0;
-    private int engineerSkill = 0;
+    private int remainingPoints;
+    private int pilotSkill;
+    private int fighterSkill;
+    private int traderSkill;
+    private int engineerSkill;
     private Difficulty difficulty = Difficulty.BEGINNER;
 
     private void updateSkill(int skill, int change, String type) {
@@ -61,7 +64,7 @@ public class ConfigActivity extends AppCompatActivity {
             }
 
         }
-        ArrayList<skillNode> arr = new ArrayList<>();
+        List<skillNode> arr = new ArrayList<>();
         arr.add(new skillNode(pilotSkill,"pilot"));
         arr.add(new skillNode(fighterSkill,"fighter"));
         arr.add(new skillNode(traderSkill, "trader"));
@@ -71,7 +74,7 @@ public class ConfigActivity extends AppCompatActivity {
         for (int i = 0; i < arr.size(); i++) {
             if (arr.get(i).type.equals(type)) {
                 if (change >= 0) {
-                    arr.get(i).data = Math.min(change, 16);
+                    arr.get(i).data = Math.min(change, totalPointsAvailable);
                 } else {
                     arr.get(i).data = Math.max(change, 0);
                 }
@@ -79,9 +82,9 @@ public class ConfigActivity extends AppCompatActivity {
             currentPoints += arr.get(i).data;
         }
 
-        while (currentPoints > 16) {
+        while (currentPoints > totalPointsAvailable) {
             for (int i = 0; i < arr.size(); i++) {
-                if (!arr.get(i).type.equals(type) && arr.get(i).data > 0) {
+                if (!arr.get(i).type.equals(type) && (arr.get(i).data > 0)) {
                     arr.get(i).data--;
                     currentPoints--;
                 }
@@ -105,7 +108,10 @@ public class ConfigActivity extends AppCompatActivity {
         setContentView(R.layout.activity_config);
         setSupportActionBar(toolbar);
 
-        nameEditText = findViewById(R.id.name);
+        nameEditText = (EditText) findViewById(R.id.name);
+        passwordEditText = (EditText) findViewById(R.id.password);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Player Information");
 
         difficultySpinner = findViewById(R.id.difficultySpinner);
         ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Difficulty.values());
@@ -224,37 +230,53 @@ public class ConfigActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Player player = new Player(nameEditText.getText().toString(), ShipType.GNAT, pilotSkill,
-                        fighterSkill,traderSkill, engineerSkill, difficulty);
+                String name = nameEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                Player player = new Player(
+                        name,
+                        password,
+                        ShipType.GNAT,
+                        pilotSkill,
+                        fighterSkill,
+                        traderSkill,
+                        engineerSkill,
+                        difficulty
+                );
                 System.out.println("player created");
                 System.out.println(player.toString());
 
                 String universeSize = universeSizeSpinner.getSelectedItem().toString();
                 Universe universe;
+                int smallSize = 50;
+                int mediumSize = 75;
+                int largeSize = 100;
+
                 switch(universeSize) {
                     case "Small Universe":
-                        universe = new Universe(50);
+                        universe = new Universe(smallSize);
                         break;
                     case "Medium Universe":
-                        universe = new Universe(75);
+                        universe = new Universe(mediumSize);
                         break;
                     case "Large Universe":
-                        universe = new Universe(100);
+                        universe = new Universe(largeSize);
                         break;
                     default:
-                        universe = new Universe(75);
+                        universe = new Universe(mediumSize);
                         break;
                 }
 
                 player.setCurrplanet(universe.getPlanet("Paradise", 1));
+
+                model.player = player;
+                model.universe = universe;
+                AppModule.save(getApplicationContext(), model);
+
                 System.out.print("Set player to:  " + universe.getPlanet("Paradise", 1).toString());
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 startActivity(intent);
                 System.out.println("Universe Created");
                 System.out.println(universe.toString());
-
-                model.player = player;
-                model.universe = universe;
             }
         });
 
