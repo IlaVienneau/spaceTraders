@@ -40,7 +40,6 @@ public class AppModule {
         try {
             FileInputStream stream = context.openFileInput(filename);
             ObjectInputStream in = new ObjectInputStream(stream);
-            // assuming we saved our top level object, we read it back in with one line of code.
             SpaceTraderModel restoredModule = (SpaceTraderModel) in.readObject();
             in.close();
 
