@@ -1,7 +1,7 @@
 package com.example.spacetrader.entity;
 import java.io.Serializable;
 
-public class Ship {
+public class Ship implements Serializable {
     private ShipType type;
     private int maxCapacity;
     private int fuel; //in parsecs/tank

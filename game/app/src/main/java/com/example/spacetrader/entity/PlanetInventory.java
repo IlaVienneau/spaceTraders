@@ -8,7 +8,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class PlanetInventory implements Serializable {
-    public class TradeStock {
+    public class TradeStock implements Serializable {
         public int quantity;
         public int price;
     }

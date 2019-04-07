@@ -53,12 +53,16 @@ public class TravelActivity extends AppCompatActivity {
                 int prevX = currentPlanet.getStar().getxCord();
                 int prevY = currentPlanet.getStar().getyCord();
                 Star star = starsAvailable.get(position);
-                model.player.setCurrplanet(star.getPlanets().values().iterator().next());
-                update();
-                int currXCoord = currentPlanet.getStar().getxCord();
-                int currYCoord = currentPlanet.getStar().getyCord();
+
+                Planet nextPlanet = star.getPlanets().values().iterator().next();
+                model.player.setCurrplanet(nextPlanet);
+
+                int currXCoord = nextPlanet.getStar().getxCord();
+                int currYCoord = nextPlanet.getStar().getyCord();
                 int change = (int) Math.pow((Math.pow(Math.abs(currYCoord - prevY),2) + Math.pow(Math.abs(currXCoord - prevX),2)),.5);
                 model.player.getShip().setCurrFuel(currFuel - change);
+
+                AppModule.save(getApplicationContext(), model);
                 update();
                 System.out.println(model.player.getShip().getCurrFuel());
             }
@@ -100,7 +104,7 @@ public class TravelActivity extends AppCompatActivity {
         Planet planet = model.player.getCurrplanet();
         Star star = planet.getStar();
         toolbar.setTitle("Current Location: " + planet.getName());
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getxCord() + ")");
+        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getyCord() + ")");
 
     }
 }

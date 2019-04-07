@@ -1,4 +1,6 @@
 package com.example.spacetrader.entity;
 
-public enum RadicalEvent { BOREDOM, COLD, CROPFAIL, DROUGHT,
+import java.io.Serializable;
+
+public enum RadicalEvent implements Serializable { BOREDOM, COLD, CROPFAIL, DROUGHT,
     LACKOFWORKERS, PLAGUE, WAR }

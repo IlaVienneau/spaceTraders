@@ -16,7 +16,6 @@ public class Star implements Serializable {
 
     private HashMap<String, Planet> planets;
 
-
     public Star(
             String name, StarType starType, int x, int y,
             HashMap<String, Planet> planets) {

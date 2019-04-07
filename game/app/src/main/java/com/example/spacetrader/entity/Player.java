@@ -1,5 +1,6 @@
 package com.example.spacetrader.entity;
 
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ public class Player implements Serializable {
     private int id;
 
     private String name;
+    private String password;
 
     private ShipType shipType;
     private Ship ship;
@@ -22,11 +24,11 @@ public class Player implements Serializable {
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
-    private static Planet currplanet;
+    private Planet currplanet;
 
     private Difficulty difficulty;
 
-    public Player(String name,
+    public Player(String name, String password,
                   ShipType shipType,
                   int pilotSkill,
                   int fighterSkill,
@@ -34,6 +36,7 @@ public class Player implements Serializable {
                   int engineerSkill,
                   Difficulty difficulty) {
         this.name = name;
+        this.password = password;
         this.shipType = shipType;
         this.ship = new Ship(shipType);
         this.pilotSkill = pilotSkill;
@@ -96,7 +99,7 @@ public class Player implements Serializable {
         this.difficulty = difficulty;
     }
 
-    public static Planet getPlanet() {return currplanet;}
+    public Planet getPlanet() {return currplanet;}
 
     public void setCurrplanet(Planet planet) {
         currplanet = planet;
@@ -110,6 +113,10 @@ public class Player implements Serializable {
                 "Fighter Skill:" + fighterSkill + "\n" +
                 "Trader Skill:" + traderSkill + "\n" +
                 "Engineer Skill:" + engineerSkill);
+    }
+
+    public boolean isCorrectPassword(String password) {
+        return this.password.equals(password);
     }
 
 }

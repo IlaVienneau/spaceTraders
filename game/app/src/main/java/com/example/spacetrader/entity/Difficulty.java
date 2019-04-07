@@ -1,5 +1,7 @@
 package com.example.spacetrader.entity;
 
-public enum Difficulty {
+import java.io.Serializable;
+
+public enum Difficulty implements Serializable {
     BEGINNER, EASY, NORMAL, HARD, IMPOSSIBLE
 }

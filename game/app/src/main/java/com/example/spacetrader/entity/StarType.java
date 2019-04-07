@@ -1,6 +1,8 @@
 package com.example.spacetrader.entity;
 
-public enum StarType {
+import java.io.Serializable;
+
+public enum StarType implements Serializable {
     MAINSEQUENCE, REDGIANT, SUPERGIANT, BLUEGIANT, WHITEDWARF,
     BINARY;
 

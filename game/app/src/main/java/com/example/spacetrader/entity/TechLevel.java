@@ -1,6 +1,8 @@
 package com.example.spacetrader.entity;
 
-public enum TechLevel {
+import java.io.Serializable;
+
+public enum TechLevel implements Serializable {
     PREAGRICULTURAL, AGRICULTURAL, MIDIEVAL, RENAISSANCE,
     EARLYINDUSTRIAL, INDUSTRIAL, POSTINDUSTRIAL, HITECH
 }

@@ -12,10 +12,7 @@ import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.ShipType;
-import com.example.spacetrader.entity.ShipInventory;
-import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.Universe;
-import com.example.spacetrader.model.AppComponent;
 import com.example.spacetrader.model.AppModule;
 import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.SeekBar;
@@ -30,6 +27,7 @@ public class ConfigActivity extends AppCompatActivity {
 
     private ConfigViewModel viewModel;
     private EditText nameEditText = null;
+    private EditText passwordEditText = null;
 
     private TextView pointCountTextView = null;
     private SeekBar pilotSeekBar = null;
@@ -105,7 +103,10 @@ public class ConfigActivity extends AppCompatActivity {
         setContentView(R.layout.activity_config);
         setSupportActionBar(toolbar);
 
-        nameEditText = findViewById(R.id.name);
+        nameEditText = (EditText) findViewById(R.id.name);
+        passwordEditText = (EditText) findViewById(R.id.password);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Player Information");
 
         difficultySpinner = findViewById(R.id.difficultySpinner);
         ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Difficulty.values());
@@ -224,8 +225,18 @@ public class ConfigActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Player player = new Player(nameEditText.getText().toString(), ShipType.GNAT, pilotSkill,
-                        fighterSkill,traderSkill, engineerSkill, difficulty);
+                String name = nameEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                Player player = new Player(
+                        name,
+                        password,
+                        ShipType.GNAT,
+                        pilotSkill,
+                        fighterSkill,
+                        traderSkill,
+                        engineerSkill,
+                        difficulty
+                );
                 System.out.println("player created");
                 System.out.println(player.toString());
 
@@ -247,14 +258,16 @@ public class ConfigActivity extends AppCompatActivity {
                 }
 
                 player.setCurrplanet(universe.getPlanet("Paradise", 1));
+
+                model.player = player;
+                model.universe = universe;
+                AppModule.save(getApplicationContext(), model);
+
                 System.out.print("Set player to:  " + universe.getPlanet("Paradise", 1).toString());
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 startActivity(intent);
                 System.out.println("Universe Created");
                 System.out.println(universe.toString());
-
-                model.player = player;
-                model.universe = universe;
             }
         });
 

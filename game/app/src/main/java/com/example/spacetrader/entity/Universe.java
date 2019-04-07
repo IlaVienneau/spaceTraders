@@ -6,7 +6,7 @@ import java.io.Serializable;
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
 public class Universe implements Serializable {
-    private static HashMap<String, Star> stars;
+    private HashMap<String, Star> stars;
     private static int numTypes = 6;
     private static int numLevels = 8;
     private static int numPolitical = 17;
@@ -116,6 +116,10 @@ public class Universe implements Serializable {
         return stars;
     }
 
+    public Planet getPlanet(String name, int num) {
+        return stars.get(name).getPlanet(name + "-" + num);
+    }
+
     public String toString() {
         String str = "Fire Cobra-verse:  \n";
         for (Star s: stars.values()) {
@@ -123,10 +127,5 @@ public class Universe implements Serializable {
         }
         return str;
     }
-
-    public static Planet getPlanet(String name, int num) {
-        return stars.get(name).getPlanet(name + "-" + num);
-    }
-
 
 }

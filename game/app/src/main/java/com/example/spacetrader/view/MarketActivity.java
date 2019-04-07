@@ -114,7 +114,7 @@ public class MarketActivity extends AppCompatActivity {
 
                 player.getShipInventory().put(good, owned - 1);
                 player.setWallet(player.getWallet() + stock.price);
-
+                AppModule.save(getApplicationContext(), model);
                 update();
             }
         });
@@ -162,7 +162,7 @@ public class MarketActivity extends AppCompatActivity {
 
                 player.getShipInventory().put(good, owned + 1);
                 player.setWallet(player.getWallet() - stock.price);
-
+                AppModule.save(getApplicationContext(), model);
                 update();
             }
         });
