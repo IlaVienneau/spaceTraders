@@ -29,6 +29,7 @@ public class TravelActivity extends AppCompatActivity {
     private ArrayList<Star> starsAvailable;
     private Player player;
     private int currFuel;
+    private Planet currPlanet;
 
     @Inject
     AppModule.SpaceTraderModel model;
@@ -42,6 +43,7 @@ public class TravelActivity extends AppCompatActivity {
 
         player = model.player;
         currFuel = player.getShip().getCurrFuel();
+        currPlanet =  model.player.getCurrplanet();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         travelListView = (ListView) findViewById(R.id.travelListView);
@@ -49,16 +51,17 @@ public class TravelActivity extends AppCompatActivity {
         travelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Planet currentPlanet = model.player.getCurrplanet();
-                int prevX = currentPlanet.getStar().getxCord();
-                int prevY = currentPlanet.getStar().getyCord();
+                int prevX = currPlanet.getStar().getxCord();
+                int prevY = currPlanet.getStar().getyCord();
                 Star star = starsAvailable.get(position);
                 model.player.setCurrplanet(star.getPlanets().values().iterator().next());
                 update();
-                int currXCoord = currentPlanet.getStar().getxCord();
-                int currYCoord = currentPlanet.getStar().getyCord();
-                int change = (int) Math.pow((Math.pow(Math.abs(currYCoord - prevY),2) + Math.pow(Math.abs(currXCoord - prevX),2)),.5);
-                model.player.getShip().setCurrFuel(currFuel - change);
+                currPlanet = model.player.getCurrplanet();
+                int currXCoord = currPlanet.getStar().getxCord();
+                int currYCoord = currPlanet.getStar().getyCord();
+                double change = Math.pow((Math.pow(Math.abs(currYCoord - prevY),2) + Math.pow(Math.abs(currXCoord - prevX),2)),.5);
+                currFuel -= change;
+                model.player.getShip().setCurrFuel(currFuel);
                 update();
                 System.out.println(model.player.getShip().getCurrFuel());
             }
