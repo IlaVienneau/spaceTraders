@@ -1,8 +1,7 @@
 package com.example.spacetrader.model;
 
-import android.app.Activity;
-
 import com.example.spacetrader.view.ConfigActivity;
+import com.example.spacetrader.view.LoginActivity;
 import com.example.spacetrader.view.MarketActivity;
 import com.example.spacetrader.view.TravelActivity;
 import com.example.spacetrader.view.ShipInfoActivity;
@@ -20,4 +19,5 @@ public interface AppComponent {
     void inject(MarketActivity activity);
     void inject(TravelActivity activity);
     void inject(ShipInfoActivity activity);
+    void inject(LoginActivity activity);
 }
