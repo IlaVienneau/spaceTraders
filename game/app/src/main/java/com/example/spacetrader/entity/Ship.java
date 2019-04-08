@@ -7,6 +7,8 @@ public class Ship implements Serializable {
     private int fuel; //in parsecs/tank
     private int currCapacity;
     private int currFuel;
+    private int hullStrength;
+    private int maxHullStrength;
 
     public Ship(){
         this(ShipType.GNAT);
@@ -78,17 +80,69 @@ public class Ship implements Serializable {
         }
     }
 
+    /**
+     * This method returns the max cargo capacity for the current
+     * ship type.
+     *
+     * @return the max cargo capacity.
+     */
     public int getMaxCapacity() {return maxCapacity;}
 
+    /**
+     * This method returns the current cargo level.
+     *
+     * @return the current cargo level.
+     */
     public int getCurrCapacity() { return currCapacity;}
 
+    /**
+     * This method returns the current level of fuel.
+     *
+     * @return the current level of fuel.
+     */
     public int getCurrFuel() { return currFuel;}
 
+    /**
+     * This method is used to set the current level of fuel after
+     * travelling to a new planet.
+     *
+     * @param fuel the new level of fuel.
+     */
     public void setCurrFuel(int fuel) {
         this.currFuel = fuel;
     }
 
+    /**
+     * This method returns the fuel economy for the current ship
+     * type in parsecs/gallon.
+     *
+     * @return the fuel economy.
+     */
     public int getFuel() {return fuel;}
+
+    /**
+     * This method returns the current hull strength for the
+     * player's ship.
+     *
+     * @return the current hull strength.
+     */
+    public int getHullStrength() { return this.hullStrength; }
+
+    /**
+     * This method sets the current hull strength after an event
+     * in which hull damage is possible.
+     *
+     * @param hullStrength the new hull strength.
+     */
+    public void setHullStrength(int hullStrength) { this.hullStrength = hullStrength; }
+
+    /**
+     * This method returns the max hull strength for the current
+     * ship type.
+     *
+     * @return the max hull strength.
+     */
+    public int getMaxHullStrength() { return this.maxHullStrength; }
 
 }
 

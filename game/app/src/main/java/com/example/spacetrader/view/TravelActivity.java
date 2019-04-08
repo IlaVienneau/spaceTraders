@@ -1,5 +1,6 @@
 package com.example.spacetrader.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +21,7 @@ import com.example.spacetrader.model.AppModule;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -69,7 +71,6 @@ public class TravelActivity extends AppCompatActivity {
 
                 AppModule.save(getApplicationContext(), model);
                 update();
-                System.out.println(model.player.getShip().getCurrFuel());
             }
         });
 
