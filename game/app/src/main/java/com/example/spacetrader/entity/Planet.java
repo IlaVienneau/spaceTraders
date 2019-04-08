@@ -76,7 +76,10 @@ public class Planet implements Serializable {
      */
     public boolean getVisited() {return this.visited;}
 
-
+    /**
+     * This method gets the radical event that occurred
+     * @return the type of radical event that occurred
+     */
     
     public RadicalEvent getRadicalEvent() {return this.radicalEvent;}
 
@@ -90,7 +93,10 @@ public class Planet implements Serializable {
         this.visited = visited;
     }
 
-
+    /**
+     * This method sets the type of radical event that should occur
+     * @param event the event that should occur
+     */
   
     public void setRadicalEvent(RadicalEvent event) { this.radicalEvent = event;}
 

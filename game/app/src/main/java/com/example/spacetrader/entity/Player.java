@@ -86,22 +86,31 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-
-    
-
-    public int getPilotSkill() { return this.pilotSkill; }
+    /**
+     * This method sets the pilot skill of the player
+     * @param pilotSkill the pilot skill the player should have
+     */
 
     public void setPilotSkill(int pilotSkill) { this.pilotSkill = pilotSkill; }
 
-    public int getFighterSkill() { return this.fighterSkill; }
+    /**
+     * This method sets the fighter skill of the player
+     * @param fighterSkill the fighter skill the player should have
+     */
 
     public void setFighterSkill(int fighterSkill) { this.fighterSkill = fighterSkill; }
 
-    public int getEngineerSkill() { return this.engineerSkill; }
+    /**
+     * This method sets the engineer skill of the player
+     * @param engineerSkill the engineer skill the player should have
+     */
 
     public void setEngineerSkill(int engineerSkill) { this.engineerSkill = engineerSkill; }
 
-    public int getTraderSkill() { return this.traderSkill; }
+    /**
+     * This method sets the trader skill of the player
+     * @param traderSkill the trader skill the player should have
+     */
 
     public void setTraderSkill(int traderSkill) { this.traderSkill = traderSkill; }
 
@@ -223,24 +232,24 @@ public class Player implements Serializable {
      * This method gets the pilot skill level of the player
      * @return the pilot skill level of the player
      */
-    public int getPilotSkill() {return pilotSkill;}
+    public int getPilotSkill() {return this.pilotSkill;}
 
     /**
      * This method gets the fighter skill level of the player
      * @return the fighter skill level of the player
      */
-    public int getFighterSkill() {return fighterSkill;}
+    public int getFighterSkill() {return this.fighterSkill;}
 
     /**
      * This method gets the trader skill level of the player
      * @return the trader skill level of the player
      */
-    public int getTraderSkill() {return traderSkill;}
+    public int getTraderSkill() {return this.traderSkill;}
 
     /**
      * This method gets the engineer skill level of the player
      * @return the engineer skill level of the player
      */
-    public int getEngineerSkill() {return engineerSkill;}
+    public int getEngineerSkill() {return this.engineerSkill;}
 
 }
