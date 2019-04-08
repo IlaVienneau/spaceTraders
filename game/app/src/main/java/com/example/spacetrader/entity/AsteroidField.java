@@ -5,13 +5,14 @@ import java.util.Random;
 public class AsteroidField {
     Player player;
     int damageTaken;
+    double pilotSkillFraction =.05;
 
     public AsteroidField(Player player) {
         this.player = player;
         int currHull = player.getShip().getHullStrength();
         int pilotSkill = player.getPilotSkill();
         Random rand = new Random();
-        double damage = Math.abs(rand.nextDouble() - (pilotSkill * .05));
+        double damage = Math.abs(rand.nextDouble() - (pilotSkill * pilotSkillFraction));
         int newHull = ((int)((double)currHull * damage));
         player.getShip().setHullStrength(newHull);
         this.damageTaken = currHull - newHull;

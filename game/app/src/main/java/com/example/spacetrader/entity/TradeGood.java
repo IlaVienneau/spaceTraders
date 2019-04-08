@@ -414,7 +414,7 @@ public class TradeGood implements Serializable {
      * @param m the tech level
      * @return an array list of TradeGoods
      */
-    public static ArrayList<TradeGood> getMTLPs(int m) {
+    public static Iterable<TradeGood> getMTLPs(int m) {
         ArrayList<TradeGood> tarr = new ArrayList<>();
         if (m >= 0) {
             tarr.add(new TradeGood("water"));

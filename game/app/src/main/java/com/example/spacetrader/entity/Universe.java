@@ -122,7 +122,7 @@ public class Universe implements Serializable {
      * This method gets the stars in the universe and puts them in a hash map
      * @return a hash map containing the stars in the universe
      */
-    public HashMap<String, Star> getStars() {
+    public Map<String, Star> getStars() {
         return stars;
     }
 

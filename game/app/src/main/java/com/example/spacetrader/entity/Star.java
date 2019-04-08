@@ -109,7 +109,7 @@ public class Star implements Serializable {
      *
      * @return HashMap of <planet name, planet object> within this solar system
      */
-    public HashMap<String, Planet> getPlanets() {
+    public Map<String, Planet> getPlanets() {
         return planets;
     }
 
