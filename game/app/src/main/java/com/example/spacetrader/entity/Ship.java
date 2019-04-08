@@ -6,7 +6,8 @@ public class Ship implements Serializable {
     private int maxCapacity;
     private int fuel; //in parsecs/tank
     private int currCapacity;
-    private int currFuel;
+    private int currFuel; //should update to be the same for all and be the amount of gallons in
+    // a tank. this should also change how we calculate having enough fuel to travel to planets
     private int hullStrength;
     private int maxHullStrength;
 
