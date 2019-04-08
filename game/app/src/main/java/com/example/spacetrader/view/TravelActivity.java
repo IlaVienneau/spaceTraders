@@ -120,6 +120,8 @@ public class TravelActivity extends AppCompatActivity {
                 );
                 toast.show();
 
+                player.getCurrplanet().getPlanetInventory().updatePrices();
+
                 int newXCoord = nextStar.getxCord();
                 int newYCoord = nextStar.getyCord();
                 int change = (int) Math.pow((Math.pow(Math.abs(newYCoord - prevY),2) + Math.pow(Math.abs(newXCoord - prevX),2)),.5);

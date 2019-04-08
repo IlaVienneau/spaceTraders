@@ -59,6 +59,10 @@ public class Planet implements Serializable {
         return inventory.getInventory();
     }
 
+    public PlanetInventory getPlanetInventory() {
+        return this.inventory;
+    }
+
     public String toString() {
         return name;
     }
