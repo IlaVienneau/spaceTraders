@@ -267,7 +267,7 @@ public class ConfigActivity extends AppCompatActivity {
                         break;
                 }
 
-                player.setCurrplanet(universe.getPlanet("Paradise", 1));
+                player.setCurrPlanet(universe.getPlanet("Paradise", 1));
 
                 model.player = player;
                 model.universe = universe;
