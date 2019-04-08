@@ -166,104 +166,254 @@ public class TradeGood implements Serializable {
         }
     }
 
+    /**
+     * This method returns the name of the TradeGood.
+     *
+     * @return the name.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * This method returns the type of the TradeGood.
+     *
+     * @return the type.
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * This method returns the ordinal of the minimum tech level to
+     * produce the TradeGood.
+     *
+     * @return the minimum tech level ordinal.
+     */
     public int getMtlp() {
         return mtlp;
     }
 
+    /**
+     * This method returns the ordinal of the minimum tech level
+     * to use the TradeGood.
+     *
+     * @return the minimum tech level ordinal.
+     */
     public int getMtlu() {
         return mtlu;
     }
 
+    /**
+     * This method returns the ordinal of the tech level which
+     * produces the most of this item.
+     *
+     * @return the tech level ordinal.
+     */
     public int getTtp() {
         return ttp;
     }
 
+    /**
+     * This method returns the price increase per tech level.
+     *
+     * @return the price increase.
+     */
     public int getIpl() {
         return ipl;
     }
 
+    /**
+     * This method returns the maximum percentage the price can vary
+     * above or below the base price.
+     *
+     * @return the variance.
+     */
     public int getVar() {
         return var;
     }
 
+    /**
+     * This method returns the base price of the TradeGood.
+     *
+     * @return the base price.
+     */
     public int getBasePrice() { return basePrice; }
 
+    /**
+     * This method returns the event that caused the radical
+     * price increase.
+     *
+     * @return the radical event.
+     */
     public RadicalEvent getIe() {
         return ie;
     }
 
+    /**
+     * This method returns the resource that has an unusually
+     * low price.
+     *
+     * @return the resource.
+     */
     public Resource getCr() {
         return cr;
     }
 
+    /**
+     * This method returns the resource that has an unusually
+     * high price.
+     *
+     * @return the resource.
+     */
     public Resource getEr() {
         return er;
     }
 
+    /**
+     * This method returns the minimum price the TradeGood can
+     * be sold at in a space trade encounter (not on a planet).
+     *
+     * @return the minimum price.
+     */
     public int getMtl() {
         return mtl;
     }
 
+    /**
+     * This method returns the maximum price the TradeGood can
+     * be sold at in a space trade encounter (not on a planet).
+     *
+     * @return the maximum price.
+     */
     public int getMth() {
         return mth;
     }
 
+    /**
+     * This method sets the name of the TradeGood.
+     *
+     * @param name the name to set.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * This method sets the type of the TradeGood.
+     *
+     * @param type the type to set.
+     */
     public void setType(String type) {
         this.type = type;
     }
 
+    /**
+     * This method sets the ordinal of the minimum tech level to
+     * produce the TradeGood.
+     *
+     * @param mtlp the ordinal of the tech level.
+     */
     public void setMtlp(int mtlp) {
         this.mtlp = mtlp;
     }
 
+    /**
+     * This method sets the ordinal of the minimum tech level to
+     * use the TradeGood.
+     *
+     * @param mtlu the ordinal of the tech level.
+     */
     public void setMtlu(int mtlu) {
         this.mtlu = mtlu;
     }
 
+    /**
+     * This method sets the ordinal of the tech level which
+     * produces the most of this item.
+     *
+     * @param ttp the ordinal of the tech level.
+     */
     public void setTtp(int ttp) {
         this.ttp = ttp;
     }
 
+    /**
+     * This method sets the price increase per tech level.
+     *
+     * @param ipl the price increase.
+     */
     public void setIpl(int ipl) {
         this.ipl = ipl;
     }
 
+    /**
+     * This method sets the maximum percentage the price can vary
+     * above or below the base price.
+     *
+     * @param var the maximum variance percentage.
+     */
     public void setVar(int var) {
         this.var = var;
     }
 
+    /**
+     * This method sets the radical event that drastically
+     * incrreases the price.
+     *
+     * @param ie the radical event.
+     */
     public void setIe(RadicalEvent ie) {
         this.ie = ie;
     }
 
+    /**
+     * This method sets the resource that has an unusually
+     * low price.
+     *
+     * @param cr the resource.
+     */
     public void setCr(Resource cr) {
         this.cr = cr;
     }
 
+    /**
+     * This method sets the resource that has an unusually
+     * low price.
+     *
+     * @param er the resource.
+     */
     public void setEr(Resource er) {
         this.er = er;
     }
 
+    /**
+     * This method sets the minimum price the TradeGood can
+     * be sold at in a space trade encounter (not on a planet).
+     *
+     * @param mtl the minimum price.
+     */
     public void setMtl(int mtl) {
         this.mtl = mtl;
     }
 
+    /**
+     * This method sets the maximum price the TradeGood can
+     * be sold at in a space trade encounter (not on a planet).
+     *
+     * @param mth the maximum price.
+     */
     public void setMth(int mth) {
         this.mth = mth;
     }
 
+    /**
+     * This method returns an array list of the possible goods produced
+     * at the passed in tech level.
+     *
+     * @param m the tech level
+     * @return an array list of TradeGoods
+     */
     public static ArrayList<TradeGood> getMTLPs(int m) {
         ArrayList<TradeGood> tarr = new ArrayList<>();
         if (m >= 0) {
@@ -287,6 +437,11 @@ public class TradeGood implements Serializable {
         return tarr;
     }
 
+    /**
+     * This method returns the String name of the TradeGood.
+     *
+     * @return the name.
+     */
     public String toString() {
         return name;
     }
