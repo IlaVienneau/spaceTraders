@@ -19,7 +19,7 @@ public class Player implements Serializable {
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
-    private Planet currplanet;
+    private Planet currPlanet;
 
     private Difficulty difficulty;
 
@@ -197,15 +197,15 @@ public class Player implements Serializable {
      * This method sets the current planet to what the player should be on
      * @param planet the planet the player should be on
      */
-    public void setCurrplanet(Planet planet) {
-        currplanet = planet;
+    public void setCurrPlanet(Planet planet) {
+        currPlanet = planet;
     }
 
     /**
      * This method gets the current planet the player is on
      * @return the current planet the player is on
      */
-    public Planet getCurrplanet() { return currplanet;}
+    public Planet getCurrPlanet() { return currPlanet;}
 
     /**
      * This methods represents the player as a string

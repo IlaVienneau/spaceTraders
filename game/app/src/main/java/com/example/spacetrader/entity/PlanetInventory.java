@@ -102,9 +102,9 @@ public class PlanetInventory implements Serializable {
     }
 
     /**
-     * Gets a HashMap containing the planet's tradegoods and number of each.
+     * Gets a HashMap containing the planet's TradeGoods and number of each.
      *
-     * @return HashMap<TradeGood, TradeStock> containing type and number of tradegoods this planet
+     * @return HashMap<TradeGood, TradeStock> containing type and number of TradeGoods this planet
      * has in its inventory
      */
     public HashMap<TradeGood, TradeStock> getInventory() {

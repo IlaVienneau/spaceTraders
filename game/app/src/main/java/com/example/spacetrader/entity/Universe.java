@@ -38,8 +38,9 @@ public class Universe implements Serializable {
         } else {
             max = 25; //sqrt of 500
         }
-        //create a random integer btwn 0 and 100, if it falls btwn 0 and 55 make it main etc
-        //index into the array of the enum to get star types
+        // create a random integer between 0 and 100, if it
+        // falls between 0 and 55 make it main etc
+        // index into the array of the enum to get star types
         Random rand = new Random();
 
         StarType[] types = new StarType[numTypes];
