@@ -1,6 +1,5 @@
 package com.example.spacetrader.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,7 +20,6 @@ import javax.inject.Inject;
 
 public class ShipInfoActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private Player player;
     private Ship ship;
     private ShipType shipType;
@@ -32,6 +30,7 @@ public class ShipInfoActivity extends AppCompatActivity {
     private TextView walletTextView;
 
     @Inject
+    private
     AppModule.SpaceTraderModel model;
 
     @Override
@@ -41,7 +40,7 @@ public class ShipInfoActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_ship);
 
-        toolbar = (Toolbar) findViewById(R.id.shipToolBar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.shipToolBar);
         player = model.player;
 
         toolbar.setTitle("Ship Information");
@@ -59,8 +58,8 @@ public class ShipInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //update to check that we need fuel when we change curr fuel
-                if (player.getWallet() > 5 &&
-                    player.getShip().getCurrFuel() < player.getShip().getFuel()) {
+                if ((player.getWallet() > 5) &&
+                        (player.getShip().getCurrFuel() < player.getShip().getFuel())) {
                     player.getShip().setCurrFuel(player.getShip().getCurrFuel() + 1);
                     player.setWallet(player.getWallet() - 5);
                 } else {

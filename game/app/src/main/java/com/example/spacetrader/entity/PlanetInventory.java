@@ -13,7 +13,6 @@ public class PlanetInventory implements Serializable {
 
     private HashMap<TradeGood, TradeStock> inventory;
     private TechLevel techLevel;
-    private PoliticalSystem politicalSystem;
     private Resource resource;
     private RadicalEvent event;
 
@@ -32,7 +31,6 @@ public class PlanetInventory implements Serializable {
     public PlanetInventory(TechLevel tech, PoliticalSystem pol, Resource res, RadicalEvent event) {
         this.inventory = new HashMap<>();
         this.techLevel = tech;
-        this.politicalSystem = pol;
         this.resource = res;
         this.event = event;
 

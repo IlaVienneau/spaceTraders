@@ -3,12 +3,12 @@ package com.example.spacetrader.entity;
 import java.util.HashMap;
 import java.io.Serializable;
 
-public class ShipInventory implements Serializable {
+class ShipInventory implements Serializable {
 
     private HashMap<TradeGood, Integer> inventory;
 
     public ShipInventory() {
-        this.inventory = new HashMap<TradeGood, Integer>();
+        this.inventory = new HashMap<>();
     }
 
     /**

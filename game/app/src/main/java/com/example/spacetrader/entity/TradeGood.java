@@ -1,7 +1,12 @@
 package com.example.spacetrader.entity;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
+@SuppressWarnings("MagicNumber")
 public class TradeGood implements Serializable {
     private String name;    // trade good name
     private String type;    // natural or industrial
@@ -11,7 +16,9 @@ public class TradeGood implements Serializable {
     private int ipl;        // price increase per tech level
     private int var;        // variance ( maximum percentage that the price can vary above or below the base)
     private RadicalEvent ie;// Radical price increase event, when this even happens on a planet, the price may increase astronomically
+    @Nullable
     private Resource cr;    // When this condition is present, the price of this resource is unusually low
+    @Nullable
     private Resource er;    // When this condition is present, the resource is expensive
     private int mtl;        // Min price offered in space trade with random trader (not on a planet)
     private int mth;        // Max price offered in space trade with random trader (not on a planet)
@@ -20,7 +27,8 @@ public class TradeGood implements Serializable {
     //tech level increases -> $ natural goods increases
     //tech level increases -> $ industrial goods decreases
 
-    public TradeGood(String name) {
+    @SuppressWarnings("MagicNumber")
+    private TradeGood(String name) {
         this.name = name;
         switch (name) {
             case "water":
@@ -415,7 +423,7 @@ public class TradeGood implements Serializable {
      * @return an array list of TradeGoods
      */
     public static Iterable<TradeGood> getMTLPs(int m) {
-        ArrayList<TradeGood> tarr = new ArrayList<>();
+        Collection<TradeGood> tarr = new ArrayList<>();
         if (m >= 0) {
             tarr.add(new TradeGood("water"));
             tarr.add(new TradeGood("furs"));
@@ -428,7 +436,7 @@ public class TradeGood implements Serializable {
             tarr.add(new TradeGood("firearms"));
         } if (m >=4) {
             tarr.add(new TradeGood("medicines"));
-            tarr.add(new TradeGood("marchines"));
+            tarr.add(new TradeGood("machines"));
         } if (m >= 5) {
             tarr.add(new TradeGood("narcotics"));
         } if (m >= 6) {

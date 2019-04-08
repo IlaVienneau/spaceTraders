@@ -8,10 +8,6 @@ import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
 public class Universe implements Serializable {
     private HashMap<String, Star> stars;
-    private static int numTypes = 6;
-    private static int numLevels = 8;
-    private static int numPolitical = 17;
-    private static int numResources = 13;
 
 
     /*
@@ -43,6 +39,7 @@ public class Universe implements Serializable {
         //index into the array of the enum to get star types
         Random rand = new Random();
 
+        int numTypes = 6;
         StarType[] types = new StarType[numTypes];
         int k = 0;
         for (StarType type : StarType.values()) {
@@ -50,6 +47,7 @@ public class Universe implements Serializable {
             k++;
         }
 
+        int numLevels = 8;
         TechLevel[] levels = new TechLevel[numLevels];
         k = 0;
         for (TechLevel level : TechLevel.values()) {
@@ -58,6 +56,7 @@ public class Universe implements Serializable {
         }
 
 
+        int numResources = 13;
         Resource[] res = new Resource[numResources];
         k = 0;
         for (Resource r : Resource.values()) {
@@ -65,6 +64,7 @@ public class Universe implements Serializable {
             k++;
         }
 
+        int numPolitical = 17;
         PoliticalSystem[] poly = new PoliticalSystem[numPolitical];
         k = 0;
         for (PoliticalSystem p : PoliticalSystem.values()) {
@@ -134,8 +134,7 @@ public class Universe implements Serializable {
      */
     public Planet getPlanet(String name, int num) {
         Star star = stars.get(name);
-        Planet planet = star.getPlanet(name + "-" + num);
-        return planet;
+        return star.getPlanet(name + "-" + num);
     }
 
     /**

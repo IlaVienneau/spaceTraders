@@ -29,12 +29,12 @@ import javax.inject.Inject;
 public class MarketActivity extends AppCompatActivity {
 
     @Inject
+    private
     AppModule.SpaceTraderModel model;
 
     private Player player;
     private Planet planet;
 
-    private Toolbar toolbar;
     private TextView walletTextView;
     private ListView planetGoodsListView;
     private ListView cargoGoodsListView;
@@ -55,7 +55,7 @@ public class MarketActivity extends AppCompatActivity {
         this.player = model.player;
         this.planet = player.getCurrplanet();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         walletTextView = (TextView) findViewById(R.id.walletTextView);
         planetGoodsListView = findViewById(R.id.tradeGoodsListView);
         cargoGoodsListView = findViewById(R.id.cargoGoodsListView);

@@ -1,6 +1,5 @@
 package com.example.spacetrader.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
@@ -22,7 +20,6 @@ import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.StarType;
 import com.example.spacetrader.model.AppModule;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
@@ -33,11 +30,11 @@ public class TravelActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ListView travelListView;
     private ArrayList<Star> starsAvailable;
-    private Player player;
     private int currFuel;
     private Planet currPlanet;
 
     @Inject
+    private
     AppModule.SpaceTraderModel model;
 
     @Override
@@ -47,7 +44,7 @@ public class TravelActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_travel);
 
-        player = model.player;
+        Player player = model.player;
         Ship ship = player.getShip();
         currFuel = ship.getCurrFuel();
 
@@ -160,7 +157,7 @@ public class TravelActivity extends AppCompatActivity {
             }
         }
 
-        ListAdapter starsAvailableAdapter = new ArrayAdapter<String>(
+        ListAdapter starsAvailableAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 starDescriptions
