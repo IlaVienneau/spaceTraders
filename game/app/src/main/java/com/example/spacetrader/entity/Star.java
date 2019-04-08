@@ -2,6 +2,7 @@ package com.example.spacetrader.entity;
 
 import java.util.HashMap;
 import java.io.Serializable;
+import java.util.Map;
 
 public class Star implements Serializable {
 
@@ -62,7 +63,7 @@ public class Star implements Serializable {
         return yCord;
     }
 
-    public HashMap<String, Planet> getPlanets() {
+    public Map<String, Planet> getPlanets() {
         return planets;
     }
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.io.Serializable;
 
@@ -29,7 +30,7 @@ public class StarNameGenerator implements Serializable {
 
     public static String getStarName() {
         Random rand = new Random();
-        HashMap<Integer, String> names = new HashMap<>();
+        Map<Integer, String> names = new HashMap<>();
         int index = rand.nextInt(133);
 
         if (!names.isEmpty()) {

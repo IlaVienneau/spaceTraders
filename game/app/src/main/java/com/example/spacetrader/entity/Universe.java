@@ -1,5 +1,6 @@
 package com.example.spacetrader.entity;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.io.Serializable;
 
@@ -112,7 +113,7 @@ public class Universe implements Serializable {
         }
     }
 
-    public HashMap<String, Star> getStars() {
+    public Map<String, Star> getStars() {
         return stars;
     }
 
