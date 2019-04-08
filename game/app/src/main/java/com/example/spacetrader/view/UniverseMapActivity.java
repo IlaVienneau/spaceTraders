@@ -69,10 +69,10 @@ public class UniverseMapActivity extends AppCompatActivity {
     }
 
     private void update() {
-        Planet planet = model.player.getCurrplanet();
+        Planet planet = model.player.getCurrPlanet();
         Star star = planet.getStar();
         toolbar.setTitle("Current Location: " + planet.getName());
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getyCord() + ")");
+        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getXCord() + ", " + star.getYCord() + ")");
 
     }
 }

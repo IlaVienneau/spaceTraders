@@ -89,7 +89,7 @@ public class Star implements Serializable {
      *
      * @return x coordinate of star
      */
-    public int getxCord() {
+    public int getXCord() {
         return xCord;
     }
 
@@ -98,7 +98,7 @@ public class Star implements Serializable {
      *
      * @return y coordinate of star
      */
-    public int getyCord() {
+    public int getYCord() {
         return yCord;
     }
 

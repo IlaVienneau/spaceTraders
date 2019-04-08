@@ -31,7 +31,6 @@ public class TravelActivity extends AppCompatActivity {
     private ListView travelListView;
     private ArrayList<Star> starsAvailable;
     private int currFuel;
-    private Planet currPlanet;
 
     @Inject
     AppModule.SpaceTraderModel model;
@@ -47,22 +46,22 @@ public class TravelActivity extends AppCompatActivity {
         Ship ship = player.getShip();
         currFuel = ship.getCurrFuel();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        travelListView = (ListView) findViewById(R.id.travelListView);
+        toolbar = findViewById(R.id.toolbar);
+        travelListView = findViewById(R.id.travelListView);
 
         travelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Player player = model.player;
                 Ship ship = player.getShip();
-                Planet currentPlanet = player.getCurrplanet();
+                Planet currentPlanet = player.getCurrPlanet();
                 Star currentStar = currentPlanet.getStar();
-                int prevX = currentStar.getxCord();
-                int prevY = currentStar.getyCord();
+                int prevX = currentStar.getXCord();
+                int prevY = currentStar.getYCord();
                 Star nextStar = starsAvailable.get(position);
 
                 Planet nextPlanet = nextStar.getPlanets().values().iterator().next();
-                player.setCurrplanet(nextPlanet);
+                player.setCurrPlanet(nextPlanet);
 
                 Random rand = new Random();
                 int randomChance = rand.nextInt(100) + 1;
@@ -71,42 +70,42 @@ public class TravelActivity extends AppCompatActivity {
                     RadicalEvent[] radicalEvents = RadicalEvent.values();
                     int eventSelector = rand.nextInt(7);
                     RadicalEvent event = radicalEvents[eventSelector];
-                    player.getCurrplanet().setRadicalEvent(event);
+                    player.getCurrPlanet().setRadicalEvent(event);
                 }
 
                 String message = "";
 
-                switch (player.getCurrplanet().getRadicalEvent()) {
+                switch (player.getCurrPlanet().getRadicalEvent()) {
                     case NONE:
-                        message = player.getCurrplanet().getName()
+                        message = player.getCurrPlanet().getName()
                                 + " welcomes you!";
                         break;
                     case BOREDOM:
-                        message = player.getCurrplanet().getName()
+                        message = player.getCurrPlanet().getName()
                                 + " is currently stricken by a fit of extreme boredom.";
                         break;
                     case COLD:
-                        message = player.getCurrplanet().getName()
+                        message = player.getCurrPlanet().getName()
                                 + " is currently stricken undergoing a deep freeze.";
                         break;
                     case WAR:
-                        message = player.getCurrplanet().getName()
+                        message = player.getCurrPlanet().getName()
                                 + " is currently rife with war.";
                         break;
                     case PLAGUE:
-                        message = player.getCurrplanet().getName()
+                        message = player.getCurrPlanet().getName()
                                 + " is currently stricken with a horrible plague.";
                         break;
                     case DROUGHT:
-                        message = player.getCurrplanet().getName()
+                        message = player.getCurrPlanet().getName()
                                 + " is currently going through a horrible drought.";
                         break;
                     case CROPFAIL:
-                        message = player.getCurrplanet().getName()
+                        message = player.getCurrPlanet().getName()
                                 + " is currently going through a horrible crop failure.";
                         break;
                     case LACKOFWORKERS:
-                        message = player.getCurrplanet().getName()
+                        message = player.getCurrPlanet().getName()
                                 + " is currently suffering from a lack of workers.";
                         break;
                 }
@@ -116,11 +115,12 @@ public class TravelActivity extends AppCompatActivity {
                 );
                 toast.show();
 
-                player.getCurrplanet().getPlanetInventory().updatePrices();
+                player.getCurrPlanet().getPlanetInventory().updatePrices();
 
-                int newXCoord = nextStar.getxCord();
-                int newYCoord = nextStar.getyCord();
-                int change = (int) Math.pow((Math.pow(Math.abs(newYCoord - prevY),2) + Math.pow(Math.abs(newXCoord - prevX),2)),.5);
+                int newXCoordinate = nextStar.getXCord();
+                int newYCoordinate = nextStar.getYCord();
+                int change = (int) Math.pow((Math.pow(Math.abs(newYCoordinate - prevY),2)
+                        + Math.pow(Math.abs(newXCoordinate - prevX),2)),.5);
                 ship.setCurrFuel(currFuel - change);
 
                 AppModule.save(getApplicationContext(), model);
@@ -137,21 +137,25 @@ public class TravelActivity extends AppCompatActivity {
         Player player = model.player;
 
         ArrayList<String> starDescriptions = new ArrayList<>();
-        Planet currentPlanet = player.getCurrplanet();
+        Planet currentPlanet = player.getCurrPlanet();
         Star currentStar = currentPlanet.getStar();
-        int currXCoord = currentStar.getxCord();
-        int currYCoord = currentStar.getyCord();
+        int currXCoordinate = currentStar.getXCord();
+        int currYCoordinate = currentStar.getYCord();
 
         for (Map.Entry<String, Star> entry: model.universe.getStars().entrySet()) {
-            String name = entry.getKey();
             Star nextStar = entry.getValue();
-            int nextXCoord = nextStar.getxCord();
-            int nextYCoord = nextStar.getyCord();
+            int nextXCoordinate = nextStar.getXCord();
+            int nextYCoordinate = nextStar.getYCord();
 
-            if ((Math.abs(nextXCoord - currXCoord) <= currFuel) && (Math.abs(nextYCoord - currYCoord) <= currFuel) && (Math.pow((Math.pow(Math.abs(nextYCoord - currYCoord), 2) + Math.pow(Math.abs(nextXCoord - currXCoord), 2)), .5) <= currFuel)) {
+            if ((Math.abs(nextXCoordinate - currXCoordinate) <= currFuel) &&
+                    (Math.abs(nextYCoordinate - currYCoordinate) <= currFuel) &&
+                    (Math.pow((Math.pow(Math.abs(nextYCoordinate - currYCoordinate), 2)
+                            + Math.pow(Math.abs(nextXCoordinate - currXCoordinate), 2)), .5)
+                            <= currFuel)) {
                 starsAvailable.add(nextStar);
                 StarType starType = nextStar.getStarType();
-                String description = nextStar.getName() + "  |  " + starType.toFormattedString() + " at " + nextXCoord + ", " + nextYCoord;
+                String description = nextStar.getName() + "  |  " + starType.toFormattedString()
+                        + " at " + nextXCoordinate + ", " + nextYCoordinate;
                 starDescriptions.add(description);
             }
         }
@@ -164,10 +168,11 @@ public class TravelActivity extends AppCompatActivity {
 
         travelListView.setAdapter(starsAvailableAdapter);
 
-        Planet planet = model.player.getCurrplanet();
+        Planet planet = model.player.getCurrPlanet();
         Star star = planet.getStar();
         toolbar.setTitle("Current Location: " + planet.getName());
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getyCord() + ")");
+        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getXCord() + ", "
+                + star.getYCord() + ")");
 
     }
 }
