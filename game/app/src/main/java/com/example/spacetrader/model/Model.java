@@ -17,10 +17,18 @@ public class Model {
         registerInteractors();
     }
 
+    /**
+     * This method registers interactor classes in the interactor map.
+     */
     private void registerInteractors() {
         interactorMap.put("Player", new PlayerInteractor(myRepository));
     }
 
+    /**
+     * This method returns the player interactor.
+     *
+     * @return the player interactor.
+     */
     public PlayerInteractor getPlayerInteractor() {
         return (PlayerInteractor) interactorMap.get("Student");
     }

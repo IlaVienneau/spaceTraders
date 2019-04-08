@@ -18,6 +18,11 @@ public class SpaceTrader extends Application {
                 .build();
     }
 
+    /**
+     * This method returns the App Component.
+     *
+     * @return the app component.
+     */
     public AppComponent getAppComponent() {
         return mAppComponent;
     }

@@ -11,6 +11,12 @@ public class ShipInventory implements Serializable {
         this.inventory = new HashMap<TradeGood, Integer>();
     }
 
+    /**
+     * This method returns the contents of your ships cargo hold
+     * stored in a hash map.
+     *
+     * @return a hash map of the ship's inventory.
+     */
     public HashMap<TradeGood, Integer> getInventory() {
         return inventory;
     }

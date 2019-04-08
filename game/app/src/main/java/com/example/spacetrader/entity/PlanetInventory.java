@@ -13,10 +13,17 @@ public class PlanetInventory implements Serializable {
 
     private HashMap<TradeGood, TradeStock> inventory;
     private TechLevel techLevel;
+    private PoliticalSystem politicalSystem;
+    private Resource resource;
+    private RadicalEvent event;
 
-    public PlanetInventory(TechLevel tech) {
+
+    public PlanetInventory(TechLevel tech, PoliticalSystem pol, Resource res, RadicalEvent event) {
         this.inventory = new HashMap<>();
         this.techLevel = tech;
+        this.politicalSystem = pol;
+        this.resource = res;
+        this.event = event;
 
         ArrayList<TradeGood> arr = new ArrayList<>();
         switch (tech) {
@@ -57,6 +64,10 @@ public class PlanetInventory implements Serializable {
         updatePrices();
     }
 
+    /**
+     *  updates the price of all trade goods in this planet's inventory
+     *
+     */
     public void updatePrices() {
         Random rand = new Random();
         for (TradeGood good : inventory.keySet()) {
@@ -69,16 +80,38 @@ public class PlanetInventory implements Serializable {
             if (rand.nextInt(2) == 0) {
                 var *= -1;
             }
-
             price += var;
+            if (good.getIe() == this.event) {
+                price *= 5;
+            }
+            if (good.getCr() == this.resource) {
+                price /= 2;
+            }
+            if (good.getEr() == this.resource) {
+                price *= 2;
+            }
+
+            price = (int) Math.ceil((double) price);
+
+            if (price <= 0) {
+                price = rand.nextInt(10) + 1;
+            }
+
             stock.price = price;
         }
     }
 
+    /**
+     * Gets a HashMap containing the planet's tradegoods and number of each.
+     *
+     * @return HashMap<TradeGood, TradeStock> containing type and number of tradegoods this planet
+     * has in its inventory
+     */
     public HashMap<TradeGood, TradeStock> getInventory() {
         return inventory;
     }
 
+    @Override
     public String toString() {
         String str = "";
         for (TradeGood trade : inventory.keySet()) {
