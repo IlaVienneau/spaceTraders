@@ -18,6 +18,11 @@ class Repository {
      */
     private static int next_id = 1;
 
+    /**
+     * This method returns a new unique integer id.
+     *
+     * @return the new unique id.
+     */
     private static int getNextUniqueID() {
         next_id++;
         return next_id;

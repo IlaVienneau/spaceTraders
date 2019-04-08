@@ -1,5 +1,6 @@
 package com.example.spacetrader.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,6 +35,7 @@ public class TravelActivity extends AppCompatActivity {
     private ArrayList<Star> starsAvailable;
     private Player player;
     private int currFuel;
+    private Planet currPlanet;
 
     @Inject
     AppModule.SpaceTraderModel model;
@@ -69,7 +71,7 @@ public class TravelActivity extends AppCompatActivity {
                 Random rand = new Random();
                 int randomChance = rand.nextInt(100) + 1;
 
-                if (randomChance <= 10) {
+                if (randomChance <= 90) {
                     RadicalEvent[] radicalEvents = RadicalEvent.values();
                     int eventSelector = rand.nextInt(6) + 1;
                     RadicalEvent event = radicalEvents[eventSelector];
@@ -127,7 +129,6 @@ public class TravelActivity extends AppCompatActivity {
 
                 AppModule.save(getApplicationContext(), model);
                 update();
-                System.out.println(model.player.getShip().getCurrFuel());
             }
         });
 

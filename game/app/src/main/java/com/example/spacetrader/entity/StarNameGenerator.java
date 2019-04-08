@@ -28,6 +28,10 @@ public class StarNameGenerator implements Serializable {
             "Ventaxus", "Xenon", "Rufaas", "Xerxes", "Yewl", "Sourin", "Yojimbo", "Zalcon",
             "Zejuul", "Where's Bob"));
 
+    /**
+     * This method gets the name of the star, randomly generated
+     * @return the name of the star that was randomly indexed
+     */
     public static String getStarName() {
         Random rand = new Random();
         Map<Integer, String> names = new HashMap<>();
