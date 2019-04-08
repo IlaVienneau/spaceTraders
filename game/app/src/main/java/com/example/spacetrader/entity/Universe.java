@@ -1,5 +1,6 @@
 package com.example.spacetrader.entity;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.io.Serializable;
 
