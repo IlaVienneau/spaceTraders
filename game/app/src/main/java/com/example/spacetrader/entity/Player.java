@@ -2,6 +2,7 @@ package com.example.spacetrader.entity;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Player implements Serializable {
 
