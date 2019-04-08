@@ -67,7 +67,8 @@ public class MarketActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Selling
                 TradeGood good = cargoGoods.get(position);
-                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
+                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet
+                        .getInventory();
                 PlanetInventory.TradeStock stock = planetInventory.get(good);
 
                 if (stock == null) {
@@ -118,7 +119,8 @@ public class MarketActivity extends AppCompatActivity {
 //                }
 
                 TradeGood good = planetGoods.get(position);
-                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
+                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet
+                        .getInventory();
                 PlanetInventory.TradeStock stock = planetInventory.get(good);
 
                 if (stock.quantity == 0) {

@@ -32,7 +32,8 @@ public class AppModule {
 
     private static String filename = "save.trader";
 
-    public static boolean load(String username, String password, Context context, SpaceTraderModel module) {
+    public static boolean load(String username, String password,
+                               Context context, SpaceTraderModel module) {
         try {
             FileInputStream stream = context.openFileInput(filename);
             ObjectInputStream in = new ObjectInputStream(stream);
@@ -42,7 +43,8 @@ public class AppModule {
             Player restoredPlayer = restoredModule.player;
             String name = restoredPlayer.getName();
 
-            if ((restoredPlayer != null) && name.equals(username) && restoredPlayer.isCorrectPassword(password)) {
+            if ((restoredPlayer != null) && name.equals(username) &&
+                    restoredPlayer.isCorrectPassword(password)) {
                 module.player = restoredModule.player;
                 module.universe = restoredModule.universe;
                 return true;

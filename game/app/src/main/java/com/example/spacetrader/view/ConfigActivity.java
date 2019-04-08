@@ -114,14 +114,16 @@ public class ConfigActivity extends AppCompatActivity {
         toolbar.setTitle("Player Information");
 
         difficultySpinner = findViewById(R.id.difficultySpinner);
-        ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Difficulty.values());
+        ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout
+                .simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
         // TODO: hardcoded sizes
         String[] sizes = {"Small Universe", "Medium Universe", "Large Universe"};
         universeSizeSpinner = findViewById(R.id.universeSizeSpinner);
-        ArrayAdapter universeSizeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sizes);
+        ArrayAdapter universeSizeAdapter = new ArrayAdapter(this, android.R.layout
+                .simple_spinner_item, sizes);
         universeSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         universeSizeSpinner.setAdapter(universeSizeAdapter);
 

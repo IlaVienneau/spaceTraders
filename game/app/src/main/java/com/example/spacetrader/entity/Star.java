@@ -50,7 +50,8 @@ public class Star implements Serializable {
      * @param poly political system of star
      */
     public Star(
-            String name, StarType starType, int x, int y, Resource res, TechLevel lev, PoliticalSystem poly) {
+            String name, StarType starType, int x, int y,
+            Resource res, TechLevel lev, PoliticalSystem poly) {
         this.name = name;
         this.starType = starType;
 
@@ -127,7 +128,8 @@ public class Star implements Serializable {
     @Override
     public String toString() {
         return "Name:  " + name + ";  Coordinates:  (" + xCord + "," + yCord + ")" +
-                "  Star Type:  "+ starType + "  Tech Level:  " + techType + "  Resource Level:  " + resourceType;
+                "  Star Type:  "+ starType + "  Tech Level:  " + techType
+                + "  Resource Level:  " + resourceType;
     }
 
     /**

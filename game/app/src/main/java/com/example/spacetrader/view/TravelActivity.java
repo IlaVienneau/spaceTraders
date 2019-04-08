@@ -124,7 +124,8 @@ public class TravelActivity extends AppCompatActivity {
 
                 int newXCoord = nextStar.getxCord();
                 int newYCoord = nextStar.getyCord();
-                int change = (int) Math.pow((Math.pow(Math.abs(newYCoord - prevY),2) + Math.pow(Math.abs(newXCoord - prevX),2)),.5);
+                int change = (int) Math.pow((Math.pow(Math.abs(newYCoord - prevY),2)
+                        + Math.pow(Math.abs(newXCoord - prevX),2)),.5);
                 ship.setCurrFuel(currFuel - change);
 
                 AppModule.save(getApplicationContext(), model);
@@ -152,10 +153,14 @@ public class TravelActivity extends AppCompatActivity {
             int nextXCoord = nextStar.getxCord();
             int nextYCoord = nextStar.getyCord();
 
-            if ((Math.abs(nextXCoord - currXCoord) <= currFuel) && (Math.abs(nextYCoord - currYCoord) <= currFuel) && (Math.pow((Math.pow(Math.abs(nextYCoord - currYCoord), 2) + Math.pow(Math.abs(nextXCoord - currXCoord), 2)), .5) <= currFuel)) {
+            if ((Math.abs(nextXCoord - currXCoord) <= currFuel) && (Math.abs(nextYCoord
+                    - currYCoord) <= currFuel) && (Math.pow((Math.pow(Math.abs(nextYCoord
+                    - currYCoord), 2) + Math.pow(Math.abs(nextXCoord
+                    - currXCoord), 2)), .5) <= currFuel)) {
                 starsAvailable.add(nextStar);
                 StarType starType = nextStar.getStarType();
-                String description = nextStar.getName() + "  |  " + starType.toFormattedString() + " at " + nextXCoord + ", " + nextYCoord;
+                String description = nextStar.getName() + "  |  " + starType.toFormattedString()
+                        + " at " + nextXCoord + ", " + nextYCoord;
                 starDescriptions.add(description);
             }
         }
@@ -171,7 +176,8 @@ public class TravelActivity extends AppCompatActivity {
         Planet planet = model.player.getCurrplanet();
         Star star = planet.getStar();
         toolbar.setTitle("Current Location: " + planet.getName());
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getyCord() + ")");
+        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord()
+                + ", " + star.getyCord() + ")");
 
     }
 }
