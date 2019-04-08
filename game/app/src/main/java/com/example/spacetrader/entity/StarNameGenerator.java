@@ -35,11 +35,11 @@ public class StarNameGenerator implements Serializable {
     public static String getStarName() {
         Random rand = new Random();
         Map<Integer, String> names = new HashMap<>();
-        int index = rand.nextInt(133);
+        int index = rand.nextInt(starNames.size());
 
         if (!names.isEmpty()) {
             while ((names.get(index) != null) && names.get(index).equals(starNames.get(index))) {
-                index = rand.nextInt(132);
+                index = rand.nextInt(starNames.size() - 1);
             }
         }
         names.put(index, starNames.get(index));

@@ -54,6 +54,10 @@ public class ConfigActivity extends AppCompatActivity {
     private int engineerSkill;
     private Difficulty difficulty = Difficulty.BEGINNER;
 
+    static int smallUniverseSize = 50;
+    static int mediumUniverseSize = 75;
+    static int largeUniverseSize = 100;
+
     private void updateSkill(int skill, int change, String type) {
         class skillNode {
             private int data;
@@ -247,22 +251,19 @@ public class ConfigActivity extends AppCompatActivity {
 
                 String universeSize = universeSizeSpinner.getSelectedItem().toString();
                 Universe universe;
-                int smallSize = 50;
-                int mediumSize = 75;
-                int largeSize = 100;
 
                 switch(universeSize) {
                     case "Small Universe":
-                        universe = new Universe(smallSize);
+                        universe = new Universe(smallUniverseSize);
                         break;
                     case "Medium Universe":
-                        universe = new Universe(mediumSize);
+                        universe = new Universe(mediumUniverseSize);
                         break;
                     case "Large Universe":
-                        universe = new Universe(largeSize);
+                        universe = new Universe(largeUniverseSize);
                         break;
                     default:
-                        universe = new Universe(mediumSize);
+                        universe = new Universe(mediumUniverseSize);
                         break;
                 }
 

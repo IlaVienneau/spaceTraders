@@ -66,9 +66,9 @@ public class TravelActivity extends AppCompatActivity {
                 Random rand = new Random();
                 int randomChance = rand.nextInt(100) + 1;
 
-                if (randomChance <= 90) {
+                if (randomChance <= 10) {
                     RadicalEvent[] radicalEvents = RadicalEvent.values();
-                    int eventSelector = rand.nextInt(6) + 1;
+                    int eventSelector = rand.nextInt(7);
                     RadicalEvent event = radicalEvents[eventSelector];
                     player.getCurrPlanet().setRadicalEvent(event);
                 }
