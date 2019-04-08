@@ -59,6 +59,22 @@ public class Player implements Serializable {
         this.name = name;
     }
 
+    public int getPilotSkill() { return this.pilotSkill; }
+
+    public void setPilotSkill(int pilotSkill) { this.pilotSkill = pilotSkill; }
+
+    public int getFighterSkill() { return this.fighterSkill; }
+
+    public void setFighterSkill(int fighterSkill) { this.fighterSkill = fighterSkill; }
+
+    public int getEngineerSkill() { return this.engineerSkill; }
+
+    public void setEngineerSkill(int engineerSkill) { this.engineerSkill = engineerSkill; }
+
+    public int getTraderSkill() { return this.traderSkill; }
+
+    public void setTraderSkill(int traderSkill) { this.traderSkill = traderSkill; }
+
     public int getWallet() { return this.wallet; }
 
     public void setWallet(int wallet) { this.wallet = wallet; }
