@@ -2,6 +2,7 @@ package com.example.spacetrader.entity;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Player implements Serializable {
 
@@ -155,7 +156,7 @@ public class Player implements Serializable {
      */
     public int getShipCurrentCapacity() {
         int currentCapacity = 0;
-        HashMap<TradeGood, Integer> shipInventory = getShipInventory();
+        Map<TradeGood, Integer> shipInventory = getShipInventory();
 
         for (Integer amount : shipInventory.values()) {
             currentCapacity += amount;

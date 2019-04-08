@@ -161,7 +161,7 @@ public class MarketActivity extends AppCompatActivity {
 
         planetGoods = new ArrayList<>();
         ArrayList<String> planetGoodDescriptions = new ArrayList<>();
-        HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
+        Map<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
 
         for (Map.Entry<TradeGood, PlanetInventory.TradeStock> entry : planetInventory.entrySet()) {
             TradeGood good = entry.getKey();
@@ -182,7 +182,7 @@ public class MarketActivity extends AppCompatActivity {
         );
 
         planetGoodsListView.setAdapter(planetGoodsAdapter);
-        HashMap<TradeGood, Integer> shipInventory = player.getShipInventory();
+        Map<TradeGood, Integer> shipInventory = player.getShipInventory();
 
         cargoGoods = new ArrayList<>();
         ArrayList<String> cargoGoodDescriptions = new ArrayList<>();
