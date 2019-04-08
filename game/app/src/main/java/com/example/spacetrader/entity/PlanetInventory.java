@@ -13,7 +13,11 @@ public class PlanetInventory implements Serializable {
 
     private HashMap<TradeGood, TradeStock> inventory;
     private TechLevel techLevel;
+    private PoliticalSystem politicalSystem;
+    private Resource resource;
+    private RadicalEvent event;
 
+<<<<<<< HEAD
     /**
     * creates inventory of trade goods for this planet based on technology level. It creates 10 of
      * each relevant trade goodo and updates the price.
@@ -21,8 +25,15 @@ public class PlanetInventory implements Serializable {
      * @param tech: the TechLevel of this planet.
      */
     public PlanetInventory(TechLevel tech) {
+=======
+
+    public PlanetInventory(TechLevel tech, PoliticalSystem pol, Resource res, RadicalEvent event) {
+>>>>>>> 2df9fd2835a09b2bc1458700c3c7142156e925f1
         this.inventory = new HashMap<>();
         this.techLevel = tech;
+        this.politicalSystem = pol;
+        this.resource = res;
+        this.event = event;
 
         ArrayList<TradeGood> arr = new ArrayList<>();
         switch (tech) {
@@ -79,8 +90,23 @@ public class PlanetInventory implements Serializable {
             if (rand.nextInt(2) == 0) {
                 var *= -1;
             }
-
             price += var;
+            if (good.getIe() == this.event) {
+                price *= 5;
+            }
+            if (good.getCr() == this.resource) {
+                price /= 2;
+            }
+            if (good.getEr() == this.resource) {
+                price *= 2;
+            }
+
+            price = (int) Math.ceil((double) price);
+
+            if (price <= 0) {
+                price = rand.nextInt(10) + 1;
+            }
+
             stock.price = price;
         }
     }
