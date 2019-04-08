@@ -24,6 +24,11 @@ public class Universe implements Serializable {
      *      creates enough space for a 1:4 ratio of
      *      star to empty space e.g. 50*5 = 250
      */
+
+    /**
+     * This constructor creates a universe of a certain size
+     * @param size the size the universe should be
+     */
     public Universe(int size) {
         stars = new HashMap<>();
         int max;
@@ -113,16 +118,30 @@ public class Universe implements Serializable {
         }
     }
 
-    public Map<String, Star> getStars() {
+    /**
+     * This method gets the stars in the universe and puts them in a hash map
+     * @return a hash map containing the stars in the universe
+     */
+    public HashMap<String, Star> getStars() {
         return stars;
     }
 
+    /**
+     * This method gets a planet in the universe
+     * @param name the name of the planet
+     * @param num the coordinates of the star
+     * @return the planet
+     */
     public Planet getPlanet(String name, int num) {
         Star star = stars.get(name);
         Planet planet = star.getPlanet(name + "-" + num);
         return planet;
     }
 
+    /**
+     * This method represents the universe as a string
+     * @return a string representation of the universe
+     */
     public String toString() {
         String str = "Fire Cobra-verse:  \n";
         for (Star s: stars.values()) {
