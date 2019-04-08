@@ -17,10 +17,7 @@ public class PlanetInventory implements Serializable {
     private Resource resource;
     private RadicalEvent event;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> db907f9ee79c06018c072b3197d0ab464e676890
+
     /**
     * creates inventory of trade goods for this planet based on technology level. It creates 10 of
      * each relevant trade goodo and updates the price.
@@ -30,16 +27,9 @@ public class PlanetInventory implements Serializable {
      * @param res: the resource level of this planet
      * @param event: the type of radical event that can happen.
      */
-<<<<<<< HEAD
-    public PlanetInventory(TechLevel tech) {
-=======
+
 
     public PlanetInventory(TechLevel tech, PoliticalSystem pol, Resource res, RadicalEvent event) {
->>>>>>> 2df9fd2835a09b2bc1458700c3c7142156e925f1
-=======
-
-    public PlanetInventory(TechLevel tech, PoliticalSystem pol, Resource res, RadicalEvent event) {
->>>>>>> db907f9ee79c06018c072b3197d0ab464e676890
         this.inventory = new HashMap<>();
         this.techLevel = tech;
         this.politicalSystem = pol;
