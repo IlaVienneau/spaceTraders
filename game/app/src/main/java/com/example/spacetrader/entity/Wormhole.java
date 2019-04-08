@@ -13,15 +13,15 @@ public class Wormhole implements Serializable {
     private int tax;
 
     public Wormhole(Star s1, Star s2, int t) {
-        startpoint = s1;
-        endpoint = s2;
+        startPoint = s1;
+        endPoint = s2;
         tax = t;
 
 
     }
 
     public void travel() {
-        // use to travel from startpoint to endpoint;
+        // use to travel from start point to endpoint;
     }
 
 }
