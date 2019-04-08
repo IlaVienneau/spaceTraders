@@ -46,7 +46,7 @@ public class PlanetInventory implements Serializable {
         this.resource = res;
         this.event = event;
 
-        ArrayList<TradeGood> arr = new ArrayList<>();
+        Iterable<TradeGood> arr = new ArrayList<>();
         switch (tech) {
             case PREAGRICULTURAL:
                 arr = TradeGood.getMTLPs(TechLevel.PREAGRICULTURAL.ordinal());
