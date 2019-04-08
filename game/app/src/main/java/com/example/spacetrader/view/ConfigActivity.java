@@ -29,7 +29,7 @@ import javax.inject.Inject;
 
 public class ConfigActivity extends AppCompatActivity {
     @Inject
-    private AppModule.SpaceTraderModel model;
+    AppModule.SpaceTraderModel model;
 
     private ConfigViewModel viewModel;
     private EditText nameEditText;

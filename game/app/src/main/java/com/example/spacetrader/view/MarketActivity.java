@@ -29,7 +29,6 @@ import javax.inject.Inject;
 public class MarketActivity extends AppCompatActivity {
 
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     private Player player;

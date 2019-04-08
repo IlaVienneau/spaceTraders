@@ -21,7 +21,6 @@ public class UniverseMapActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     @Override

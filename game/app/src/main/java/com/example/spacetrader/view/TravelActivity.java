@@ -34,7 +34,6 @@ public class TravelActivity extends AppCompatActivity {
     private Planet currPlanet;
 
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     @Override

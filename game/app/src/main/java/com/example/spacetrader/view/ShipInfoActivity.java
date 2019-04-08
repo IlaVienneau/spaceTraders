@@ -30,7 +30,6 @@ public class ShipInfoActivity extends AppCompatActivity {
     private TextView walletTextView;
 
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     @Override
