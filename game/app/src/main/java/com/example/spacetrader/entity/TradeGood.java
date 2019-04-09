@@ -1,6 +1,7 @@
 package com.example.spacetrader.entity;
-import java.util.ArrayList;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class TradeGood implements Serializable {
     private String name;    // trade good name

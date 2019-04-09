@@ -1,17 +1,18 @@
 package com.example.spacetrader.entity;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.io.Serializable;
 
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
 public class Universe implements Serializable {
-    private HashMap<String, Star> stars;
-    private static int numTypes = 6;
-    private static int numLevels = 8;
-    private static int numPolitical = 17;
-    private static int numResources = 13;
+    private final HashMap<String, Star> stars;
+    private static final int numTypes = 6;
+    private static final int numLevels = 8;
+    private static final int numPolitical = 17;
+    private static final int numResources = 13;
 
 
     /*

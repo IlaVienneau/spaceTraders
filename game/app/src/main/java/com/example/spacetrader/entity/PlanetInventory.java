@@ -1,8 +1,8 @@
 package com.example.spacetrader.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.Serializable;
 import java.util.Random;
 
 public class PlanetInventory implements Serializable {
@@ -11,11 +11,11 @@ public class PlanetInventory implements Serializable {
         public int price;
     }
 
-    private HashMap<TradeGood, TradeStock> inventory;
-    private TechLevel techLevel;
-    private PoliticalSystem politicalSystem;
-    private Resource resource;
-    private RadicalEvent event;
+    private final HashMap<TradeGood, TradeStock> inventory;
+    private final TechLevel techLevel;
+    private final PoliticalSystem politicalSystem;
+    private final Resource resource;
+    private final RadicalEvent event;
 
     /**
     * creates inventory of trade goods for this planet based on technology level. It creates 10 of

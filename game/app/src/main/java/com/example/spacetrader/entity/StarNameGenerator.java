@@ -1,12 +1,12 @@
 package com.example.spacetrader.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.io.Serializable;
 
 public class StarNameGenerator implements Serializable {
     static List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
@@ -38,8 +38,11 @@ public class StarNameGenerator implements Serializable {
         int index = rand.nextInt(starNames.size());
 
         if (!names.isEmpty()) {
-            while ((names.get(index) != null) && names.get(index).equals(starNames.get(index))) {
-                index = rand.nextInt(starNames.size() - 1);
+            String nameAtIndex = names.get(index);
+            String starNameAtIndex = starNames.get(index);
+
+            while ((names.get(index) != null) && nameAtIndex.equals(starNameAtIndex)) {
+                index = rand.nextInt(132);
             }
         }
         names.put(index, starNames.get(index));

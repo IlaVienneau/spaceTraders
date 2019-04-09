@@ -30,7 +30,7 @@ public class AppModule {
         return new SpaceTraderModel();
     }
 
-    private static String filename = "save.trader";
+    private static final String filename = "save.trader";
 
     public static boolean load(String username, String password, Context context, SpaceTraderModel module) {
         try {

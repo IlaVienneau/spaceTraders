@@ -6,14 +6,14 @@ import static com.example.spacetrader.entity.RadicalEvent.NONE;
 
 public class Planet implements Serializable {
 
-    private String name;
-    private TechLevel techLevel;
-    private PoliticalSystem politicalSystem;
-    private Resource resource;
-    private Star star;
+    private final String name;
+    private final TechLevel techLevel;
+    private final PoliticalSystem politicalSystem;
+    private final Resource resource;
+    private final Star star;
     private boolean visited;
     private RadicalEvent radicalEvent;
-    private PlanetInventory inventory;
+    private final PlanetInventory inventory;
 
     /**
      * This constructor makes an instance of a planet with the passed in attributes

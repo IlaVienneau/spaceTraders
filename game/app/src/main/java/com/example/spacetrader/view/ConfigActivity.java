@@ -1,19 +1,12 @@
 package com.example.spacetrader.view;
 
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.MenuItem;
 import android.view.View;
-import com.example.spacetrader.R;
-import com.example.spacetrader.SpaceTrader;
-import com.example.spacetrader.entity.Difficulty;
-import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.ShipType;
-import com.example.spacetrader.entity.Universe;
-import com.example.spacetrader.model.AppModule;
-import com.example.spacetrader.viewModel.ConfigViewModel;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +14,16 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.spacetrader.R;
+import com.example.spacetrader.SpaceTrader;
+import com.example.spacetrader.entity.Difficulty;
+import com.example.spacetrader.entity.Planet;
+import com.example.spacetrader.entity.Player;
+import com.example.spacetrader.entity.ShipType;
+import com.example.spacetrader.entity.Universe;
+import com.example.spacetrader.model.AppComponent;
+import com.example.spacetrader.model.AppModule;
+import com.example.spacetrader.viewModel.ConfigViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +46,6 @@ public class ConfigActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private Spinner universeSizeSpinner;
-    private Spinner difficultySpinner;
 
     private final int totalPointsAvailable = 16;
 
@@ -52,7 +54,7 @@ public class ConfigActivity extends AppCompatActivity {
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
-    private Difficulty difficulty = Difficulty.BEGINNER;
+    private final Difficulty difficulty = Difficulty.BEGINNER;
 
     static int smallUniverseSize = 50;
     static int mediumUniverseSize = 75;
@@ -61,7 +63,7 @@ public class ConfigActivity extends AppCompatActivity {
     private void updateSkill(int skill, int change, String type) {
         class skillNode {
             private int data;
-            private String type;
+            private final String type;
             public skillNode(int d, String t) {
                 data = d;
                 type = t;
@@ -107,7 +109,9 @@ public class ConfigActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((SpaceTrader) getApplication()).getAppComponent().inject(this);
+
+        AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        component.inject(this);
 
         setContentView(R.layout.activity_config);
         setSupportActionBar(toolbar);
@@ -117,7 +121,7 @@ public class ConfigActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Player Information");
 
-        difficultySpinner = findViewById(R.id.difficultySpinner);
+        Spinner difficultySpinner = findViewById(R.id.difficultySpinner);
         ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
@@ -234,8 +238,10 @@ public class ConfigActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = nameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
+                Editable nameFieldContents = nameEditText.getText();
+                Editable passwordFieldContents = passwordEditText.getText();
+                String name = nameFieldContents.toString();
+                String password = passwordFieldContents.toString();
                 Player player = new Player(
                         name,
                         password,
@@ -249,7 +255,8 @@ public class ConfigActivity extends AppCompatActivity {
                 System.out.println("player created");
                 System.out.println(player.toString());
 
-                String universeSize = universeSizeSpinner.getSelectedItem().toString();
+                Object universeSizeSpinnerContents = universeSizeSpinner.getSelectedItem();
+                String universeSize = universeSizeSpinnerContents.toString();
                 Universe universe;
 
                 switch(universeSize) {
@@ -273,7 +280,8 @@ public class ConfigActivity extends AppCompatActivity {
                 model.universe = universe;
                 AppModule.save(getApplicationContext(), model);
 
-                System.out.print("Set player to:  " + universe.getPlanet("Paradise", 1).toString());
+                Planet destinationPlanet = universe.getPlanet("Paradise", 1);
+                System.out.print("Set player to:  " + destinationPlanet.toString());
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 startActivity(intent);
                 System.out.println("Universe Created");

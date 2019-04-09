@@ -3,11 +3,11 @@ package com.example.spacetrader.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Model {
-    private Repository myRepository;
-    private Map<String, Object> interactorMap;
+public final class Model {
+    private final Repository myRepository;
+    private final Map<String, Object> interactorMap;
 
-    private static Model instance = new Model();
+    private static final Model instance = new Model();
 
     public static Model getInstance() { return instance; }
 

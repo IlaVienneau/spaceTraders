@@ -9,7 +9,7 @@ import com.example.spacetrader.model.Model;
 import com.example.spacetrader.model.PlayerInteractor;
 
 public class ConfigViewModel extends AndroidViewModel {
-    private PlayerInteractor interactor;
+    private final PlayerInteractor interactor;
 
     public ConfigViewModel(@NonNull Application application) {
         super(application);

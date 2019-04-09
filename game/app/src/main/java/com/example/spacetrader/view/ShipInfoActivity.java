@@ -1,21 +1,20 @@
 package com.example.spacetrader.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Ship;
 import com.example.spacetrader.entity.ShipType;
+import com.example.spacetrader.model.AppComponent;
 import com.example.spacetrader.model.AppModule;
-
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -37,7 +36,8 @@ public class ShipInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((SpaceTrader) getApplication()).getAppComponent().inject(this);   //what
+        AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        component.inject(this);
 
         setContentView(R.layout.activity_ship);
 
