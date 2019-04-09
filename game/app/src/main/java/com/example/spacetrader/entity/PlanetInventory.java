@@ -83,17 +83,19 @@ public class PlanetInventory implements Serializable {
                     + (good.getIpl() * (techLevel.ordinal() - good.getMtlp()));
 
             int var = rand.nextInt(good.getVar() + 1);
+
             if (rand.nextInt(2) == 0) {
                 var *= -1;
             }
             price += var;
-            if (good.getIe() == this.event) {
+
+            if (good.getIe().equals(this.event)) {
                 price *= 5;
             }
-            if (good.getCr() == this.resource) {
+            if (good.getCr().equals(this.resource)) {
                 price /= 2;
             }
-            if (good.getEr() == this.resource) {
+            if (good.getEr().equals(this.resource)) {
                 price *= 2;
             }
 
