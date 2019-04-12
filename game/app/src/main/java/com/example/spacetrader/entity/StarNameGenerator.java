@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Random;
 import java.io.Serializable;
 
-public class StarNameGenerator implements Serializable {
-    static List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
+class StarNameGenerator implements Serializable {
+    private static List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
             "Andevian", "Antedi", "Annabelle", "Balosnee", "Baratas", "Brax", "Bretel",
             "Beasley", "Calondia", "Campor", "Capellius", "Carzon", "Castor", "Cestus",
             "Cheron", "Courteney", "Daled", "Damast", "Davlos", "Deneb", "Deneva", "Devidia",
@@ -35,11 +35,11 @@ public class StarNameGenerator implements Serializable {
     public static String getStarName() {
         Random rand = new Random();
         Map<Integer, String> names = new HashMap<>();
-        int index = rand.nextInt(133);
+        int index = rand.nextInt(starNames.size());
 
         if (!names.isEmpty()) {
             while ((names.get(index) != null) && names.get(index).equals(starNames.get(index))) {
-                index = rand.nextInt(132);
+                index = rand.nextInt(starNames.size() - 1);
             }
         }
         names.put(index, starNames.get(index));

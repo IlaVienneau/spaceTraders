@@ -53,7 +53,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/difficultySpinner"
         app:layout_constraintStart_toStartOf="@+id/difficultySpinner"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <Spinner
         android:id="@+id/difficultySpinner"

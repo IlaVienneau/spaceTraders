@@ -9,7 +9,6 @@ public class Star implements Serializable {
     private String name;
     private StarType starType;
     private Resource resourceType;
-    private PoliticalSystem politicalType;
     private TechLevel techType;
 
     private int xCord;
@@ -59,11 +58,10 @@ public class Star implements Serializable {
         this.yCord =  y;
         this.techType = lev;
         this.resourceType = res;
-        this.politicalType = poly;
         this.planets = new HashMap<>();
 
         for (int i = 0; i < 10; i++) {
-            planets.put(name, new Planet(name, techType, politicalType, resourceType, this));
+            planets.put(name, new Planet(name, techType, poly, resourceType, this));
         }
     }
 
@@ -92,7 +90,7 @@ public class Star implements Serializable {
      *
      * @return x coordinate of star
      */
-    public int getxCord() {
+    public int getXCord() {
         return xCord;
     }
 
@@ -101,7 +99,7 @@ public class Star implements Serializable {
      *
      * @return y coordinate of star
      */
-    public int getyCord() {
+    public int getYCord() {
         return yCord;
     }
 
@@ -110,7 +108,7 @@ public class Star implements Serializable {
      *
      * @return HashMap of <planet name, planet object> within this solar system
      */
-    public HashMap<String, Planet> getPlanets() {
+    public Map<String, Planet> getPlanets() {
         return planets;
     }
 

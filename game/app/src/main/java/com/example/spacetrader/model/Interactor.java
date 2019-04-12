@@ -3,15 +3,15 @@ package com.example.spacetrader.model;
 /**
  * Interface for our concrete interactors
  */
-public abstract class Interactor {
+abstract class Interactor {
 
     private Repository myRepository;
 
-    protected Interactor(Repository repo) {
+    Interactor(Repository repo) {
         myRepository = repo;
     }
 
-    protected Repository getRepository() {
+    Repository getRepository() {
         return myRepository;
     }
 }

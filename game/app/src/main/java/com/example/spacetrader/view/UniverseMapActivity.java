@@ -19,7 +19,6 @@ import javax.inject.Inject;
 public class UniverseMapActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private ListView travelListView;
 
     @Inject
     AppModule.SpaceTraderModel model;
@@ -32,7 +31,7 @@ public class UniverseMapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_universe_map);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        travelListView = (ListView) findViewById(R.id.travelListView);
+        ListView travelListView = (ListView) findViewById(R.id.travelListView);
 
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {
@@ -70,11 +69,12 @@ public class UniverseMapActivity extends AppCompatActivity {
     }
 
     private void update() {
-        Planet planet = model.player.getCurrplanet();
+        Planet planet = model.player.getCurrPlanet();
         Star star = planet.getStar();
         toolbar.setTitle("Current Location: " + planet.getName());
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", "
-                + star.getyCord() + ")");
+
+        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getXCord() + ", " + star.getYCord() + ")");
+
 
     }
 }

@@ -34,7 +34,6 @@ public class MarketActivity extends AppCompatActivity {
     private Player player;
     private Planet planet;
 
-    private Toolbar toolbar;
     private TextView walletTextView;
     private ListView planetGoodsListView;
     private ListView cargoGoodsListView;
@@ -53,9 +52,9 @@ public class MarketActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         this.player = model.player;
-        this.planet = player.getCurrplanet();
+        this.planet = player.getCurrPlanet();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         walletTextView = (TextView) findViewById(R.id.walletTextView);
         planetGoodsListView = findViewById(R.id.tradeGoodsListView);
         cargoGoodsListView = findViewById(R.id.cargoGoodsListView);

@@ -28,7 +28,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class ConfigActivity extends AppCompatActivity {
-    @Inject AppModule.SpaceTraderModel model;
+    @Inject
+    AppModule.SpaceTraderModel model;
 
     private ConfigViewModel viewModel;
     private EditText nameEditText;
@@ -43,7 +44,6 @@ public class ConfigActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private Spinner universeSizeSpinner;
-    private Spinner difficultySpinner;
 
     private final int totalPointsAvailable = 16;
 
@@ -54,11 +54,15 @@ public class ConfigActivity extends AppCompatActivity {
     private int engineerSkill;
     private Difficulty difficulty = Difficulty.BEGINNER;
 
+    private static int smallUniverseSize = 50;
+    private static int mediumUniverseSize = 75;
+    private static int largeUniverseSize = 100;
+
     private void updateSkill(int skill, int change, String type) {
         class skillNode {
             private int data;
             private String type;
-            public skillNode(int d, String t) {
+            skillNode(int d, String t) {
                 data = d;
                 type = t;
             }
@@ -113,13 +117,14 @@ public class ConfigActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Player Information");
 
+
         difficultySpinner = findViewById(R.id.difficultySpinner);
         ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout
                 .simple_spinner_item, Difficulty.values());
+
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
-        // TODO: hardcoded sizes
         String[] sizes = {"Small Universe", "Medium Universe", "Large Universe"};
         universeSizeSpinner = findViewById(R.id.universeSizeSpinner);
         ArrayAdapter universeSizeAdapter = new ArrayAdapter(this, android.R.layout
@@ -244,48 +249,45 @@ public class ConfigActivity extends AppCompatActivity {
                         engineerSkill,
                         difficulty
                 );
-                System.out.println("player created");
-                System.out.println(player.toString());
+//                System.out.println("player created");
+//                System.out.println(player.toString());
 
                 String universeSize = universeSizeSpinner.getSelectedItem().toString();
                 Universe universe;
-                int smallSize = 50;
-                int mediumSize = 75;
-                int largeSize = 100;
 
                 switch(universeSize) {
                     case "Small Universe":
-                        universe = new Universe(smallSize);
+                        universe = new Universe(smallUniverseSize);
                         break;
                     case "Medium Universe":
-                        universe = new Universe(mediumSize);
+                        universe = new Universe(mediumUniverseSize);
                         break;
                     case "Large Universe":
-                        universe = new Universe(largeSize);
+                        universe = new Universe(largeUniverseSize);
                         break;
                     default:
-                        universe = new Universe(mediumSize);
+                        universe = new Universe(mediumUniverseSize);
                         break;
                 }
 
-                player.setCurrplanet(universe.getPlanet("Paradise", 1));
+                player.setCurrPlanet(universe.getPlanet("Paradise", 1));
 
                 model.player = player;
                 model.universe = universe;
                 AppModule.save(getApplicationContext(), model);
 
-                System.out.print("Set player to:  " + universe.getPlanet("Paradise", 1).toString());
+//                System.out.print("Set player to:  " + universe.getPlanet("Paradise", 1).toString());
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 startActivity(intent);
-                System.out.println("Universe Created");
-                System.out.println(universe.toString());
+//                System.out.println("Universe Created");
+//                System.out.println(universe.toString());
             }
         });
 
         update();
     }
 
-    public void update() {
+    private void update() {
         pointCountTextView.setText(""+ remainingPoints + '/' + totalPointsAvailable);
         pilotSeekBar.setProgress(pilotSkill);
         fighterSeekBar.setProgress(fighterSkill);

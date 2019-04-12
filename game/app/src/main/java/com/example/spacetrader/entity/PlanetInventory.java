@@ -13,10 +13,8 @@ public class PlanetInventory implements Serializable {
 
     private HashMap<TradeGood, TradeStock> inventory;
     private TechLevel techLevel;
-    private PoliticalSystem politicalSystem;
     private Resource resource;
     private RadicalEvent event;
-
 
     /**
     * creates inventory of trade goods for this planet based on technology level. It creates 10 of
@@ -27,12 +25,9 @@ public class PlanetInventory implements Serializable {
      * @param res: the resource level of this planet
      * @param event: the type of radical event that can happen.
      */
-
-
     public PlanetInventory(TechLevel tech, PoliticalSystem pol, Resource res, RadicalEvent event) {
         this.inventory = new HashMap<>();
         this.techLevel = tech;
-        this.politicalSystem = pol;
         this.resource = res;
         this.event = event;
 
@@ -88,17 +83,19 @@ public class PlanetInventory implements Serializable {
                     + (good.getIpl() * (techLevel.ordinal() - good.getMtlp()));
 
             int var = rand.nextInt(good.getVar() + 1);
+
             if (rand.nextInt(2) == 0) {
                 var *= -1;
             }
             price += var;
-            if (good.getIe() == this.event) {
+
+            if (good.getIe().equals(this.event)) {
                 price *= 5;
             }
-            if (good.getCr() == this.resource) {
+            if (good.getCr().equals(this.resource)) {
                 price /= 2;
             }
-            if (good.getEr() == this.resource) {
+            if (good.getEr().equals(this.resource)) {
                 price *= 2;
             }
 
@@ -113,9 +110,9 @@ public class PlanetInventory implements Serializable {
     }
 
     /**
-     * Gets a HashMap containing the planet's tradegoods and number of each.
+     * Gets a HashMap containing the planet's TradeGoods and number of each.
      *
-     * @return HashMap<TradeGood, TradeStock> containing type and number of tradegoods this planet
+     * @return HashMap<TradeGood, TradeStock> containing type and number of TradeGoods this planet
      * has in its inventory
      */
     public HashMap<TradeGood, TradeStock> getInventory() {
