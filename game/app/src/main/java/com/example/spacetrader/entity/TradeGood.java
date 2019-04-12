@@ -14,11 +14,13 @@ public class TradeGood implements Serializable {
     private int mtlu;       // minimum tech level to use
     private int ttp;        // tech level that produces the most of this item
     private int ipl;        // price increase per tech level
+
     private int var;        // variance ( maximum percentage that the price can vary above or below the base)
     private RadicalEvent ie;// Radical price increase event, when this even happens on a planet, the price may increase astronomically
     @Nullable
     private Resource cr;    // When this condition is present, the price of this resource is unusually low
     @Nullable
+
     private Resource er;    // When this condition is present, the resource is expensive
     private int mtl;        // Min price offered in space trade with random trader (not on a planet)
     private int mth;        // Max price offered in space trade with random trader (not on a planet)
@@ -422,6 +424,7 @@ public class TradeGood implements Serializable {
      * @param m the tech level
      * @return an array list of TradeGoods
      */
+
     public static Iterable<TradeGood> getMTLPs(int m) {
         Collection<TradeGood> tarr = new ArrayList<>();
         if (m >= 0) {

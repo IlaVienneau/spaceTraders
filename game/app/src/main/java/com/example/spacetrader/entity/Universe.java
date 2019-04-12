@@ -109,7 +109,8 @@ public class Universe implements Serializable {
                 if (i == 0) {
                     Star paradise = new Star("Paradise", star, x, y,  Resource.NOSPECIALRESOURCES,
                             TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY);
-                    paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY,
+                    paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL,
+                            PoliticalSystem.DEMOCRACY,
                             Resource.NOSPECIALRESOURCES, paradise));
                     stars.put("Paradise", paradise);
                 } else {

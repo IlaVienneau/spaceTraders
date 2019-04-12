@@ -121,6 +121,7 @@ public class TravelActivity extends AppCompatActivity {
                 int newYCoordinate = nextStar.getYCord();
                 int change = (int) Math.pow((Math.pow(Math.abs(newYCoordinate - prevY),2)
                         + Math.pow(Math.abs(newXCoordinate - prevX),2)),.5);
+
                 ship.setCurrFuel(currFuel - change);
 
                 AppModule.save(getApplicationContext(), model);
@@ -144,6 +145,7 @@ public class TravelActivity extends AppCompatActivity {
 
         for (Map.Entry<String, Star> entry: model.universe.getStars().entrySet()) {
             Star nextStar = entry.getValue();
+
             int nextXCoordinate = nextStar.getXCord();
             int nextYCoordinate = nextStar.getYCord();
 
@@ -156,6 +158,7 @@ public class TravelActivity extends AppCompatActivity {
                 StarType starType = nextStar.getStarType();
                 String description = nextStar.getName() + "  |  " + starType.toFormattedString()
                         + " at " + nextXCoordinate + ", " + nextYCoordinate;
+
                 starDescriptions.add(description);
             }
         }
@@ -171,8 +174,10 @@ public class TravelActivity extends AppCompatActivity {
         Planet planet = model.player.getCurrPlanet();
         Star star = planet.getStar();
         toolbar.setTitle("Current Location: " + planet.getName());
+
         toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getXCord() + ", "
                 + star.getYCord() + ")");
+
 
     }
 }

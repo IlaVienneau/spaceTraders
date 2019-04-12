@@ -82,7 +82,8 @@ public class ShipInfoActivity extends AppCompatActivity {
         int maxFuelCapacity = ship.getFuel();
         int currFuel = ship.getCurrFuel();
 
-        currCapTextView.setText("Cargo Space Available: " + (maxCargoCapacity - currCargoLoad) + "");
+        currCapTextView.setText("Cargo Space Available: "
+                + (maxCargoCapacity - currCargoLoad) + "");
         currFuelTextView.setText("Fuel available" + currFuel + "");
         fuelTextView.setText("Fuel Capacity: " + maxFuelCapacity + "");
         capTextView.setText("Max Cargo Capacity: " + maxCargoCapacity + "");
