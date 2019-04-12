@@ -418,6 +418,9 @@ public class TradeGood implements Serializable {
      * @return an array list of TradeGoods
      */
     public static ArrayList<TradeGood> getMTLPs(int m) {
+        if (m < 0) {
+            throw new IllegalArgumentException();
+        }
         ArrayList<TradeGood> tarr = new ArrayList<>();
         if (m >= 0) {
             tarr.add(new TradeGood("water"));
@@ -431,7 +434,7 @@ public class TradeGood implements Serializable {
             tarr.add(new TradeGood("firearms"));
         } if (m >=4) {
             tarr.add(new TradeGood("medicines"));
-            tarr.add(new TradeGood("marchines"));
+            tarr.add(new TradeGood("machines"));
         } if (m >= 5) {
             tarr.add(new TradeGood("narcotics"));
         } if (m >= 6) {
