@@ -30,7 +30,7 @@ public class TradeGood implements Serializable {
     //tech level increases -> $ industrial goods decreases
 
     @SuppressWarnings("MagicNumber")
-    private TradeGood(String name) {
+    public TradeGood(String name) {
         this.name = name;
         switch (name) {
             case "water":

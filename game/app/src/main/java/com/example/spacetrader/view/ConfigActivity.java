@@ -118,10 +118,8 @@ public class ConfigActivity extends AppCompatActivity {
         toolbar.setTitle("Player Information");
 
 
-        difficultySpinner = findViewById(R.id.difficultySpinner);
-        ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout
-                .simple_spinner_item, Difficulty.values());
-
+        Spinner difficultySpinner = findViewById(R.id.difficultySpinner);
+        ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
