@@ -7,11 +7,7 @@ import static com.example.spacetrader.entity.RadicalEvent.NONE;
 public class Planet implements Serializable {
 
     private final String name;
-    private final TechLevel techLevel;
-    private final PoliticalSystem politicalSystem;
-    private final Resource resource;
     private final Star star;
-    private boolean visited;
     private RadicalEvent radicalEvent;
     private final PlanetInventory inventory;
 
@@ -31,10 +27,6 @@ public class Planet implements Serializable {
             Star star) {
         this.name = name;
         this.star = star;
-        this.techLevel = techLevel;
-        this.politicalSystem = politicalSystem;
-        this.resource = resource;
-        this.visited = false;
         this.radicalEvent = NONE;
         this.inventory = new PlanetInventory(techLevel, resource, radicalEvent);
     }

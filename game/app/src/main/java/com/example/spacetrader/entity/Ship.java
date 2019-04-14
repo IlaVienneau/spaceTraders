@@ -5,23 +5,10 @@ public class Ship implements Serializable {
     private int maxCapacity;
     private int fuel; //in parsecs/tank
     private int maxHullStrength;
-    private int maxWeaponSlots;
-    private int maxShieldSlots;
-    private int maxGadgetSlots;
-    private int maxMercenaryCapacity;
 
-    private int currCapacity;
     private int currFuel; //should update to be the same for all and be the amount of gallons in
     // a tank. this should also change how we calculate having enough fuel to travel to planets
     private int currHullStrength;
-    private int currWeaponSlots;
-    private int currShieldSlots;
-    private int currGadgetSlots;
-    private int currMercenaryCapacity;
-
-    private boolean insured;
-    private boolean escapePod;
-
 
 
     private static final int weakHull = 1;
@@ -116,171 +103,81 @@ public class Ship implements Serializable {
                 maxCapacity = fleaCap;
                 fuel = fleaFuel;
                 maxHullStrength = fleaHull;
-                maxWeaponSlots = fleaWeaponSlots;
-                maxShieldSlots = fleaSheildSlots;
-                maxGadgetSlots = fleaGadgetSlots;
-                maxMercenaryCapacity = fleaMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case GNAT:
                 maxCapacity = gnatCap;
                 fuel = gnatFuel;
                 maxHullStrength = gnatHull;
-                maxWeaponSlots = gnatWeaponSlots;
-                maxShieldSlots = gnatShieldSlots;
-                maxGadgetSlots = gnatGadgetSlots;
-                maxMercenaryCapacity = gnatMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case WASP:
                 maxCapacity = waspCap;
                 fuel = waspFuel;
                 maxHullStrength = waspHull;
-                maxWeaponSlots = waspWeaponSlots;
-                maxShieldSlots = waspShieldSlots;
-                maxGadgetSlots = waspGadgetSlots;
-                maxMercenaryCapacity = waspMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case BEETLE:
                 maxCapacity = beetleCap;
                 fuel = beetleFuel;
                 maxHullStrength = beetleHull;
-                maxWeaponSlots = beetleWeaponSlots;
-                maxShieldSlots = beetleShieldSlots;
-                maxGadgetSlots = beetleGadgetSlots;
-                maxMercenaryCapacity = beetleMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case HORNET:
                 maxCapacity = hornetCap;
                 fuel = hornetFuel;
                 maxHullStrength = hornetHull;
-                maxWeaponSlots = hornetWeaponSlots;
-                maxShieldSlots = hornetShieldSlots;
-                maxGadgetSlots = hornetGadgetSlots;
-                maxMercenaryCapacity = hornetMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case FIREFLY:
                 maxCapacity = fireflyCap;
                 fuel = fireflyFuel;
                 maxHullStrength = fireflyHull;
-                maxWeaponSlots = fireflyWeaponSlots;
-                maxShieldSlots = fireflyShieldSlots;
-                maxGadgetSlots = fireflyGadgetSlots;
-                maxMercenaryCapacity = fireflyMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case TERMITE:
                 maxCapacity = termiteCap;
                 fuel = termiteFuel;
                 maxHullStrength = termiteHull;
-                maxWeaponSlots = termiteWeaponSlots;
-                maxShieldSlots = termiteShieldSlots;
-                maxGadgetSlots = termiteGadgetSlots;
-                maxMercenaryCapacity = termiteMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case MOSQUITO:
                 maxCapacity = mosquitoCap;
                 fuel = mosquitoFuel;
                 maxHullStrength = mosquitoHull;
-                maxWeaponSlots = mosquitoWeaponSlots;
-                maxShieldSlots = mosquitoShieldSlots;
-                maxGadgetSlots = mosquitoGadgetSlots;
-                maxMercenaryCapacity = mosquitoMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case BUMBLEBEE:
                 maxCapacity = bumblebeeCap;
                 fuel = bumblebeeFuel;
                 maxHullStrength = bumblebeeHull;
-                maxWeaponSlots = bumblebeeWeaponSlots;
-                maxShieldSlots = bumblebeeShieldSlots;
-                maxGadgetSlots = bumblebeeGadgetSlots;
-                maxMercenaryCapacity = bumblebeeMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
             case GRASSHOPPER:
                 maxCapacity = grasshopperCap;
                 fuel = grasshopperFuel;
                 maxHullStrength = grasshopperHull;
-                maxWeaponSlots = grasshopperWeaponSlots;
-                maxShieldSlots = grasshopperShieldSlots;
-                maxGadgetSlots = grasshopperGadgetSlots;
-                maxMercenaryCapacity = grasshopperMercenaryCapacity;
 
-                currCapacity = 0;
                 currFuel = fuel;
                 currHullStrength = maxHullStrength;
-                currWeaponSlots = 0;
-                currShieldSlots = 0;
-                currGadgetSlots = 0;
-                currMercenaryCapacity = 0;
                 break;
         }
     }
@@ -317,22 +214,6 @@ public class Ship implements Serializable {
      * @return the fuel economy.
      */
     public int getFuel() {return fuel;}
-
-    /**
-     * This method returns the current hull strength for the
-     * player's ship.
-     *
-     * @return the current hull strength.
-     */
-    public int getHullStrength() { return this.currHullStrength; }
-
-    /**
-     * This method sets the current hull strength after an event
-     * in which hull damage is possible.
-     *
-     * @param hullStrength the new hull strength.
-     */
-    public void setHullStrength(int hullStrength) { this.currHullStrength = hullStrength; }
 
 }
 

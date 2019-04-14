@@ -7,7 +7,6 @@ import java.util.Map;
 public class Player implements Serializable {
 
     private int wallet;
-    private int id;
 
     private String name;
     private final String password;
@@ -21,8 +20,6 @@ public class Player implements Serializable {
     private int traderSkill;
     private int engineerSkill;
     private Planet currPlanet;
-
-    private Difficulty difficulty;
 
     /**
      * This constructor creates an instance of a player
@@ -50,17 +47,8 @@ public class Player implements Serializable {
         this.fighterSkill = fighterSkill;
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
-        this.difficulty = difficulty;
         this.shipInventory = new ShipInventory();
         this.wallet = 1000;
-    }
-
-    /**
-     * This method sets the id of the player
-     * @param id the id the player should have
-     */
-    public void setId(int id) {
-        this.id = id;
     }
 
     /**
@@ -161,11 +149,5 @@ public class Player implements Serializable {
     public boolean isCorrectPassword(String password) {
         return this.password.equals(password);
     }
-
-    /**
-     * This method gets the pilot skill level of the player
-     * @return the pilot skill level of the player
-     */
-    public int getPilotSkill() {return this.pilotSkill;}
 
 }
