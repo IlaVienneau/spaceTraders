@@ -22,18 +22,20 @@ public class UniverseMapActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     @Inject
+    private
     AppModule.SpaceTraderModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        //noinspection LawOfDemeter
         component.inject(this);
 
         setContentView(R.layout.activity_universe_map);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        ListView travelListView = (ListView) findViewById(R.id.travelListView);
+        toolbar = findViewById(R.id.toolbar);
+        ListView travelListView = findViewById(R.id.travelListView);
 
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {
@@ -61,22 +63,20 @@ public class UniverseMapActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        update();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        update();
+
+        Planet planet = model.player.getCurrPlanet();
+        update(planet);
     }
 
-    private void update() {
-        Planet planet = model.player.getCurrPlanet();
+    private void update(Planet planet) {
         Star star = planet.getStar();
+
         toolbar.setTitle("Current Location: " + planet.getName());
-
         toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getXCord() + ", " + star.getYCord() + ")");
-
-
     }
 }

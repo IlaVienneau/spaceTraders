@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Difficulty;
-import com.example.spacetrader.entity.Planet;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.Universe;
@@ -32,6 +31,7 @@ import javax.inject.Inject;
 
 public class ConfigActivity extends AppCompatActivity {
     @Inject
+    private
     AppModule.SpaceTraderModel model;
 
     private ConfigViewModel viewModel;
@@ -61,7 +61,7 @@ public class ConfigActivity extends AppCompatActivity {
     private static final int mediumUniverseSize = 75;
     private static final int largeUniverseSize = 100;
 
-    private void updateSkill(int skill, int change, String type) {
+    private void updateSkill(int change, String type) {
         class skillNode {
             private int data;
             private final String type;
@@ -113,14 +113,15 @@ public class ConfigActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        //noinspection LawOfDemeter
         component.inject(this);
 
         setContentView(R.layout.activity_config);
         setSupportActionBar(toolbar);
 
-        nameEditText = (EditText) findViewById(R.id.name);
-        passwordEditText = (EditText) findViewById(R.id.password);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        nameEditText = findViewById(R.id.name);
+        passwordEditText = findViewById(R.id.password);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Player Information");
 
 
@@ -147,13 +148,13 @@ public class ConfigActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (seekBar.equals(pilotSeekBar)) {
-                    updateSkill(pilotSkill, progress, "pilot");
+                    updateSkill(progress, "pilot");
                 } else if (seekBar.equals(fighterSeekBar)) {
-                    updateSkill(fighterSkill, progress, "fighter");
+                    updateSkill(progress, "fighter");
                 } else if (seekBar.equals(traderSeekBar)) {
-                    updateSkill(traderSkill, progress, "trader");
+                    updateSkill(progress, "trader");
                 } else if (seekBar.equals(engineerSeekBar)) {
-                    updateSkill(engineerSkill, progress, "engineer");
+                    updateSkill(progress, "engineer");
                 }
                 update();
             }
@@ -170,13 +171,13 @@ public class ConfigActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (seekBar.equals(pilotSeekBar)) {
-                    updateSkill(pilotSkill, progress, "pilot");
+                    updateSkill(progress, "pilot");
                 } else if (seekBar.equals(fighterSeekBar)) {
-                    updateSkill(fighterSkill, progress, "fighter");
+                    updateSkill(progress, "fighter");
                 } else if (seekBar.equals(traderSeekBar)) {
-                    updateSkill(traderSkill, progress, "trader");
+                    updateSkill(progress, "trader");
                 } else if (seekBar.equals(engineerSeekBar)) {
-                    updateSkill(engineerSkill, progress, "engineer");
+                    updateSkill(progress, "engineer");
                 }
                 update();
             }
@@ -193,13 +194,13 @@ public class ConfigActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (seekBar.equals(pilotSeekBar)) {
-                    updateSkill(pilotSkill, progress, "pilot");
+                    updateSkill(progress, "pilot");
                 } else if (seekBar.equals(fighterSeekBar)) {
-                    updateSkill(fighterSkill, progress, "fighter");
+                    updateSkill(progress, "fighter");
                 } else if (seekBar.equals(traderSeekBar)) {
-                    updateSkill(traderSkill, progress, "trader");
+                    updateSkill(progress, "trader");
                 } else if (seekBar.equals(engineerSeekBar)) {
-                    updateSkill(engineerSkill, progress, "engineer");
+                    updateSkill(progress, "engineer");
                 }
                 update();
             }
@@ -216,13 +217,13 @@ public class ConfigActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (seekBar.equals(pilotSeekBar)) {
-                    updateSkill(pilotSkill, progress, "pilot");
+                    updateSkill(progress, "pilot");
                 } else if (seekBar.equals(fighterSeekBar)) {
-                    updateSkill(fighterSkill, progress, "fighter");
+                    updateSkill(progress, "fighter");
                 } else if (seekBar.equals(traderSeekBar)) {
-                    updateSkill(traderSkill, progress, "trader");
+                    updateSkill(progress, "trader");
                 } else if (seekBar.equals(engineerSeekBar)) {
-                    updateSkill(engineerSkill, progress, "engineer");
+                    updateSkill(progress, "engineer");
                 }
                 update();
             }
@@ -283,13 +284,8 @@ public class ConfigActivity extends AppCompatActivity {
                 model.universe = universe;
                 AppModule.save(getApplicationContext(), model);
 
-                Planet destinationPlanet = universe.getPlanet("Paradise", 1);
-                System.out.print("Set player to:  " + destinationPlanet.toString());
-
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 startActivity(intent);
-//                System.out.println("Universe Created");
-//                System.out.println(universe.toString());
             }
         });
 

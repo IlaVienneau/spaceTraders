@@ -37,22 +37,32 @@ public class TravelActivity extends AppCompatActivity {
     private int currFuel;
 
     @Inject
+    private
     AppModule.SpaceTraderModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        //noinspection LawOfDemeter
         component.inject(this);
 
         setContentView(R.layout.activity_travel);
 
-        Player player = model.player;
-        Ship ship = player.getShip();
-        currFuel = ship.getCurrFuel();
-
         toolbar = findViewById(R.id.toolbar);
         travelListView = findViewById(R.id.travelListView);
+
+        Player player = model.player;
+        if (player == null) {
+            return;
+        }
+
+        Ship ship = player.getShip();
+        if (ship == null) {
+            return;
+        }
+
+        currFuel = ship.getCurrFuel();
 
         travelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -75,16 +85,17 @@ public class TravelActivity extends AppCompatActivity {
                 Random rand = new Random();
                 int randomChance = rand.nextInt(100) + 1;
 
+                Planet currentPlanet = player.getCurrPlanet();
+
                 if (randomChance <= 10) {
                     RadicalEvent[] radicalEvents = RadicalEvent.values();
                     int eventSelector = rand.nextInt(7);
                     RadicalEvent event = radicalEvents[eventSelector];
-                    player.getCurrPlanet().setRadicalEvent(event);
+                    currentPlanet.setRadicalEvent(event);
                 }
 
                 String message = "";
 
-                Planet currentPlanet = player.getCurrPlanet();
                 RadicalEvent radicalEvent = currentPlanet.getRadicalEvent();
                 currentPlanet.setRadicalEvent(radicalEvent);
                 String planetName = currentPlanet.getName();

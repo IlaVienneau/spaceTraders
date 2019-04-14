@@ -2,7 +2,6 @@ package com.example.spacetrader;
 
 import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.Ship;
 import com.example.spacetrader.entity.ShipInventory;
 import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.TradeGood;
@@ -11,18 +10,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 
 public class DelVenturaJUnitTest {

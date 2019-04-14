@@ -136,6 +136,10 @@ public class Universe implements Serializable {
      */
     public Planet getPlanet(String name, int num) {
         Star star = stars.get(name);
+        if (star == null) {
+            return null;
+        }
+
         return star.getPlanet(name + "-" + num);
     }
 
@@ -144,11 +148,12 @@ public class Universe implements Serializable {
      * @return a string representation of the universe
      */
     public String toString() {
-        String str = "Fire Cobra-verse:  \n";
+        StringBuilder str = new StringBuilder("Fire Cobra-verse:  \n");
         for (Star s: stars.values()) {
-            str += s.toString() + "\n";
+            //noinspection ChainedMethodCall
+            str.append(s.toString()).append("\n");
         }
-        return str;
+        return str.toString();
     }
 
 

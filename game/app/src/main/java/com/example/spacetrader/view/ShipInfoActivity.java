@@ -30,6 +30,7 @@ public class ShipInfoActivity extends AppCompatActivity {
     private TextView walletTextView;
 
     @Inject
+    private
     AppModule.SpaceTraderModel model;
 
     @Override
@@ -40,17 +41,17 @@ public class ShipInfoActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_ship);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.shipToolBar);
+        Toolbar toolbar = findViewById(R.id.shipToolBar);
         player = model.player;
 
         toolbar.setTitle("Ship Information");
         toolbar.setSubtitle("" + player.getShipType() + "");
 
-        currCapTextView = (TextView) findViewById(R.id.shipCurrCapTextView);
-        currFuelTextView = (TextView) findViewById(R.id.shipCurrFuelTextView);
-        fuelTextView = (TextView) findViewById(R.id.shipFuelTextView);
-        capTextView = (TextView) findViewById(R.id.shipCapTextView);
-        walletTextView = (TextView) findViewById(R.id.wallet);
+        currCapTextView = findViewById(R.id.shipCurrCapTextView);
+        currFuelTextView = findViewById(R.id.shipCurrFuelTextView);
+        fuelTextView = findViewById(R.id.shipFuelTextView);
+        capTextView = findViewById(R.id.shipCapTextView);
+        walletTextView = findViewById(R.id.wallet);
 
 
         Button fuelButton = findViewById(R.id.buyFuelButton);
@@ -58,10 +59,11 @@ public class ShipInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //update to check that we need fuel when we change curr fuel
-                if ((player.getWallet() > 5) &&
-                        (player.getShip().getCurrFuel() < player.getShip().getFuel())) {
-                    player.getShip().setCurrFuel(player.getShip().getCurrFuel() + 1);
-                    player.setWallet(player.getWallet() - 5);
+                Ship ship = player.getShip();
+                int wallet = player.getWallet();
+                if (wallet > 5 && (ship.getCurrFuel() < ship.getFuel())) {
+                    ship.setCurrFuel(ship.getCurrFuel() + 1);
+                    player.setWallet(wallet - 5);
                 } else {
                     String message = "Not enough money to buy fuel or fuel tank full.";
                     Toast toast = Toast.makeText(

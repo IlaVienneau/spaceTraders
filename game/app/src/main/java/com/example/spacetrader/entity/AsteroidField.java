@@ -2,10 +2,10 @@ package com.example.spacetrader.entity;
 
 import java.util.Random;
 
-public class AsteroidField {
-    Player player;
-    int damageTaken;
-    double pilotSkillFraction =.05;
+class AsteroidField {
+    private final Player player;
+    private final int damageTaken;
+    private final double pilotSkillFraction =.05;
 
     public AsteroidField(Player player) {
         Ship ship = player.getShip();

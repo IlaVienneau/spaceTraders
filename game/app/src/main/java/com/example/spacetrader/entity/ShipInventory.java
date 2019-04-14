@@ -2,6 +2,8 @@ package com.example.spacetrader.entity;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class ShipInventory implements Serializable {
 
@@ -26,11 +28,18 @@ public class ShipInventory implements Serializable {
     }
 
     public String toString() {
-        String str = "";
-        for (TradeGood trade : inventory.keySet()) {
-            str += trade.toString();
+        StringBuilder str = new StringBuilder("[");
+        Set<TradeGood> keys = inventory.keySet();
+        Iterator<TradeGood> goods = keys.iterator();
+        while (goods.hasNext()) {
+            TradeGood good = goods.next();
+            str.append(good.toString());
+            if (goods.hasNext()) {
+                str.append(", ");
+            }
         }
-        return str;
+        str.append("]");
+        return str.toString();
     }
 
 }

@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 public class LoginActivity extends AppCompatActivity {
     @Inject
+    private
     AppModule.SpaceTraderModel model;
 
     private EditText nameEditText;
@@ -37,10 +38,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         setSupportActionBar(toolbar);
 
-        nameEditText = (EditText) findViewById(R.id.nameEditText);
-        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        nameEditText = findViewById(R.id.nameEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Space Trader");
         toolbar.setSubtitle("Load previous game");
 

@@ -1,7 +1,6 @@
 package com.example.spacetrader.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -19,13 +18,11 @@ public class PlanetInventory implements Serializable {
     /**
     * creates inventory of trade goods for this planet based on technology level. It creates 10 of
      * each relevant trade goodo and updates the price.
-     *
-     * @param tech: the TechLevel of this planet.
-     * @param pol: the political system of this planet
-     * @param res: the resource level of this planet
-     * @param event: the type of radical event that can happen.
+     *  @param tech : the TechLevel of this planet.
+     * @param res : the resource level of this planet
+     * @param event : the type of radical event that can happen.
      */
-    public PlanetInventory(TechLevel tech, PoliticalSystem pol, Resource res, RadicalEvent event) {
+    public PlanetInventory(TechLevel tech, Resource res, RadicalEvent event) {
         this.inventory = new HashMap<>();
         this.techLevel = tech;
         this.resource = res;
@@ -51,10 +48,13 @@ public class PlanetInventory implements Serializable {
      *  updates the price of all trade goods in this planet's inventory
      *
      */
-    public void updatePrices() {
+    public final void updatePrices() {
         Random rand = new Random();
         for (TradeGood good : inventory.keySet()) {
             TradeStock stock = inventory.get(good);
+            if (stock == null) {
+                continue;
+            }
 
             int price = good.getBasePrice()
                     + (good.getIpl() * (techLevel.ordinal() - good.getMtlp()));
@@ -66,13 +66,18 @@ public class PlanetInventory implements Serializable {
             }
             price += var;
 
-            if (good.getIe().equals(this.event)) {
+            RadicalEvent ie = good.getIe();
+            if (ie.equals(this.event)) {
                 price *= 5;
             }
-            if (good.getCr().equals(this.resource)) {
+
+            Resource cr = good.getCr();
+            if ((cr != null) && cr.equals(this.resource)) {
                 price /= 2;
             }
-            if (good.getEr().equals(this.resource)) {
+
+            Resource er = good.getEr();
+            if ((er != null) && er.equals(this.resource)) {
                 price *= 2;
             }
 
@@ -98,11 +103,11 @@ public class PlanetInventory implements Serializable {
 
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (TradeGood trade : inventory.keySet()) {
-            str += trade.toString();
+            str.append(trade.toString());
         }
 
-        return str;
+        return str.toString();
     }
 }

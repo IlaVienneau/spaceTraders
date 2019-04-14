@@ -36,7 +36,7 @@ public class Planet implements Serializable {
         this.resource = resource;
         this.visited = false;
         this.radicalEvent = NONE;
-        this.inventory = new PlanetInventory(techLevel, politicalSystem, resource, radicalEvent);
+        this.inventory = new PlanetInventory(techLevel, resource, radicalEvent);
     }
 
 

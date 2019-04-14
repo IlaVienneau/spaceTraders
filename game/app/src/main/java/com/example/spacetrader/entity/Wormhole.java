@@ -2,7 +2,7 @@ package com.example.spacetrader.entity;
 import java.io.Serializable;
 
 
-public class Wormhole implements Serializable {
+class Wormhole implements Serializable {
     private final Star startPoint;
     private final Star endPoint;
     private final int tax;
@@ -13,10 +13,6 @@ public class Wormhole implements Serializable {
         tax = t;
 
 
-    }
-
-    public void travel() {
-        // use to travel from start point to endpoint;
     }
 
 }

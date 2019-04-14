@@ -3,9 +3,7 @@ package com.example.spacetrader.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 class StarNameGenerator implements Serializable {
@@ -32,21 +30,9 @@ class StarNameGenerator implements Serializable {
      * This method gets the name of the star, randomly generated
      * @return the name of the star that was randomly indexed
      */
-    public static String getStarName() {
+    static String getStarName() {
         Random rand = new Random();
-        Map<Integer, String> names = new HashMap<>();
         int index = rand.nextInt(starNames.size());
-
-        if (!names.isEmpty()) {
-            String nameAtIndex = names.get(index);
-            String starNameAtIndex = starNames.get(index);
-
-            while ((names.get(index) != null) && nameAtIndex.equals(starNameAtIndex)) {
-                index = rand.nextInt(132);
-            }
-        }
-        names.put(index, starNames.get(index));
-
         return starNames.get(index);
     }
 
