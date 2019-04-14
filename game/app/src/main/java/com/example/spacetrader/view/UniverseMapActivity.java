@@ -20,7 +20,6 @@ import javax.inject.Inject;
 public class UniverseMapActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private ListView travelListView;
 
     @Inject
     AppModule.SpaceTraderModel model;
@@ -34,7 +33,7 @@ public class UniverseMapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_universe_map);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        travelListView = (ListView) findViewById(R.id.travelListView);
+        ListView travelListView = (ListView) findViewById(R.id.travelListView);
 
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {

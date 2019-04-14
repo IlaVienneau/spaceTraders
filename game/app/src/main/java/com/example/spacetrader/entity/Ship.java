@@ -20,8 +20,8 @@ public class Ship implements Serializable {
     private int currGadgetSlots;
     private int currMercenaryCapacity;
 
-    private boolean insured = false;
-    private boolean escapePod = false;
+    private boolean insured;
+    private boolean escapePod;
 
 
 
@@ -29,86 +29,26 @@ public class Ship implements Serializable {
     private static int avgHull = 2;
     private static int strongHull = 3;
 
-    private static int fleaCap = 5;
-    private static int fleaFuel = 20;
     private static int fleaHull = weakHull;
-    private static int fleaWeaponSlots = 0;
-    private static int fleaSheildSlots = 0;
-    private static int fleaGadgetSlots = 0;
-    private static int fleaMercenaryCapacity = 0;
 
 
-    private static int gnatCap = 15;
-    private static int gnatFuel = 14;
     private static int gnatHull = avgHull;
-    private static int gnatWeaponSlots = 1;
-    private static int gnatShieldSlots = 1;
-    private static int gnatGadgetSlots = 0;
-    private static int gnatMercenaryCapacity = 0;
 
-    private static int waspCap = 35;
-    private static int waspFuel = 14;
     private static int waspHull = strongHull;
-    private static int waspWeaponSlots = 3;
-    private static int waspShieldSlots = 2;
-    private static int waspGadgetSlots = 2;
-    private static int waspMercenaryCapacity = 3;
 
-    private static int beetleCap = 50;
-    private static int beetleFuel = 14;
     private static int beetleHull = weakHull;
-    private static int beetleWeaponSlots = 0;
-    private static int beetleShieldSlots = 1;
-    private static int beetleGadgetSlots = 1;
-    private static int beetleMercenaryCapacity = 3;
 
-    private static int hornetCap = 20;
-    private static int hornetFuel = 16;
     private static int hornetHull = strongHull;
-    private static int hornetWeaponSlots = 3;
-    private static int hornetShieldSlots = 2;
-    private static int hornetGadgetSlots = 1;
-    private static int hornetMercenaryCapacity = 2;
 
-    private static int fireflyCap = 20;
-    private static int fireflyFuel = 17;
     private static int fireflyHull = avgHull;
-    private static int fireflyWeaponSlots = 1;
-    private static int fireflyShieldSlots = 1;
-    private static int fireflyGadgetSlots = 1;
-    private static int fireflyMercenaryCapacity = 0;
 
-    private static int termiteCap = 60;
-    private static int termiteFuel = 13;
     private static int termiteHull = strongHull;
-    private static int termiteWeaponSlots = 1;
-    private static int termiteShieldSlots = 3;
-    private static int termiteGadgetSlots = 2;
-    private static int termiteMercenaryCapacity = 3;
 
-    private static int mosquitoCap = 15;
-    private static int mosquitoFuel = 13;
     private static int mosquitoHull = strongHull;
-    private static int mosquitoWeaponSlots = 2;
-    private static int mosquitoShieldSlots = 1;
-    private static int mosquitoGadgetSlots = 1;
-    private static int mosquitoMercenaryCapacity = 0;
 
-    private static int bumblebeeCap = 20;
-    private static int bumblebeeFuel = 15;
     private static int bumblebeeHull = avgHull;
-    private static int bumblebeeWeaponSlots = 1;
-    private static int bumblebeeShieldSlots = 2;
-    private static int bumblebeeGadgetSlots = 2;
-    private static int bumblebeeMercenaryCapacity = 1;
 
-    private static int grasshopperCap = 30;
-    private static int grasshopperFuel = 15;
     private static int grasshopperHull = avgHull;
-    private static int grasshopperWeaponSlots = 3;
-    private static int grasshopperShieldSlots = 2;
-    private static int grasshopperGadgetSlots = 1;
-    private static int grasshopperMercenaryCapacity = 2;
 
     public Ship(){
         this(ShipType.GNAT);
@@ -116,6 +56,67 @@ public class Ship implements Serializable {
 
     public Ship(ShipType type) {
         this.type = type;
+
+        int grasshopperMercenaryCapacity = 2;
+        int grasshopperGadgetSlots = 1;
+        int grasshopperShieldSlots = 2;
+        int grasshopperWeaponSlots = 3;
+        int grasshopperFuel = 15;
+        int grasshopperCap = 30;
+        int bumblebeeMercenaryCapacity = 1;
+        int bumblebeeGadgetSlots = 2;
+        int bumblebeeShieldSlots = 2;
+        int bumblebeeWeaponSlots = 1;
+        int bumblebeeFuel = 15;
+        int bumblebeeCap = 20;
+        int mosquitoMercenaryCapacity = 0;
+        int mosquitoGadgetSlots = 1;
+        int mosquitoShieldSlots = 1;
+        int mosquitoWeaponSlots = 2;
+        int mosquitoFuel = 13;
+        int mosquitoCap = 15;
+        int termiteMercenaryCapacity = 3;
+        int termiteGadgetSlots = 2;
+        int termiteShieldSlots = 3;
+        int termiteWeaponSlots = 1;
+        int termiteFuel = 13;
+        int termiteCap = 60;
+        int fireflyMercenaryCapacity = 0;
+        int fireflyGadgetSlots = 1;
+        int fireflyShieldSlots = 1;
+        int fireflyWeaponSlots = 1;
+        int fireflyFuel = 17;
+        int fireflyCap = 20;
+        int hornetMercenaryCapacity = 2;
+        int hornetGadgetSlots = 1;
+        int hornetShieldSlots = 2;
+        int hornetWeaponSlots = 3;
+        int hornetFuel = 16;
+        int hornetCap = 20;
+        int beetleMercenaryCapacity = 3;
+        int beetleGadgetSlots = 1;
+        int beetleShieldSlots = 1;
+        int beetleWeaponSlots = 0;
+        int beetleFuel = 14;
+        int beetleCap = 50;
+        int waspMercenaryCapacity = 3;
+        int waspGadgetSlots = 2;
+        int waspShieldSlots = 2;
+        int waspWeaponSlots = 3;
+        int waspFuel = 14;
+        int waspCap = 35;
+        int gnatMercenaryCapacity = 0;
+        int gnatGadgetSlots = 0;
+        int gnatShieldSlots = 1;
+        int gnatWeaponSlots = 1;
+        int gnatFuel = 14;
+        int gnatCap = 15;
+        int fleaMercenaryCapacity = 0;
+        int fleaGadgetSlots = 0;
+        int fleaSheildSlots = 0;
+        int fleaWeaponSlots = 0;
+        int fleaFuel = 20;
+        int fleaCap = 5;
         switch(type) {
             case FLEA:
                 maxCapacity = fleaCap;

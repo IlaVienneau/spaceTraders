@@ -8,7 +8,11 @@ public class ShipInventory implements Serializable {
     private final HashMap<TradeGood, Integer> inventory;
 
     public ShipInventory() {
-        this.inventory = new HashMap<TradeGood, Integer>();
+        this.inventory = new HashMap<>();
+    }
+
+    public ShipInventory(HashMap<TradeGood, Integer> inventory) {
+        this.inventory = inventory;
     }
 
     /**

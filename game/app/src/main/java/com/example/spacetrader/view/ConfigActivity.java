@@ -31,7 +31,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class ConfigActivity extends AppCompatActivity {
-    @Inject AppModule.SpaceTraderModel model;
+    @Inject
+    AppModule.SpaceTraderModel model;
 
     private ConfigViewModel viewModel;
     private EditText nameEditText;
@@ -56,9 +57,9 @@ public class ConfigActivity extends AppCompatActivity {
     private int engineerSkill;
     private final Difficulty difficulty = Difficulty.BEGINNER;
 
-    static int smallUniverseSize = 50;
-    static int mediumUniverseSize = 75;
-    static int largeUniverseSize = 100;
+    private static int smallUniverseSize = 50;
+    private static int mediumUniverseSize = 75;
+    private static int largeUniverseSize = 100;
 
     private void updateSkill(int skill, int change, String type) {
         class skillNode {
@@ -126,7 +127,6 @@ public class ConfigActivity extends AppCompatActivity {
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
-        // TODO: hardcoded sizes
         String[] sizes = {"Small Universe", "Medium Universe", "Large Universe"};
         universeSizeSpinner = findViewById(R.id.universeSizeSpinner);
         ArrayAdapter universeSizeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sizes);
@@ -252,8 +252,8 @@ public class ConfigActivity extends AppCompatActivity {
                         engineerSkill,
                         difficulty
                 );
-                System.out.println("player created");
-                System.out.println(player.toString());
+//                System.out.println("player created");
+//                System.out.println(player.toString());
 
                 Object universeSizeSpinnerContents = universeSizeSpinner.getSelectedItem();
                 String universeSize = universeSizeSpinnerContents.toString();
@@ -282,17 +282,18 @@ public class ConfigActivity extends AppCompatActivity {
 
                 Planet destinationPlanet = universe.getPlanet("Paradise", 1);
                 System.out.print("Set player to:  " + destinationPlanet.toString());
+
                 Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
                 startActivity(intent);
-                System.out.println("Universe Created");
-                System.out.println(universe.toString());
+//                System.out.println("Universe Created");
+//                System.out.println(universe.toString());
             }
         });
 
         update();
     }
 
-    public void update() {
+    private void update() {
         pointCountTextView.setText(""+ remainingPoints + '/' + totalPointsAvailable);
         pilotSeekBar.setProgress(pilotSkill);
         fighterSeekBar.setProgress(fighterSkill);
