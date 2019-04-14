@@ -1,11 +1,18 @@
 package com.example.spacetrader.view;
 
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Difficulty;
@@ -14,13 +21,6 @@ import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.model.AppModule;
 import com.example.spacetrader.viewModel.ConfigViewModel;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.Spinner;
-import android.widget.TextView;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,16 +52,16 @@ public class ConfigActivity extends AppCompatActivity {
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
-    private Difficulty difficulty = Difficulty.BEGINNER;
+    private final Difficulty difficulty = Difficulty.BEGINNER;
 
-    private static int smallUniverseSize = 50;
-    private static int mediumUniverseSize = 75;
-    private static int largeUniverseSize = 100;
+    private static final int smallUniverseSize = 50;
+    private static final int mediumUniverseSize = 75;
+    private static final int largeUniverseSize = 100;
 
     private void updateSkill(int skill, int change, String type) {
         class skillNode {
             private int data;
-            private String type;
+            private final String type;
             skillNode(int d, String t) {
                 data = d;
                 type = t;

@@ -1,8 +1,8 @@
 package com.example.spacetrader.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.Serializable;
 import java.util.Random;
 
 public class PlanetInventory implements Serializable {
@@ -11,10 +11,10 @@ public class PlanetInventory implements Serializable {
         public int price;
     }
 
-    private HashMap<TradeGood, TradeStock> inventory;
-    private TechLevel techLevel;
-    private Resource resource;
-    private RadicalEvent event;
+    private final HashMap<TradeGood, TradeStock> inventory;
+    private final TechLevel techLevel;
+    private final Resource resource;
+    private final RadicalEvent event;
 
     /**
     * creates inventory of trade goods for this planet based on technology level. It creates 10 of
@@ -31,34 +31,13 @@ public class PlanetInventory implements Serializable {
         this.resource = res;
         this.event = event;
 
-        Iterable<TradeGood> arr = new ArrayList<>();
-        switch (tech) {
-            case PREAGRICULTURAL:
-                arr = TradeGood.getMTLPs(TechLevel.PREAGRICULTURAL.ordinal());
-                break;
-            case AGRICULTURAL:
-                arr = TradeGood.getMTLPs(TechLevel.AGRICULTURAL.ordinal());
-                break;
-            case MIDIEVAL:
-                arr = TradeGood.getMTLPs(TechLevel.MIDIEVAL.ordinal());
-                break;
-            case RENAISSANCE:
-                arr = TradeGood.getMTLPs(TechLevel.RENAISSANCE.ordinal());
-                break;
-            case EARLYINDUSTRIAL:
-                arr = TradeGood.getMTLPs(TechLevel.EARLYINDUSTRIAL.ordinal());
-                break;
-            case INDUSTRIAL:
-                arr = TradeGood.getMTLPs(TechLevel.INDUSTRIAL.ordinal());
-                break;
-            case POSTINDUSTRIAL:
-                arr = TradeGood.getMTLPs(TechLevel.POSTINDUSTRIAL.ordinal());
-                break;
-            case HITECH:
-                arr = TradeGood.getMTLPs(TechLevel.HITECH.ordinal());
-                break;
-        }
+        Iterable<TradeGood> arr = TradeGood.getMTLPs(tech.ordinal());
+        addToInventory(arr);
 
+        updatePrices();
+    }
+
+    private void addToInventory(Iterable<TradeGood> arr) {
         for (TradeGood t : arr) {
             TradeStock stock = new TradeStock();
             stock.price = 0;
@@ -66,8 +45,6 @@ public class PlanetInventory implements Serializable {
 
             inventory.put(t, stock);
         }
-
-        updatePrices();
     }
 
     /**

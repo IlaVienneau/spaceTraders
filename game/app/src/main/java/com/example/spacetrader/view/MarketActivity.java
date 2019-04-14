@@ -1,13 +1,17 @@
 package com.example.spacetrader.view;
 
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.ListAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Planet;
@@ -15,9 +19,6 @@ import com.example.spacetrader.entity.PlanetInventory;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.TradeGood;
 import com.example.spacetrader.model.AppModule;
-import android.widget.AdapterView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;

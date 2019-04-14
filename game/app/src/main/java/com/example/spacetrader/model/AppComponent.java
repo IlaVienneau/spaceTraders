@@ -3,8 +3,8 @@ package com.example.spacetrader.model;
 import com.example.spacetrader.view.ConfigActivity;
 import com.example.spacetrader.view.LoginActivity;
 import com.example.spacetrader.view.MarketActivity;
-import com.example.spacetrader.view.TravelActivity;
 import com.example.spacetrader.view.ShipInfoActivity;
+import com.example.spacetrader.view.TravelActivity;
 import com.example.spacetrader.view.UniverseMapActivity;
 
 import javax.inject.Singleton;

@@ -13,10 +13,10 @@ import android.widget.Toast;
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Planet;
+import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.RadicalEvent;
 import com.example.spacetrader.entity.Ship;
 import com.example.spacetrader.entity.Star;
-import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.StarType;
 import com.example.spacetrader.model.AppModule;
 

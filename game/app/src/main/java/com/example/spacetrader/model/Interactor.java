@@ -5,7 +5,7 @@ package com.example.spacetrader.model;
  */
 abstract class Interactor {
 
-    private Repository myRepository;
+    private final Repository myRepository;
 
     Interactor(Repository repo) {
         myRepository = repo;

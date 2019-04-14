@@ -1,10 +1,10 @@
 package com.example.spacetrader.entity;
+
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @SuppressWarnings("MagicNumber")
 public class TradeGood implements Serializable {

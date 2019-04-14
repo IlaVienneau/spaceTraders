@@ -10,10 +10,10 @@ public class Player implements Serializable {
     private int id;
 
     private String name;
-    private String password;
+    private final String password;
 
     private ShipType shipType;
-    private Ship ship;
+    private final Ship ship;
     private ShipInventory shipInventory;
 
     private int pilotSkill;

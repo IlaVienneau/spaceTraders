@@ -1,11 +1,11 @@
 package com.example.spacetrader.entity;
 
-import java.util.HashMap;
 import java.io.Serializable;
+import java.util.HashMap;
 
 class ShipInventory implements Serializable {
 
-    private HashMap<TradeGood, Integer> inventory;
+    private final HashMap<TradeGood, Integer> inventory;
 
     public ShipInventory() {
         this.inventory = new HashMap<>();

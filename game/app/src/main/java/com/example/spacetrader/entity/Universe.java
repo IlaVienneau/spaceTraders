@@ -1,13 +1,14 @@
 package com.example.spacetrader.entity;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.io.Serializable;
 
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
 public class Universe implements Serializable {
-    private HashMap<String, Star> stars;
+    private final HashMap<String, Star> stars;
 
 
     /*

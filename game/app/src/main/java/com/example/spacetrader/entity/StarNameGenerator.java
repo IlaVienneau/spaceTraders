@@ -1,15 +1,15 @@
 package com.example.spacetrader.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.io.Serializable;
 
 class StarNameGenerator implements Serializable {
-    private static List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
+    private static final List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
             "Andevian", "Antedi", "Annabelle", "Balosnee", "Baratas", "Brax", "Bretel",
             "Beasley", "Calondia", "Campor", "Capellius", "Carzon", "Castor", "Cestus",
             "Cheron", "Courteney", "Daled", "Damast", "Davlos", "Deneb", "Deneva", "Devidia",

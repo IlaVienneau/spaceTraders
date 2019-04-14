@@ -1,18 +1,18 @@
 package com.example.spacetrader.entity;
 
-import java.util.HashMap;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Star implements Serializable {
 
-    private String name;
-    private StarType starType;
+    private final String name;
+    private final StarType starType;
     private Resource resourceType;
     private TechLevel techType;
 
-    private int xCord;
-    private int yCord;
+    private final int xCord;
+    private final int yCord;
 
     private HashMap<String, Planet> planets;
 

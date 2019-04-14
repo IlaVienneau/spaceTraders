@@ -1,9 +1,9 @@
 package com.example.spacetrader.model;
 
+import com.example.spacetrader.entity.Player;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.spacetrader.entity.Player;
 
 /**
  * This class is an abstraction of the data storage for the business classes
@@ -29,7 +29,7 @@ class Repository {
     }
 
     /** all the students known in the application */
-    private List<Player> allPlayers;
+    private final List<Player> allPlayers;
 
     /**
      * Make a new Repository object
