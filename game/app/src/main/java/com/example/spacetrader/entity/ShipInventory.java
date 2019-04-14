@@ -25,6 +25,7 @@ class ShipInventory implements Serializable {
         String str = "";
         for (TradeGood trade : inventory.keySet()) {
             str += trade.toString();
+            str += " ";
         }
         return str;
     }

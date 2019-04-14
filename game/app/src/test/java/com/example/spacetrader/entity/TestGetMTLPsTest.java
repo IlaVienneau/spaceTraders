@@ -17,7 +17,7 @@ public class TestGetMTLPsTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testExceptions() throws Exception {
-        ArrayList<TradeGood> actualArray = TradeGood.getMTLPs(-1);
+        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(-1);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class TestGetMTLPsTest {
         ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
-        ArrayList<TradeGood> actualArray = TradeGood.getMTLPs(0);
+        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(0);
         assertEquals(expectedArray, actualArray);
     }
 
@@ -35,7 +35,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
-        ArrayList<TradeGood> actualArray = TradeGood.getMTLPs(1);
+        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(1);
         assertEquals(expectedArray, actualArray);
 
     }
@@ -47,7 +47,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
         expectedArray.add(new TradeGood("ore"));
-        ArrayList<TradeGood> actualArray = TradeGood.getMTLPs(2);
+        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(2);
         assertEquals(expectedArray, actualArray);
     }
 
@@ -60,7 +60,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("ore"));
         expectedArray.add(new TradeGood("games"));
         expectedArray.add(new TradeGood("firearms"));
-        ArrayList<TradeGood> actualArray = TradeGood.getMTLPs(3);
+        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(3);
         assertEquals(expectedArray, actualArray);
     }
 
@@ -75,7 +75,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("firearms"));
         expectedArray.add(new TradeGood("medicines"));
         expectedArray.add(new TradeGood("machines"));
-        ArrayList<TradeGood> actualArray = TradeGood.getMTLPs(4);
+        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(4);
         assertEquals(expectedArray, actualArray);
     }
 
@@ -91,7 +91,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("medicines"));
         expectedArray.add(new TradeGood("machines"));
         expectedArray.add(new TradeGood("narcotics"));
-        ArrayList<TradeGood> actualArray = TradeGood.getMTLPs(5);
+        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(5);
         assertEquals(expectedArray, actualArray);
     }
 
@@ -108,7 +108,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("machines"));
         expectedArray.add(new TradeGood("narcotics"));
         expectedArray.add(new TradeGood("robots"));
-        ArrayList<TradeGood> actualArray = TradeGood.getMTLPs(6);
+        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(6);
         assertEquals(expectedArray, actualArray);
     }
 }
