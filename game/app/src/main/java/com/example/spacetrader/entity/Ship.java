@@ -25,30 +25,30 @@ public class Ship implements Serializable {
 
 
 
-    private static int weakHull = 1;
-    private static int avgHull = 2;
-    private static int strongHull = 3;
+    private static final int weakHull = 1;
+    private static final int avgHull = 2;
+    private static final int strongHull = 3;
 
-    private static int fleaHull = weakHull;
+    private static final int fleaHull = weakHull;
 
 
-    private static int gnatHull = avgHull;
+    private static final int gnatHull = avgHull;
 
-    private static int waspHull = strongHull;
+    private static final int waspHull = strongHull;
 
-    private static int beetleHull = weakHull;
+    private static final int beetleHull = weakHull;
 
-    private static int hornetHull = strongHull;
+    private static final int hornetHull = strongHull;
 
-    private static int fireflyHull = avgHull;
+    private static final int fireflyHull = avgHull;
 
-    private static int termiteHull = strongHull;
+    private static final int termiteHull = strongHull;
 
-    private static int mosquitoHull = strongHull;
+    private static final int mosquitoHull = strongHull;
 
-    private static int bumblebeeHull = avgHull;
+    private static final int bumblebeeHull = avgHull;
 
-    private static int grasshopperHull = avgHull;
+    private static final int grasshopperHull = avgHull;
 
     public Ship(){
         this(ShipType.GNAT);

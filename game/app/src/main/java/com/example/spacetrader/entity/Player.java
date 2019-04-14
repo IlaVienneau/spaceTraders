@@ -169,7 +169,8 @@ public class Player implements Serializable {
      * This method gets the player's ship inventory
      * @return the player's ship inventory
      */
-    public HashMap<TradeGood, Integer> getShipInventory() { return this.shipInventory.getInventory(); }
+    public HashMap<TradeGood, Integer> getShipInventory() {
+        return this.shipInventory.getInventory(); }
 
     /**
      * This method sets the player's ship inventory

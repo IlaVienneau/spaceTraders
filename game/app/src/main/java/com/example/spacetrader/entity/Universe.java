@@ -9,10 +9,6 @@ import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
 public class Universe implements Serializable {
     private final HashMap<String, Star> stars;
-    private static final int numTypes = 6;
-    private static final int numLevels = 8;
-    private static final int numPolitical = 17;
-    private static final int numResources = 13;
 
     /*
      * Creates a universe with 'size' # of stars
@@ -113,7 +109,8 @@ public class Universe implements Serializable {
                 if (i == 0) {
                     Star paradise = new Star("Paradise", star, x, y,  Resource.NOSPECIALRESOURCES,
                             TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY);
-                    paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY,
+                    paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL,
+                            PoliticalSystem.DEMOCRACY,
                             Resource.NOSPECIALRESOURCES, paradise));
                     stars.put("Paradise", paradise);
                 } else {

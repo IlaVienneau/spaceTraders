@@ -58,7 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, UniverseMapActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast toast = Toast.makeText(LoginActivity.this, "No save file, or incorrect username/password", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(LoginActivity.this,
+                            "No save file, or incorrect username/password", Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }

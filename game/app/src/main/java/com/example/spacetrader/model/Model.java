@@ -3,7 +3,9 @@ package com.example.spacetrader.model;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public final class Model {
+
     private final Repository myRepository;
     private final Map<String, Object> interactorMap;
 

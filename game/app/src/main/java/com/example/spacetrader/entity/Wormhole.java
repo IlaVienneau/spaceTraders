@@ -3,9 +3,9 @@ import java.io.Serializable;
 
 
 public class Wormhole implements Serializable {
-    private Star startPoint;
-    private Star endPoint;
-    private int tax;
+    private final Star startPoint;
+    private final Star endPoint;
+    private final int tax;
 
     public Wormhole(Star s1, Star s2, int t) {
         startPoint = s1;

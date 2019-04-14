@@ -57,15 +57,16 @@ public class ConfigActivity extends AppCompatActivity {
     private int engineerSkill;
     private final Difficulty difficulty = Difficulty.BEGINNER;
 
-    private static int smallUniverseSize = 50;
-    private static int mediumUniverseSize = 75;
-    private static int largeUniverseSize = 100;
+    private static final int smallUniverseSize = 50;
+    private static final int mediumUniverseSize = 75;
+    private static final int largeUniverseSize = 100;
 
     private void updateSkill(int skill, int change, String type) {
         class skillNode {
             private int data;
             private final String type;
-            public skillNode(int d, String t) {
+
+            skillNode(int d, String t) {
                 data = d;
                 type = t;
             }
@@ -122,6 +123,7 @@ public class ConfigActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Player Information");
 
+
         Spinner difficultySpinner = findViewById(R.id.difficultySpinner);
         ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -129,7 +131,8 @@ public class ConfigActivity extends AppCompatActivity {
 
         String[] sizes = {"Small Universe", "Medium Universe", "Large Universe"};
         universeSizeSpinner = findViewById(R.id.universeSizeSpinner);
-        ArrayAdapter universeSizeAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sizes);
+        ArrayAdapter universeSizeAdapter = new ArrayAdapter(this, android.R.layout
+                .simple_spinner_item, sizes);
         universeSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         universeSizeSpinner.setAdapter(universeSizeAdapter);
 
