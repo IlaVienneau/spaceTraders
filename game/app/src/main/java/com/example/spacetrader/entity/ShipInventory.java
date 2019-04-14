@@ -1,5 +1,7 @@
 package com.example.spacetrader.entity;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -27,6 +29,7 @@ public class ShipInventory implements Serializable {
         return inventory;
     }
 
+    @NotNull
     public String toString() {
         StringBuilder str = new StringBuilder("[");
         Set<TradeGood> keys = inventory.keySet();

@@ -53,7 +53,6 @@ public class ConfigActivity extends AppCompatActivity {
     private int fighterSkill;
     private int traderSkill;
     private int engineerSkill;
-    private final Difficulty difficulty = Difficulty.BEGINNER;
 
     private static final int smallUniverseSize = 50;
     private static final int mediumUniverseSize = 75;
@@ -251,8 +250,7 @@ public class ConfigActivity extends AppCompatActivity {
                         pilotSkill,
                         fighterSkill,
                         traderSkill,
-                        engineerSkill,
-                        difficulty
+                        engineerSkill
                 );
 //                System.out.println("player created");
 //                System.out.println(player.toString());

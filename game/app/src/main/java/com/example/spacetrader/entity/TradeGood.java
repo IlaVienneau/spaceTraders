@@ -1,5 +1,6 @@
 package com.example.spacetrader.entity;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class TradeGood implements Serializable {
-    private String name;    // trade good name
+    private final String name;    // trade good name
     private int mtlp;       // minimum tech level to produce
     private int ipl;        // price increase per tech level
 
@@ -182,6 +183,7 @@ public class TradeGood implements Serializable {
      *
      * @return the resource.
      */
+    @Nullable
     public Resource getCr() {
         return cr;
     }
@@ -192,6 +194,7 @@ public class TradeGood implements Serializable {
      *
      * @return the resource.
      */
+    @Nullable
     public Resource getEr() {
         return er;
     }
@@ -232,6 +235,7 @@ public class TradeGood implements Serializable {
      *
      * @return the name.
      */
+    @NotNull
     public String toString() {
         return name;
     }

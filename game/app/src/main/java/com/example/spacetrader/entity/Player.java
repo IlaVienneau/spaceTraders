@@ -1,5 +1,7 @@
 package com.example.spacetrader.entity;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,17 +10,17 @@ public class Player implements Serializable {
 
     private int wallet;
 
-    private String name;
+    private final String name;
     private final String password;
 
-    private ShipType shipType;
+    private final ShipType shipType;
     private final Ship ship;
     private ShipInventory shipInventory;
 
-    private int pilotSkill;
-    private int fighterSkill;
-    private int traderSkill;
-    private int engineerSkill;
+    private final int pilotSkill;
+    private final int fighterSkill;
+    private final int traderSkill;
+    private final int engineerSkill;
     private Planet currPlanet;
 
     /**
@@ -30,15 +32,13 @@ public class Player implements Serializable {
      * @param fighterSkill the fighter skill level
      * @param traderSkill the trader skill level
      * @param engineerSkill the engineer skill level
-     * @param difficulty the difficulty of the game
      */
     public Player(String name, String password,
                   ShipType shipType,
                   int pilotSkill,
                   int fighterSkill,
                   int traderSkill,
-                  int engineerSkill,
-                  Difficulty difficulty) {
+                  int engineerSkill) {
         this.name = name;
         this.password = password;
         this.shipType = shipType;
@@ -133,6 +133,7 @@ public class Player implements Serializable {
      * This methods represents the player as a string
      * @return the player as a string, with its name and skill levels listed
      */
+    @NotNull
     public String toString() {
         return ("Player Name: " + name + "\n" +
                 "Pilot Skill:" + pilotSkill + "\n" +

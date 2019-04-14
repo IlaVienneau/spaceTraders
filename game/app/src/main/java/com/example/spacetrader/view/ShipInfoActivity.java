@@ -12,7 +12,6 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.Ship;
-import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.model.AppComponent;
 import com.example.spacetrader.model.AppModule;
 

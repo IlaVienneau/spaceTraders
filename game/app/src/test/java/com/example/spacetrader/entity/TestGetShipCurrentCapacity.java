@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("MagicNumber")
 public class TestGetShipCurrentCapacity {
     private Player actual;
 
@@ -12,7 +13,7 @@ public class TestGetShipCurrentCapacity {
     public void setUp() {
         actual = new Player("name", "pass",
                 ShipType.GNAT, 16, 0, 0,
-                0, Difficulty.EASY);
+                0);
     }
 
     @Test (expected = NullPointerException.class)
@@ -25,7 +26,7 @@ public class TestGetShipCurrentCapacity {
     public void testNullInventory() {
         Player fake = new Player("name", "pass",
                 ShipType.GNAT, 16, 0, 0,
-                0, Difficulty.EASY);
+                0);
         fake.setShipInventory(null);
         fake.getShipCurrentCapacity();
     }

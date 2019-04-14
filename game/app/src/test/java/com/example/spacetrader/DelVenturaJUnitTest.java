@@ -1,6 +1,5 @@
 package com.example.spacetrader;
 
-import com.example.spacetrader.entity.Difficulty;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.ShipInventory;
 import com.example.spacetrader.entity.ShipType;
@@ -22,7 +21,7 @@ public class DelVenturaJUnitTest {
 
     @Before
     public void setUp() {
-        testPlayer = new Player("Fezzik", "password", ShipType.GNAT, 4, 4, 4,4, Difficulty.BEGINNER);
+        testPlayer = new Player("Fezzik", "password", ShipType.GNAT, 4, 4, 4,4);
     }
 
     @Test(timeout = TIMEOUT)

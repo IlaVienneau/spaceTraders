@@ -1,5 +1,7 @@
 package com.example.spacetrader.entity;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Random;
@@ -101,6 +103,7 @@ public class PlanetInventory implements Serializable {
         return inventory;
     }
 
+    @NotNull
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder();

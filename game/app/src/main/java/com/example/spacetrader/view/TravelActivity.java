@@ -30,6 +30,7 @@ import java.util.Random;
 
 import javax.inject.Inject;
 
+@SuppressWarnings("MagicNumber")
 public class TravelActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ListView travelListView;
@@ -171,7 +172,6 @@ public class TravelActivity extends AppCompatActivity {
 
         Map<String, Star> starsMap = model.universe.getStars();
         for (Map.Entry<String, Star> entry: starsMap.entrySet()) {
-            String name = entry.getKey();
             Star nextStar = entry.getValue();
 
             int nextXCoordinate = nextStar.getXCord();

@@ -35,7 +35,6 @@ public class UniverseMapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_universe_map);
 
         toolbar = findViewById(R.id.toolbar);
-        ListView travelListView = findViewById(R.id.travelListView);
 
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {

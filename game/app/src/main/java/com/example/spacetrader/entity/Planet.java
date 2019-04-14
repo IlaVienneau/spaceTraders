@@ -1,4 +1,6 @@
 package com.example.spacetrader.entity;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -15,14 +17,12 @@ public class Planet implements Serializable {
      * This constructor makes an instance of a planet with the passed in attributes
      * @param name the name the planet will have
      * @param techLevel the tech level the planet will have
-     * @param politicalSystem the type of political system the planet will have
      * @param resource the resources the planet will have
      * @param star the star associated with the planet
      */
     public Planet(
             String name,
             TechLevel techLevel,
-            PoliticalSystem politicalSystem,
             Resource resource,
             Star star) {
         this.name = name;
@@ -77,6 +77,7 @@ public class Planet implements Serializable {
      * This method enables the planet to be represented as a string, simply as its name
      * @return the name of the planet
      */
+    @NotNull
     public String toString() {
         return name;
     }

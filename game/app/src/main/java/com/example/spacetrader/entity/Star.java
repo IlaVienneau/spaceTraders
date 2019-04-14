@@ -1,5 +1,7 @@
 package com.example.spacetrader.entity;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,18 +20,16 @@ public class Star implements Serializable {
 
     /**
      * Constructor for Star
-     *
-     * @param name Name of star
+     *  @param name Name of star
      * @param starType type of star
      * @param x x coordinate of star
      * @param y y coordinate of star
      * @param res resource level of star
      * @param lev technology level of star
-     * @param poly political system of star
      */
     public Star(
             String name, StarType starType, int x, int y,
-            Resource res, TechLevel lev, PoliticalSystem poly) {
+            Resource res, TechLevel lev) {
         this.name = name;
         this.starType = starType;
 
@@ -40,7 +40,7 @@ public class Star implements Serializable {
         this.planets = new HashMap<>();
 
         for (int i = 0; i < 10; i++) {
-            planets.put(name, new Planet(name, techType, poly, resourceType, this));
+            planets.put(name, new Planet(name, techType, resourceType, this));
         }
     }
 
@@ -93,6 +93,7 @@ public class Star implements Serializable {
 
     // Setters
 
+    @NotNull
     @Override
     public String toString() {
         return "Name:  " + name + ";  Coordinates:  (" + xCord + "," + yCord + ")" +
