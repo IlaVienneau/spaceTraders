@@ -67,7 +67,7 @@ public class PlanetInventory implements Serializable {
             price += var;
 
             RadicalEvent ie = good.getIe();
-            if (ie.equals(this.event)) {
+            if (ie != null && ie.equals(this.event)) {
                 price *= 5;
             }
 
