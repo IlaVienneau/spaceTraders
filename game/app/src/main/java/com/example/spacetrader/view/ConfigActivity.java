@@ -30,8 +30,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class ConfigActivity extends AppCompatActivity {
+    @SuppressWarnings("WeakerAccess")
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     private ConfigViewModel viewModel;

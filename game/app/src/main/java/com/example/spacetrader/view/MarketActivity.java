@@ -29,8 +29,8 @@ import javax.inject.Inject;
 
 public class MarketActivity extends AppCompatActivity {
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     private Player player;

@@ -21,8 +21,8 @@ public class UniverseMapActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     @Override

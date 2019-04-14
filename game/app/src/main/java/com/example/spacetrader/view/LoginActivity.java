@@ -19,8 +19,8 @@ import javax.inject.Inject;
 
 
 public class LoginActivity extends AppCompatActivity {
+    @SuppressWarnings("WeakerAccess")
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     private EditText nameEditText;

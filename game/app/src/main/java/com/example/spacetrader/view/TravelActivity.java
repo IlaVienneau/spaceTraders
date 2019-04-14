@@ -36,8 +36,8 @@ public class TravelActivity extends AppCompatActivity {
     private ArrayList<Star> starsAvailable;
     private int currFuel;
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     @Override

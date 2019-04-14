@@ -29,8 +29,8 @@ public class ShipInfoActivity extends AppCompatActivity {
     private TextView currFuelTextView;
     private TextView walletTextView;
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
-    private
     AppModule.SpaceTraderModel model;
 
     @Override

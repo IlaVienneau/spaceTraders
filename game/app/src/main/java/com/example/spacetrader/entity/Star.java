@@ -8,34 +8,13 @@ public class Star implements Serializable {
 
     private final String name;
     private final StarType starType;
-    private Resource resourceType;
-    private TechLevel techType;
+    private final Resource resourceType;
+    private final TechLevel techType;
 
     private final int xCord;
     private final int yCord;
 
-    private HashMap<String, Planet> planets;
-
-    /**
-     * Constructor for Star
-     *
-     * @param name Name of the star
-     * @param starType type value of the star
-     * @param x x coordinate
-     * @param y y coordinate
-     * @param planets inventory of planets in this solar system.
-     */
-    public Star(
-            String name, StarType starType, int x, int y,
-            HashMap<String, Planet> planets) {
-        this.name = name;
-        this.starType = starType;
-
-        this.xCord = x;
-        this.yCord =  y;
-
-        this.planets = planets;
-    }
+    private final HashMap<String, Planet> planets;
 
     /**
      * Constructor for Star
@@ -113,15 +92,6 @@ public class Star implements Serializable {
     }
 
     // Setters
-
-    /**
-     *  Sets the Star's inventory of planets to those in planets
-     *
-     * @param planets HashMap of planets
-     */
-    public void setPlanets(HashMap<String, Planet> planets) {
-        this.planets = planets;
-    }
 
     @Override
     public String toString() {
