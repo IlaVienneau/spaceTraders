@@ -21,8 +21,6 @@ import javax.inject.Inject;
 public class ShipInfoActivity extends AppCompatActivity {
 
     private Player player;
-    private Ship ship;
-    private ShipType shipType;
     private TextView fuelTextView;
     private TextView capTextView;
     private TextView currCapTextView;

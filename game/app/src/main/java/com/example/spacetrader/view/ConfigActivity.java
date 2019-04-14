@@ -22,7 +22,6 @@ import com.example.spacetrader.entity.ShipType;
 import com.example.spacetrader.entity.Universe;
 import com.example.spacetrader.model.AppComponent;
 import com.example.spacetrader.model.AppModule;
-import com.example.spacetrader.viewModel.ConfigViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,6 @@ public class ConfigActivity extends AppCompatActivity {
     @Inject
     AppModule.SpaceTraderModel model;
 
-    private ConfigViewModel viewModel;
     private EditText nameEditText;
     private EditText passwordEditText;
 

@@ -7,10 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.spacetrader.R;
-import com.example.spacetrader.viewModel.ConfigViewModel;
 
 public class MainActivity extends AppCompatActivity {
-    private ConfigViewModel configViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

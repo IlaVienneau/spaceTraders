@@ -56,14 +56,6 @@ public class Player implements Serializable {
     }
 
     /**
-     * This method gets the id of the player
-     * @return the id of the player
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
      * This method sets the id of the player
      * @param id the id the player should have
      */
@@ -79,44 +71,8 @@ public class Player implements Serializable {
         return name;
     }
 
-    /**
-     * This method sets the name of the player
-     * @param name the name the player should have
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /**
-     * This method sets the pilot skill of the player
-     * @param pilotSkill the pilot skill the player should have
-     */
-
-    public void setPilotSkill(int pilotSkill) { this.pilotSkill = pilotSkill; }
-
-    /**
-     * This method sets the fighter skill of the player
-     * @param fighterSkill the fighter skill the player should have
-     */
-
-    public void setFighterSkill(int fighterSkill) { this.fighterSkill = fighterSkill; }
-
-    /**
-     * This method sets the engineer skill of the player
-     * @param engineerSkill the engineer skill the player should have
-     */
-
-    public void setEngineerSkill(int engineerSkill) { this.engineerSkill = engineerSkill; }
-
-    /**
-     * This method sets the trader skill of the player
-     * @param traderSkill the trader skill the player should have
-     */
-
-    public void setTraderSkill(int traderSkill) { this.traderSkill = traderSkill; }
-
-  
-  /**
      * This method gets the wallet of the player
      * @return the wallet of the player
      */
@@ -141,14 +97,6 @@ public class Player implements Serializable {
      * @return the ship of the player
      */
     public Ship getShip() { return ship;}
-
-    /**
-     * This method sets the type of ship the player has
-     * @param shipType the type of ship the player should have
-     */
-    public void setShipType(ShipType shipType) {
-        this.shipType = shipType;
-    }
 
     /**
      * This method gets the current capacity of the player's ship
@@ -178,22 +126,6 @@ public class Player implements Serializable {
      * @return the player's ship inventory
      */
     public void setShipInventory(ShipInventory inventory) { this.shipInventory = inventory; }
-
-    /**
-     * This method gets the difficulty of the game
-     * @return the difficulty of the game
-     */
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    /**
-     * This method sets the difficulty of the game
-     * @param difficulty the difficulty the game should have
-     */
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
-    }
 
     /**
      * This method sets the current planet to what the player should be on
@@ -235,23 +167,5 @@ public class Player implements Serializable {
      * @return the pilot skill level of the player
      */
     public int getPilotSkill() {return this.pilotSkill;}
-
-    /**
-     * This method gets the fighter skill level of the player
-     * @return the fighter skill level of the player
-     */
-    public int getFighterSkill() {return this.fighterSkill;}
-
-    /**
-     * This method gets the trader skill level of the player
-     * @return the trader skill level of the player
-     */
-    public int getTraderSkill() {return this.traderSkill;}
-
-    /**
-     * This method gets the engineer skill level of the player
-     * @return the engineer skill level of the player
-     */
-    public int getEngineerSkill() {return this.engineerSkill;}
 
 }

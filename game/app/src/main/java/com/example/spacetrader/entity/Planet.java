@@ -47,34 +47,10 @@ public class Planet implements Serializable {
     public String getName() {return this.name;}
 
     /**
-     * This method gets the tech level of the planet
-     * @return the tech level of the planet
-     */
-    public TechLevel getTechLevel() {return this.techLevel;}
-
-    /**
-     * This method gets the type of political system of the planet
-     * @return the political system of the planet
-     */
-    public PoliticalSystem getPoliticalSystem() {return  this.politicalSystem;}
-
-    /**
-     * This method gets the resources on the planet
-     * @return the resources on the planet
-     */
-    public Resource getResource() {return  this.resource;}
-
-    /**
      * This method gets the star associated with the planet
      * @return the star associated with the planet
      */
     public Star getStar() {return this.star;}
-
-    /**
-     * This method gets the boolean of if the planet was visited or not yet
-     * @return the visited boolean of the planet
-     */
-    public boolean getVisited() {return this.visited;}
 
     /**
      * This method gets the radical event that occurred
@@ -84,14 +60,6 @@ public class Planet implements Serializable {
     public RadicalEvent getRadicalEvent() {return this.radicalEvent;}
 
     // Setters
-
-  /**
-     * This method sets the visited boolean of the planet to true
-     */
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
 
     /**
      * This method sets the type of radical event that should occur

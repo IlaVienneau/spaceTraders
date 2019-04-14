@@ -185,15 +185,6 @@ public class TradeGood implements Serializable {
     }
 
     /**
-     * This method returns the type of the TradeGood.
-     *
-     * @return the type.
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
      * This method returns the ordinal of the minimum tech level to
      * produce the TradeGood.
      *
@@ -201,26 +192,6 @@ public class TradeGood implements Serializable {
      */
     public int getMtlp() {
         return mtlp;
-    }
-
-    /**
-     * This method returns the ordinal of the minimum tech level
-     * to use the TradeGood.
-     *
-     * @return the minimum tech level ordinal.
-     */
-    public int getMtlu() {
-        return mtlu;
-    }
-
-    /**
-     * This method returns the ordinal of the tech level which
-     * produces the most of this item.
-     *
-     * @return the tech level ordinal.
-     */
-    public int getTtp() {
-        return ttp;
     }
 
     /**
@@ -277,143 +248,6 @@ public class TradeGood implements Serializable {
      */
     public Resource getEr() {
         return er;
-    }
-
-    /**
-     * This method returns the minimum price the TradeGood can
-     * be sold at in a space trade encounter (not on a planet).
-     *
-     * @return the minimum price.
-     */
-    public int getMtl() {
-        return mtl;
-    }
-
-    /**
-     * This method returns the maximum price the TradeGood can
-     * be sold at in a space trade encounter (not on a planet).
-     *
-     * @return the maximum price.
-     */
-    public int getMth() {
-        return mth;
-    }
-
-    /**
-     * This method sets the name of the TradeGood.
-     *
-     * @param name the name to set.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * This method sets the type of the TradeGood.
-     *
-     * @param type the type to set.
-     */
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /**
-     * This method sets the ordinal of the minimum tech level to
-     * produce the TradeGood.
-     *
-     * @param mtlp the ordinal of the tech level.
-     */
-    public void setMtlp(int mtlp) {
-        this.mtlp = mtlp;
-    }
-
-    /**
-     * This method sets the ordinal of the minimum tech level to
-     * use the TradeGood.
-     *
-     * @param mtlu the ordinal of the tech level.
-     */
-    public void setMtlu(int mtlu) {
-        this.mtlu = mtlu;
-    }
-
-    /**
-     * This method sets the ordinal of the tech level which
-     * produces the most of this item.
-     *
-     * @param ttp the ordinal of the tech level.
-     */
-    public void setTtp(int ttp) {
-        this.ttp = ttp;
-    }
-
-    /**
-     * This method sets the price increase per tech level.
-     *
-     * @param ipl the price increase.
-     */
-    public void setIpl(int ipl) {
-        this.ipl = ipl;
-    }
-
-    /**
-     * This method sets the maximum percentage the price can vary
-     * above or below the base price.
-     *
-     * @param var the maximum variance percentage.
-     */
-    public void setVar(int var) {
-        this.var = var;
-    }
-
-    /**
-     * This method sets the radical event that drastically
-     * incrreases the price.
-     *
-     * @param ie the radical event.
-     */
-    public void setIe(RadicalEvent ie) {
-        this.ie = ie;
-    }
-
-    /**
-     * This method sets the resource that has an unusually
-     * low price.
-     *
-     * @param cr the resource.
-     */
-    public void setCr(Resource cr) {
-        this.cr = cr;
-    }
-
-    /**
-     * This method sets the resource that has an unusually
-     * low price.
-     *
-     * @param er the resource.
-     */
-    public void setEr(Resource er) {
-        this.er = er;
-    }
-
-    /**
-     * This method sets the minimum price the TradeGood can
-     * be sold at in a space trade encounter (not on a planet).
-     *
-     * @param mtl the minimum price.
-     */
-    public void setMtl(int mtl) {
-        this.mtl = mtl;
-    }
-
-    /**
-     * This method sets the maximum price the TradeGood can
-     * be sold at in a space trade encounter (not on a planet).
-     *
-     * @param mth the maximum price.
-     */
-    public void setMth(int mth) {
-        this.mth = mth;
     }
 
     /**

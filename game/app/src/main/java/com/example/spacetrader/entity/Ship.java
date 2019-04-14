@@ -2,7 +2,6 @@ package com.example.spacetrader.entity;
 import java.io.Serializable;
 
 public class Ship implements Serializable {
-    private final ShipType type;
     private int maxCapacity;
     private int fuel; //in parsecs/tank
     private int maxHullStrength;
@@ -50,12 +49,7 @@ public class Ship implements Serializable {
 
     private static final int grasshopperHull = avgHull;
 
-    public Ship(){
-        this(ShipType.GNAT);
-    }
-
     public Ship(ShipType type) {
-        this.type = type;
 
         int grasshopperMercenaryCapacity = 2;
         int grasshopperGadgetSlots = 1;
@@ -300,13 +294,6 @@ public class Ship implements Serializable {
     public int getMaxCapacity() {return maxCapacity;}
 
     /**
-     * This method returns the current cargo level.
-     *
-     * @return the current cargo level.
-     */
-    public int getCurrCapacity() { return currCapacity;}
-
-    /**
      * This method returns the current level of fuel.
      *
      * @return the current level of fuel.
@@ -346,74 +333,6 @@ public class Ship implements Serializable {
      * @param hullStrength the new hull strength.
      */
     public void setHullStrength(int hullStrength) { this.currHullStrength = hullStrength; }
-
-    /**
-     * This method returns the max hull strength for the current
-     * ship type.
-     *
-     * @return the max hull strength.
-     */
-    public int getMaxHullStrength() { return this.maxHullStrength; }
-
-    public int getMaxWeaponSlots() { return  this.maxWeaponSlots; }
-
-    public int getMaxShieldSlots() { return this.maxShieldSlots; }
-
-    public int getMaxGadgetSlots() { return this.maxGadgetSlots; }
-
-    public int getMaxMercenaryCapacity() { return this.maxMercenaryCapacity; }
-
-    public int getCurrHullStrength() { return this.currHullStrength; }
-
-    public int getCurrWeaponSlots() { return  this.currWeaponSlots; }
-
-    public int getCurrShieldSlots() { return this.currShieldSlots; }
-
-    public int getCurrGadgetSlots() { return this.currGadgetSlots; }
-
-    public int getCurrMercenaryCapacity() { return this.currMercenaryCapacity; }
-
-    public boolean getInsured() { return this.insured; }
-
-    public boolean getEscapePod() { return  this.escapePod; }
-
-    public void setCurrHullStrength(int hullStrength) {
-        if (hullStrength <= maxHullStrength) {
-            this.currHullStrength = hullStrength;
-        }
-    }
-
-    public void setCurrWeaponSlots(int slots) {
-        if (slots <= maxWeaponSlots) {
-            this.currWeaponSlots = slots;
-        }
-    }
-
-    public void setCurrShieldSlots(int slots) {
-        if (slots <= maxShieldSlots) {
-            this.currShieldSlots = slots;
-        }
-    }
-
-    public void setCurrGadgetSlots(int slots) {
-        if (slots <= maxGadgetSlots) {
-            this.currGadgetSlots = slots;
-        }
-    }
-
-    public void setCurrMercenaryCapacity(int mercs) {
-        if (mercs <= maxMercenaryCapacity) {
-            this.currMercenaryCapacity = mercs;
-        }
-    }
-
-    public void setInsured(boolean bool) {
-        this.insured = bool;
-    }
-
-    public void setEscapePod(boolean bool) {
-        this.escapePod = bool;
-    }
 
 }
 
