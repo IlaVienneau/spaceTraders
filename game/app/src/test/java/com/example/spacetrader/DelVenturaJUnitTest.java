@@ -45,6 +45,14 @@ public class DelVenturaJUnitTest {
         expected.put(narcotics, 1);
         expected.put(food, 1);
 
-        Assert.assertEquals(expected.keySet().toString(), testInventory.toString());
+        StringBuilder expectedString = new StringBuilder();
+
+        for (Map.Entry<TradeGood, Integer> g: expected.entrySet()) {
+            TradeGood good = g.getKey();
+            expectedString.append(good + " ");
+        }
+
+
+        Assert.assertEquals(expectedString.toString(), testInventory.toString());
     }
 }

@@ -31,17 +31,17 @@ public class ShipInventory implements Serializable {
 
     @NotNull
     public String toString() {
-        StringBuilder str = new StringBuilder("[");
+        StringBuilder str = new StringBuilder();
         Set<TradeGood> keys = inventory.keySet();
         Iterator<TradeGood> goods = keys.iterator();
         while (goods.hasNext()) {
             TradeGood good = goods.next();
             str.append(good.toString());
-            if (goods.hasNext()) {
-                str.append(", ");
-            }
+            str.append(" ");
+//            if (goods.hasNext()) {
+//                str.append(" ");
+//            }
         }
-        str.append("]");
         return str.toString();
     }
 
