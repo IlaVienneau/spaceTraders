@@ -1,8 +1,9 @@
 package com.example.spacetrader.entity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Random;
 
 public class PlanetInventory implements Serializable {
@@ -11,54 +12,31 @@ public class PlanetInventory implements Serializable {
         public int price;
     }
 
-    private HashMap<TradeGood, TradeStock> inventory;
-    private TechLevel techLevel;
-    private Resource resource;
-    private RadicalEvent event;
+    private final HashMap<TradeGood, TradeStock> inventory;
+    private final TechLevel techLevel;
+    private final Resource resource;
+    private final RadicalEvent event;
 
     /**
     * creates inventory of trade goods for this planet based on technology level. It creates 10 of
      * each relevant trade goodo and updates the price.
-     *
-     * @param tech: the TechLevel of this planet.
-     * @param pol: the political system of this planet
-     * @param res: the resource level of this planet
-     * @param event: the type of radical event that can happen.
+     *  @param tech : the TechLevel of this planet.
+     * @param res : the resource level of this planet
+     * @param event : the type of radical event that can happen.
      */
-    public PlanetInventory(TechLevel tech, PoliticalSystem pol, Resource res, RadicalEvent event) {
+    public PlanetInventory(TechLevel tech, Resource res, RadicalEvent event) {
         this.inventory = new HashMap<>();
         this.techLevel = tech;
         this.resource = res;
         this.event = event;
 
-        Iterable<TradeGood> arr = new ArrayList<>();
-        switch (tech) {
-            case PREAGRICULTURAL:
-                arr = TradeGood.getMTLPs(TechLevel.PREAGRICULTURAL.ordinal());
-                break;
-            case AGRICULTURAL:
-                arr = TradeGood.getMTLPs(TechLevel.AGRICULTURAL.ordinal());
-                break;
-            case MIDIEVAL:
-                arr = TradeGood.getMTLPs(TechLevel.MIDIEVAL.ordinal());
-                break;
-            case RENAISSANCE:
-                arr = TradeGood.getMTLPs(TechLevel.RENAISSANCE.ordinal());
-                break;
-            case EARLYINDUSTRIAL:
-                arr = TradeGood.getMTLPs(TechLevel.EARLYINDUSTRIAL.ordinal());
-                break;
-            case INDUSTRIAL:
-                arr = TradeGood.getMTLPs(TechLevel.INDUSTRIAL.ordinal());
-                break;
-            case POSTINDUSTRIAL:
-                arr = TradeGood.getMTLPs(TechLevel.POSTINDUSTRIAL.ordinal());
-                break;
-            case HITECH:
-                arr = TradeGood.getMTLPs(TechLevel.HITECH.ordinal());
-                break;
-        }
+        Iterable<TradeGood> arr = TradeGood.getMTLPs(tech.ordinal());
+        addToInventory(arr);
 
+        updatePrices();
+    }
+
+    private void addToInventory(Iterable<TradeGood> arr) {
         for (TradeGood t : arr) {
             TradeStock stock = new TradeStock();
             stock.price = 0;
@@ -66,18 +44,19 @@ public class PlanetInventory implements Serializable {
 
             inventory.put(t, stock);
         }
-
-        updatePrices();
     }
 
     /**
      *  updates the price of all trade goods in this planet's inventory
      *
      */
-    public void updatePrices() {
+    public final void updatePrices() {
         Random rand = new Random();
         for (TradeGood good : inventory.keySet()) {
             TradeStock stock = inventory.get(good);
+            if (stock == null) {
+                continue;
+            }
 
             int price = good.getBasePrice()
                     + (good.getIpl() * (techLevel.ordinal() - good.getMtlp()));
@@ -89,13 +68,18 @@ public class PlanetInventory implements Serializable {
             }
             price += var;
 
-            if (good.getIe().equals(this.event)) {
+            RadicalEvent ie = good.getIe();
+            if (ie != null && ie.equals(this.event)) {
                 price *= 5;
             }
-            if (good.getCr().equals(this.resource)) {
+
+            Resource cr = good.getCr();
+            if ((cr != null) && cr.equals(this.resource)) {
                 price /= 2;
             }
-            if (good.getEr().equals(this.resource)) {
+
+            Resource er = good.getEr();
+            if ((er != null) && er.equals(this.resource)) {
                 price *= 2;
             }
 
@@ -119,13 +103,14 @@ public class PlanetInventory implements Serializable {
         return inventory;
     }
 
+    @NotNull
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for (TradeGood trade : inventory.keySet()) {
-            str += trade.toString();
+            str.append(trade.toString());
         }
 
-        return str;
+        return str.toString();
     }
 }

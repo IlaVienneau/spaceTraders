@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -30,7 +31,7 @@ public class AppModule {
         return new SpaceTraderModel();
     }
 
-    private static String filename = "save.trader";
+    private static final String filename = "save.trader";
 
     public static boolean load(String username, String password,
                                Context context, SpaceTraderModel module) {
@@ -41,16 +42,17 @@ public class AppModule {
             in.close();
 
             Player restoredPlayer = restoredModule.player;
-            String name = restoredPlayer.getName();
 
-            if ((restoredPlayer != null) && name.equals(username) &&
-                    restoredPlayer.isCorrectPassword(password)) {
-                module.player = restoredModule.player;
-                module.universe = restoredModule.universe;
-                return true;
-            } else {
-                return false;
+            if ((restoredPlayer != null)) {
+                String name = restoredPlayer.getName();
+                if (name.equals(username) && restoredPlayer.isCorrectPassword(password)) {
+                    module.player = restoredModule.player;
+                    module.universe = restoredModule.universe;
+                    return true;
+                }
             }
+
+            return false;
         } catch (IOException e) {
             Log.e("AppModule", "Error reading an entry from binary file",e);
             return false;
@@ -60,18 +62,16 @@ public class AppModule {
         }
     }
 
-    public static boolean save(Context context, SpaceTraderModel model) {
+    public static void save(Context context, SpaceTraderModel model) {
         try {
             FileOutputStream stream = context.openFileOutput(filename, Context.MODE_PRIVATE);
-            ObjectOutputStream out = new ObjectOutputStream(stream);
+            ObjectOutput out = new ObjectOutputStream(stream);
             out.writeObject(model);
             out.close();
         } catch (IOException e) {
             Log.e("AppModule", "Error writing an entry from binary file",e);
-            return  false;
         }
 
-        return true;
     }
 
 }
