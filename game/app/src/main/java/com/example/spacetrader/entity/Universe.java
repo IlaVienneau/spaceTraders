@@ -1,14 +1,17 @@
 package com.example.spacetrader.entity;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.io.Serializable;
 
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
+@SuppressWarnings("MagicNumber")
 public class Universe implements Serializable {
-    private HashMap<String, Star> stars;
-
+    private final HashMap<String, Star> stars;
 
     /*
      * Creates a universe with 'size' # of stars
@@ -79,7 +82,6 @@ public class Universe implements Serializable {
                 int t = rand.nextInt(101);
                 TechLevel tech = levels[rand.nextInt(numLevels)];
                 Resource resource = res[rand.nextInt(numResources)];
-                PoliticalSystem political = poly[rand.nextInt(numPolitical)];
 
                 StarType star;
                 if (t <= 55) {
@@ -108,14 +110,13 @@ public class Universe implements Serializable {
 
                 if (i == 0) {
                     Star paradise = new Star("Paradise", star, x, y,  Resource.NOSPECIALRESOURCES,
-                            TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY);
+                            TechLevel.POSTINDUSTRIAL);
                     paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL,
-                            PoliticalSystem.DEMOCRACY,
                             Resource.NOSPECIALRESOURCES, paradise));
                     stars.put("Paradise", paradise);
                 } else {
                     String str = getStarName();
-                    stars.put(str, new Star(str, star, x, y, resource, tech, political));
+                    stars.put(str, new Star(str, star, x, y, resource, tech));
                 }
         }
     }
@@ -136,6 +137,10 @@ public class Universe implements Serializable {
      */
     public Planet getPlanet(String name, int num) {
         Star star = stars.get(name);
+        if (star == null) {
+            return null;
+        }
+
         return star.getPlanet(name + "-" + num);
     }
 
@@ -143,12 +148,14 @@ public class Universe implements Serializable {
      * This method represents the universe as a string
      * @return a string representation of the universe
      */
+    @NotNull
     public String toString() {
-        String str = "Fire Cobra-verse:  \n";
+        StringBuilder str = new StringBuilder("Fire Cobra-verse:  \n");
         for (Star s: stars.values()) {
-            str += s.toString() + "\n";
+            //noinspection ChainedMethodCall
+            str.append(s.toString()).append("\n");
         }
-        return str;
+        return str.toString();
     }
 
 

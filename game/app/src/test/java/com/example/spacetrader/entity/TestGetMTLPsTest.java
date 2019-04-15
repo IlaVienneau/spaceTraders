@@ -1,11 +1,11 @@
 package com.example.spacetrader.entity;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
+import java.util.List;
 
 public class TestGetMTLPsTest {
     //ArrayList<TradeGood> expectedArray;
@@ -18,7 +18,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel0() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(0);
@@ -27,7 +27,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel1() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
@@ -38,7 +38,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel2() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
@@ -49,7 +49,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel3() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
@@ -62,7 +62,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel4() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
@@ -77,7 +77,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel5() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
@@ -93,7 +93,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel6() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));

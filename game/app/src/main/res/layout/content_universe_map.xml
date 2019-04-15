@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +11,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginBottom="5dp"
-        android:text="Trade at the Marketplace"
+        android:text="@string/marketplace_textview"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tradeButton"
         app:layout_constraintStart_toStartOf="parent" />
@@ -25,7 +23,7 @@
         android:layout_marginTop="70dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:text="Trade"
+        android:text="@string/trade_button_text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="35dp"
-        android:text="Travel"
+        android:text="@string/travel_button_text"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/tradeButton"
         app:layout_constraintTop_toBottomOf="@+id/tradeButton" />
@@ -46,7 +44,7 @@
         android:layout_height="31dp"
         android:layout_marginTop="56dp"
         android:layout_marginBottom="8dp"
-        android:text="Ship Information"
+        android:text="@string/ship_info_textview"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/shipInfoButton"
         app:layout_constraintStart_toStartOf="@+id/TravelTextView"
@@ -57,7 +55,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="35dp"
-        android:text="see ship info"
+        android:text="@string/see_ship_info_text"
         app:layout_constraintEnd_toEndOf="@+id/tradeButton"
         app:layout_constraintTop_toBottomOf="@+id/travelButton" />
 
@@ -66,7 +64,7 @@
         android:layout_width="201dp"
         android:layout_height="31dp"
         android:layout_marginBottom="5dp"
-        android:text="Travel to nearby Planets"
+        android:text="@string/travel_textview"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/travelButton"
         app:layout_constraintStart_toStartOf="@+id/marketplaceTextView" />
