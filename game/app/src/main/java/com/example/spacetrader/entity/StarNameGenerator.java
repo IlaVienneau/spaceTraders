@@ -1,15 +1,13 @@
 package com.example.spacetrader.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.io.Serializable;
 
-public class StarNameGenerator implements Serializable {
-    static List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
+class StarNameGenerator implements Serializable {
+    private static final List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
             "Andevian", "Antedi", "Annabelle", "Balosnee", "Baratas", "Brax", "Bretel",
             "Beasley", "Calondia", "Campor", "Capellius", "Carzon", "Castor", "Cestus",
             "Cheron", "Courteney", "Daled", "Damast", "Davlos", "Deneb", "Deneva", "Devidia",
@@ -32,18 +30,9 @@ public class StarNameGenerator implements Serializable {
      * This method gets the name of the star, randomly generated
      * @return the name of the star that was randomly indexed
      */
-    public static String getStarName() {
+    static String getStarName() {
         Random rand = new Random();
-        Map<Integer, String> names = new HashMap<>();
-        int index = rand.nextInt(133);
-
-        if (!names.isEmpty()) {
-            while ((names.get(index) != null) && names.get(index).equals(starNames.get(index))) {
-                index = rand.nextInt(132);
-            }
-        }
-        names.put(index, starNames.get(index));
-
+        int index = rand.nextInt(starNames.size());
         return starNames.get(index);
     }
 

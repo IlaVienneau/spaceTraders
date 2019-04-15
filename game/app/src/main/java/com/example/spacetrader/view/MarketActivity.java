@@ -1,23 +1,24 @@
 package com.example.spacetrader.view;
 
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.ListAdapter;
-import android.support.v7.app.AppCompatActivity;
-import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Planet;
 import com.example.spacetrader.entity.PlanetInventory;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.TradeGood;
+import com.example.spacetrader.model.AppComponent;
 import com.example.spacetrader.model.AppModule;
-import android.widget.AdapterView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,13 +29,13 @@ import javax.inject.Inject;
 
 public class MarketActivity extends AppCompatActivity {
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     AppModule.SpaceTraderModel model;
 
     private Player player;
     private Planet planet;
 
-    private Toolbar toolbar;
     private TextView walletTextView;
     private ListView planetGoodsListView;
     private ListView cargoGoodsListView;
@@ -46,17 +47,17 @@ public class MarketActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((SpaceTrader) getApplication()).getAppComponent().inject(this);
+        AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        //noinspection LawOfDemeter
+        component.inject(this);
 
         setContentView(R.layout.activity_market);
 
-        Intent intent = getIntent();
-
         this.player = model.player;
-        this.planet = player.getCurrplanet();
+        this.planet = player.getCurrPlanet();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        walletTextView = (TextView) findViewById(R.id.walletTextView);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        walletTextView = findViewById(R.id.walletTextView);
         planetGoodsListView = findViewById(R.id.tradeGoodsListView);
         cargoGoodsListView = findViewById(R.id.cargoGoodsListView);
 
@@ -67,7 +68,8 @@ public class MarketActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Selling
                 TradeGood good = cargoGoods.get(position);
-                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
+                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet
+                        .getInventory();
                 PlanetInventory.TradeStock stock = planetInventory.get(good);
 
                 if (stock == null) {
@@ -118,21 +120,24 @@ public class MarketActivity extends AppCompatActivity {
 //                }
 
                 TradeGood good = planetGoods.get(position);
-                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet.getInventory();
+                HashMap<TradeGood, PlanetInventory.TradeStock> planetInventory = planet
+                        .getInventory();
                 PlanetInventory.TradeStock stock = planetInventory.get(good);
 
-                if (stock.quantity == 0) {
-                    Toast.makeText(
+                if ((stock == null) || (stock.quantity == 0)) {
+                    Toast toast = Toast.makeText(
                             MarketActivity.this, "None available!",
                             Toast.LENGTH_SHORT
-                    ).show();
+                    );
+                    toast.show();
 
                     return;
                 } else if (player.getWallet() < stock.price) {
-                    Toast.makeText(
+                    Toast toast = Toast.makeText(
                             MarketActivity.this, "Not enough credits!",
                             Toast.LENGTH_SHORT
-                    ).show();
+                    );
+                    toast.show();
 
                     return;
                 }
@@ -175,7 +180,7 @@ public class MarketActivity extends AppCompatActivity {
             planetGoodDescriptions.add(description);
         }
 
-        ListAdapter planetGoodsAdapter = new ArrayAdapter<String>(
+        ListAdapter planetGoodsAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 planetGoodDescriptions
@@ -197,7 +202,7 @@ public class MarketActivity extends AppCompatActivity {
             cargoGoodDescriptions.add(description);
         }
 
-        ListAdapter cargoGoodsAdapter = new ArrayAdapter<String>(
+        ListAdapter cargoGoodsAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 cargoGoodDescriptions

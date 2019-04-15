@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,7 +11,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="35dp"
         android:layout_weight="1"
-        android:text="Fuel"
+        android:text="@string/fuel_textview"
         app:layout_constraintStart_toStartOf="@+id/shipCurrCapTextView"
         app:layout_constraintTop_toBottomOf="@+id/shipCurrFuelTextView" />
 
@@ -22,7 +21,7 @@
         android:layout_height="24dp"
         android:layout_marginTop="35dp"
         android:layout_weight="1"
-        android:text="Cargo Capacity"
+        android:text="@string/cargo_capacity_textview"
         app:layout_constraintStart_toStartOf="@+id/shipFuelTextView"
         app:layout_constraintTop_toBottomOf="@+id/shipFuelTextView" />
 
@@ -33,7 +32,7 @@
         android:layout_marginTop="35dp"
         android:layout_weight="1"
         android:gravity="top"
-        android:text="Current Fuel"
+        android:text="@string/current_fuel_textview"
         app:layout_constraintStart_toStartOf="@+id/shipCurrCapTextView"
         app:layout_constraintTop_toBottomOf="@+id/shipCurrCapTextView" />
 
@@ -46,7 +45,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="85dp"
         android:layout_weight="1"
-        android:text="Current Capacity"
+        android:text="@string/current_capacity_textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -58,7 +57,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="32dp"
-        android:text="Buy Fuel"
+        android:text="@string/buy_fuel_textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shipCapTextView" />
 
@@ -69,7 +68,7 @@
         android:layout_marginStart="72dp"
         android:layout_marginLeft="72dp"
         android:layout_marginTop="32dp"
-        android:text="Wallet"
+        android:text="@string/wallet_textview"
         app:layout_constraintStart_toEndOf="@+id/buyFuelButton"
         app:layout_constraintTop_toBottomOf="@+id/shipCapTextView" />
 </android.support.constraint.ConstraintLayout>

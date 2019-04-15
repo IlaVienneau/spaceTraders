@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -11,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="Wallet"
+        android:text="@string/wallet"
         android:textSize="24sp"
         android:padding="10dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,6 +18,7 @@
         android:textColor="#FFFFFFFF"/>
 
     <LinearLayout
+        android:baselineAligned="false"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:gravity="center_horizontal"
-                android:text="Buy"
+                android:text="@string/buy_textview"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:gravity="center_horizontal"
-                android:text="Sell"
+                android:text="@string/sell_textview"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

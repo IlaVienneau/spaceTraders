@@ -1,57 +1,54 @@
 package com.example.spacetrader.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
-import com.example.spacetrader.R;
-import com.example.spacetrader.SpaceTrader;
-import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.Ship;
-import com.example.spacetrader.entity.ShipType;
-import com.example.spacetrader.model.AppModule;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.spacetrader.R;
+import com.example.spacetrader.SpaceTrader;
+import com.example.spacetrader.entity.Player;
+import com.example.spacetrader.entity.Ship;
+import com.example.spacetrader.model.AppComponent;
+import com.example.spacetrader.model.AppModule;
+
 import javax.inject.Inject;
 
 public class ShipInfoActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private Player player;
-    private Ship ship;
-    private ShipType shipType;
     private TextView fuelTextView;
     private TextView capTextView;
     private TextView currCapTextView;
     private TextView currFuelTextView;
     private TextView walletTextView;
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     AppModule.SpaceTraderModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((SpaceTrader) getApplication()).getAppComponent().inject(this);   //what
+        AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        component.inject(this);
 
         setContentView(R.layout.activity_ship);
 
-        toolbar = (Toolbar) findViewById(R.id.shipToolBar);
+        Toolbar toolbar = findViewById(R.id.shipToolBar);
         player = model.player;
 
         toolbar.setTitle("Ship Information");
         toolbar.setSubtitle("" + player.getShipType() + "");
 
-        currCapTextView = (TextView) findViewById(R.id.shipCurrCapTextView);
-        currFuelTextView = (TextView) findViewById(R.id.shipCurrFuelTextView);
-        fuelTextView = (TextView) findViewById(R.id.shipFuelTextView);
-        capTextView = (TextView) findViewById(R.id.shipCapTextView);
-        walletTextView = (TextView) findViewById(R.id.wallet);
+        currCapTextView = findViewById(R.id.shipCurrCapTextView);
+        currFuelTextView = findViewById(R.id.shipCurrFuelTextView);
+        fuelTextView = findViewById(R.id.shipFuelTextView);
+        capTextView = findViewById(R.id.shipCapTextView);
+        walletTextView = findViewById(R.id.wallet);
 
 
         Button fuelButton = findViewById(R.id.buyFuelButton);
@@ -59,10 +56,11 @@ public class ShipInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //update to check that we need fuel when we change curr fuel
-                if (player.getWallet() > 5 &&
-                    player.getShip().getCurrFuel() < player.getShip().getFuel()) {
-                    player.getShip().setCurrFuel(player.getShip().getCurrFuel() + 1);
-                    player.setWallet(player.getWallet() - 5);
+                Ship ship = player.getShip();
+                int wallet = player.getWallet();
+                if (wallet > 5 && (ship.getCurrFuel() < ship.getFuel())) {
+                    ship.setCurrFuel(ship.getCurrFuel() + 1);
+                    player.setWallet(wallet - 5);
                 } else {
                     String message = "Not enough money to buy fuel or fuel tank full.";
                     Toast toast = Toast.makeText(
@@ -84,7 +82,8 @@ public class ShipInfoActivity extends AppCompatActivity {
         int maxFuelCapacity = ship.getFuel();
         int currFuel = ship.getCurrFuel();
 
-        currCapTextView.setText("Cargo Space Available: " + (maxCargoCapacity - currCargoLoad) + "");
+        currCapTextView.setText("Cargo Space Available: "
+                + (maxCargoCapacity - currCargoLoad) + "");
         currFuelTextView.setText("Fuel available" + currFuel + "");
         fuelTextView.setText("Fuel Capacity: " + maxFuelCapacity + "");
         capTextView.setText("Max Cargo Capacity: " + maxCargoCapacity + "");

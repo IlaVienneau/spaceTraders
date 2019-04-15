@@ -1,18 +1,17 @@
 package com.example.spacetrader.entity;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.io.Serializable;
 
 import static com.example.spacetrader.entity.StarNameGenerator.getStarName;
 
+@SuppressWarnings("MagicNumber")
 public class Universe implements Serializable {
-    private HashMap<String, Star> stars;
-    private static int numTypes = 6;
-    private static int numLevels = 8;
-    private static int numPolitical = 17;
-    private static int numResources = 13;
-
+    private final HashMap<String, Star> stars;
 
     /*
      * Creates a universe with 'size' # of stars
@@ -39,10 +38,12 @@ public class Universe implements Serializable {
         } else {
             max = 25; //sqrt of 500
         }
-        //create a random integer btwn 0 and 100, if it falls btwn 0 and 55 make it main etc
-        //index into the array of the enum to get star types
+        // create a random integer between 0 and 100, if it
+        // falls between 0 and 55 make it main etc
+        // index into the array of the enum to get star types
         Random rand = new Random();
 
+        int numTypes = 6;
         StarType[] types = new StarType[numTypes];
         int k = 0;
         for (StarType type : StarType.values()) {
@@ -50,6 +51,7 @@ public class Universe implements Serializable {
             k++;
         }
 
+        int numLevels = 8;
         TechLevel[] levels = new TechLevel[numLevels];
         k = 0;
         for (TechLevel level : TechLevel.values()) {
@@ -58,6 +60,7 @@ public class Universe implements Serializable {
         }
 
 
+        int numResources = 13;
         Resource[] res = new Resource[numResources];
         k = 0;
         for (Resource r : Resource.values()) {
@@ -65,6 +68,7 @@ public class Universe implements Serializable {
             k++;
         }
 
+        int numPolitical = 17;
         PoliticalSystem[] poly = new PoliticalSystem[numPolitical];
         k = 0;
         for (PoliticalSystem p : PoliticalSystem.values()) {
@@ -78,7 +82,6 @@ public class Universe implements Serializable {
                 int t = rand.nextInt(101);
                 TechLevel tech = levels[rand.nextInt(numLevels)];
                 Resource resource = res[rand.nextInt(numResources)];
-                PoliticalSystem political = poly[rand.nextInt(numPolitical)];
 
                 StarType star;
                 if (t <= 55) {
@@ -107,13 +110,13 @@ public class Universe implements Serializable {
 
                 if (i == 0) {
                     Star paradise = new Star("Paradise", star, x, y,  Resource.NOSPECIALRESOURCES,
-                            TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY);
-                    paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL, PoliticalSystem.DEMOCRACY,
+                            TechLevel.POSTINDUSTRIAL);
+                    paradise.addPlanet(new Planet("Paradise-1", TechLevel.POSTINDUSTRIAL,
                             Resource.NOSPECIALRESOURCES, paradise));
                     stars.put("Paradise", paradise);
                 } else {
                     String str = getStarName();
-                    stars.put(str, new Star(str, star, x, y, resource, tech, political));
+                    stars.put(str, new Star(str, star, x, y, resource, tech));
                 }
         }
     }
@@ -122,7 +125,7 @@ public class Universe implements Serializable {
      * This method gets the stars in the universe and puts them in a hash map
      * @return a hash map containing the stars in the universe
      */
-    public HashMap<String, Star> getStars() {
+    public Map<String, Star> getStars() {
         return stars;
     }
 
@@ -134,20 +137,25 @@ public class Universe implements Serializable {
      */
     public Planet getPlanet(String name, int num) {
         Star star = stars.get(name);
-        Planet planet = star.getPlanet(name + "-" + num);
-        return planet;
+        if (star == null) {
+            return null;
+        }
+
+        return star.getPlanet(name + "-" + num);
     }
 
     /**
      * This method represents the universe as a string
      * @return a string representation of the universe
      */
+    @NotNull
     public String toString() {
-        String str = "Fire Cobra-verse:  \n";
+        StringBuilder str = new StringBuilder("Fire Cobra-verse:  \n");
         for (Star s: stars.values()) {
-            str += s.toString() + "\n";
+            //noinspection ChainedMethodCall
+            str.append(s.toString()).append("\n");
         }
-        return str;
+        return str.toString();
     }
 
 

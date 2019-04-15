@@ -1,82 +1,95 @@
 package com.example.spacetrader.entity;
 import java.io.Serializable;
 
+@SuppressWarnings("MagicNumber")
 public class Ship implements Serializable {
-    private ShipType type;
+    private static final int grasshopperFuel = 15;
+    private static final int grasshopperCap = 30;
+    private static final int bumblebeeFuel = 15;
+    private static final int bumblebeeCap = 20;
+    private static final int mosquitoFuel = 13;
+    private static final int mosquitoCap = 15;
+    private static final int termiteFuel = 13;
+    private static final int termiteCap = 60;
+    private static final int fireflyFuel = 17;
+    private static final int fireflyCap = 20;
+    private static final int hornetFuel = 16;
+    private static final int hornetCap = 20;
+    private static final int beetleFuel = 14;
+    private static final int beetleCap = 50;
+    private static final int waspFuel = 14;
+    private static final int waspCap = 35;
+    private static final int gnatFuel = 14;
+    private static final int gnatCap = 15;
+    private static final int fleaFuel = 20;
+    private static final int fleaCap = 5;
+
     private int maxCapacity;
     private int fuel; //in parsecs/tank
-    private int currCapacity;
-    private int currFuel; //should update to be the same for all and be the amount of gallons in
-    // a tank. this should also change how we calculate having enough fuel to travel to planets
-    private int hullStrength;
-    private int maxHullStrength;
 
-    public Ship(){
-        this(ShipType.GNAT);
-    }
+    private int currFuel; //should update to be the same for all and be the amount of gallons in
 
     public Ship(ShipType type) {
-        this.type = type;
         switch(type) {
             case FLEA:
-                maxCapacity = 0;   //not sure how many it actually has, just says few in centre
-                currCapacity = 0;
-                fuel = 20;
-                currFuel = 20;
+                maxCapacity = fleaCap;
+                fuel = fleaFuel;
+
+                currFuel = fuel;
                 break;
             case GNAT:
-                maxCapacity = 15;
-                fuel = 14;
-                currCapacity = 15;
-                currFuel = 14;
+                maxCapacity = gnatCap;
+                fuel = gnatFuel;
+
+                currFuel = fuel;
                 break;
             case WASP:
-                maxCapacity = 35;
-                fuel = 14;
-                currCapacity = 35;
-                currFuel = 14;
+                maxCapacity = waspCap;
+                fuel = waspFuel;
+
+                currFuel = fuel;
                 break;
             case BEETLE:
-                maxCapacity = 50;
-                fuel = 14;
-                currCapacity = 50;
-                currFuel = 14;
+                maxCapacity = beetleCap;
+                fuel = beetleFuel;
+
+                currFuel = fuel;
                 break;
             case HORNET:
-                maxCapacity = 20;
-                fuel = 16;
-                currCapacity = 20;
-                currFuel = 16;
+                maxCapacity = hornetCap;
+                fuel = hornetFuel;
+
+                currFuel = fuel;
                 break;
             case FIREFLY:
-                maxCapacity = 20;
-                fuel = 17;
-                currCapacity = 20;
-                currFuel = 17;
+                maxCapacity = fireflyCap;
+                fuel = fireflyFuel;
+
+                currFuel = fuel;
                 break;
             case TERMITE:
-                maxCapacity = 60;
-                fuel = 14;
-                currCapacity = 60;
-                currFuel = 14;
+                maxCapacity = termiteCap;
+                fuel = termiteFuel;
+
+                currFuel = fuel;
                 break;
             case MOSQUITO:
-                maxCapacity = 15;
-                fuel = 13;
-                currCapacity = 15;
-                currFuel = 13;
+                maxCapacity = mosquitoCap;
+                fuel = mosquitoFuel;
+
+                currFuel = fuel;
                 break;
             case BUMBLEBEE:
-                maxCapacity = 20;
-                fuel = 15;
-                currCapacity = 20;
-                currFuel = 15;
+                maxCapacity = bumblebeeCap;
+                fuel = bumblebeeFuel;
+
+                currFuel = fuel;
                 break;
             case GRASSHOPPER:
-                maxCapacity = 30;
-                fuel = 15;
-                currCapacity = 30;
-                currFuel = 15;
+                maxCapacity = grasshopperCap;
+                fuel = grasshopperFuel;
+
+                currFuel = fuel;
                 break;
         }
     }
@@ -88,13 +101,6 @@ public class Ship implements Serializable {
      * @return the max cargo capacity.
      */
     public int getMaxCapacity() {return maxCapacity;}
-
-    /**
-     * This method returns the current cargo level.
-     *
-     * @return the current cargo level.
-     */
-    public int getCurrCapacity() { return currCapacity;}
 
     /**
      * This method returns the current level of fuel.
@@ -120,30 +126,6 @@ public class Ship implements Serializable {
      * @return the fuel economy.
      */
     public int getFuel() {return fuel;}
-
-    /**
-     * This method returns the current hull strength for the
-     * player's ship.
-     *
-     * @return the current hull strength.
-     */
-    public int getHullStrength() { return this.hullStrength; }
-
-    /**
-     * This method sets the current hull strength after an event
-     * in which hull damage is possible.
-     *
-     * @param hullStrength the new hull strength.
-     */
-    public void setHullStrength(int hullStrength) { this.hullStrength = hullStrength; }
-
-    /**
-     * This method returns the max hull strength for the current
-     * ship type.
-     *
-     * @return the max hull strength.
-     */
-    public int getMaxHullStrength() { return this.maxHullStrength; }
 
 }
 

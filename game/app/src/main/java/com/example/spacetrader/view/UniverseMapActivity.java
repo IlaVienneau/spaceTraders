@@ -12,6 +12,7 @@ import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Planet;
 import com.example.spacetrader.entity.Star;
+import com.example.spacetrader.model.AppComponent;
 import com.example.spacetrader.model.AppModule;
 
 import javax.inject.Inject;
@@ -19,20 +20,21 @@ import javax.inject.Inject;
 public class UniverseMapActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private ListView travelListView;
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     AppModule.SpaceTraderModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((SpaceTrader) getApplication()).getAppComponent().inject(this);
+        AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        //noinspection LawOfDemeter
+        component.inject(this);
 
         setContentView(R.layout.activity_universe_map);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        travelListView = (ListView) findViewById(R.id.travelListView);
+        toolbar = findViewById(R.id.toolbar);
 
         Button tradeButton = findViewById(R.id.tradeButton);
         tradeButton.setOnClickListener(new View.OnClickListener() {
@@ -60,20 +62,20 @@ public class UniverseMapActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        update();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        update();
+
+        Planet planet = model.player.getCurrPlanet();
+        update(planet);
     }
 
-    private void update() {
-        Planet planet = model.player.getCurrplanet();
+    private void update(Planet planet) {
         Star star = planet.getStar();
-        toolbar.setTitle("Current Location: " + planet.getName());
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getxCord() + ", " + star.getyCord() + ")");
 
+        toolbar.setTitle("Current Location: " + planet.getName());
+        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getXCord() + ", " + star.getYCord() + ")");
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,7 +29,7 @@
         android:layout_width="48dp"
         android:layout_height="19dp"
         android:layout_marginTop="30dp"
-        android:text="Gnat"
+        android:text="@string/gnat_ship_textview"
         app:layout_constraintStart_toStartOf="@+id/engineerSeekBar"
         app:layout_constraintTop_toBottomOf="@+id/engineerLabel" />
 
@@ -37,7 +38,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Create"
+        android:text="@string/create_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/difficultySpinner"
         app:layout_constraintStart_toStartOf="@+id/difficultySpinner" />
@@ -48,11 +49,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="Enter name"
+        android:hint="@string/name_hint"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/difficultySpinner"
         app:layout_constraintStart_toStartOf="@+id/difficultySpinner"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <Spinner
         android:id="@+id/difficultySpinner"
@@ -82,7 +84,7 @@
         android:id="@+id/pointCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="16"
+        android:text="@string/pointCount"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/name"
@@ -136,7 +138,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="294dp"
         android:layout_marginRight="294dp"
-        android:text="Ship Type:"
+        android:text="@string/ship_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/skillsPointsLabel"
         app:layout_constraintTop_toBottomOf="@+id/engineerLabel" />
@@ -191,7 +193,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Create password"
+        android:hint="@string/password_hint"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
