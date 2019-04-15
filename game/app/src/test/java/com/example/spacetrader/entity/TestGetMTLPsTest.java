@@ -15,10 +15,6 @@ public class TestGetMTLPsTest {
         //ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testExceptions() throws Exception {
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(-1);
-    }
 
     @Test
     public void testTechLevel0() {
