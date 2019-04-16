@@ -119,7 +119,8 @@ public class ConfigActivity extends AppCompatActivity {
 
 
         Spinner difficultySpinner = findViewById(R.id.difficultySpinner);
-        ArrayAdapter difficultyAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Difficulty.values());
+        ArrayAdapter difficultyAdapter = new ArrayAdapter(
+                this, android.R.layout.simple_spinner_item, Difficulty.values());
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(difficultyAdapter);
 
@@ -274,8 +275,10 @@ public class ConfigActivity extends AppCompatActivity {
                 model.universe = universe;
                 AppModule.save(getApplicationContext(), model);
 
-//                System.out.print("Set player to:  " + universe.getPlanet("Paradise", 1).toString());
-                Intent intent = new Intent(ConfigActivity.this, UniverseMapActivity.class);
+//                System.out.print("Set player to:  "
+//                      + universe.getPlanet("Paradise", 1).toString());
+                Intent intent = new Intent(
+                        ConfigActivity.this, UniverseMapActivity.class);
                 startActivity(intent);
 //                System.out.println("Universe Created");
 //                System.out.println(universe.toString());

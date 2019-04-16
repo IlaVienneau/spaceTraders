@@ -9,8 +9,8 @@ import java.util.Random;
 import java.io.Serializable;
 
 class StarNameGenerator implements Serializable {
-    private static List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn", "Aldea",
-            "Andevian", "Antedi", "Annabelle", "Balosnee", "Baratas", "Brax", "Bretel",
+    private static List<String> starNames = new ArrayList<>(Arrays.asList("Acamar", "Adahn",
+            "Aldea", "Andevian", "Antedi", "Annabelle", "Balosnee", "Baratas", "Brax", "Bretel",
             "Beasley", "Calondia", "Campor", "Capellius", "Carzon", "Castor", "Cestus",
             "Cheron", "Courteney", "Daled", "Damast", "Davlos", "Deneb", "Deneva", "Devidia",
             "Dryalon", "Drema", "Endor", "Esmee", "Exo", "Ferris", "Festen", "Fourmi",

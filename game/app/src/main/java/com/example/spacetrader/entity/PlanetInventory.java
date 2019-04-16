@@ -89,13 +89,13 @@ public class PlanetInventory implements Serializable {
             }
             price += var;
 
-            if (good.getIe().equals(this.event)) {
+            if (this.event.equals(good.getIe())) {
                 price *= 5;
             }
-            if (good.getCr().equals(this.resource)) {
+            if (this.resource.equals(good.getCr())) {
                 price /= 2;
             }
-            if (good.getEr().equals(this.resource)) {
+            if (this.resource.equals(good.getEr())) {
                 price *= 2;
             }
 

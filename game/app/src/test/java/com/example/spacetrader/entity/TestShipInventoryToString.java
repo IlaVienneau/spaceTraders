@@ -120,7 +120,8 @@ public class TestShipInventoryToString {
         trial.getInventory().put(new TradeGood("narcotics"), 1);
         trial.getInventory().put(new TradeGood("robots"), 1);
         String trialString = trial.toString();
-        assertEquals("furs narcotics ore firearms games medicine machines robots water food ", trialString);
+        assertEquals("furs narcotics ore firearms games medicine " +
+                "machines robots water food ", trialString);
     }
 
 }

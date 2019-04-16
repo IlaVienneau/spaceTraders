@@ -107,7 +107,6 @@ public class MarketActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Buying
 
-                // TODO: capacity
 //                if (player.getShipCurrentCapacity() <= player.getShip().getCapacity()) {
 //                    Toast.makeText(
 //                            MarketActivity.this, "Ship is out of room!",

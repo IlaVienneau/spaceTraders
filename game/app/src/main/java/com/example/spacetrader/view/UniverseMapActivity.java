@@ -73,7 +73,8 @@ public class UniverseMapActivity extends AppCompatActivity {
         Star star = planet.getStar();
         toolbar.setTitle("Current Location: " + planet.getName());
 
-        toolbar.setSubtitle("Star: " + star.getName() + " at (" + star.getXCord() + ", " + star.getYCord() + ")");
+        toolbar.setSubtitle("Star: " + star.getName()
+                + " at (" + star.getXCord() + ", " + star.getYCord() + ")");
 
 
     }
