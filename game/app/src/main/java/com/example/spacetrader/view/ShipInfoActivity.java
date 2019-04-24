@@ -57,7 +57,7 @@ public class ShipInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //update to check that we need fuel when we change curr fuel
-                if ((player.getWallet() > 5) &&
+                if ((player.getWallet() >= 5) &&
                         (player.getShip().getCurrFuel() < player.getShip().getFuel())) {
                     player.getShip().setCurrFuel(player.getShip().getCurrFuel() + 1);
                     player.setWallet(player.getWallet() - 5);
@@ -72,7 +72,109 @@ public class ShipInfoActivity extends AppCompatActivity {
                 update();
             }
         });
+
+        Button weaponButton = findViewById(R.id.upgradeWeaponsButton);
+        weaponButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //update to check that player can purchase upgrades to weapons
+                if ((player.getWallet() >= 500) &&
+                        (player.getShip().getCurrShieldSlots() <
+                                player.getShip().getMaxWeaponSlots())) {
+                    player.getShip().setCurrWeaponSlots(player.getShip().getCurrWeaponSlots() + 1);
+                    player.setWallet(player.getWallet() - 500);
+                } else {
+                    String message = "Not enough money to upgrade weapon arsenal" +
+                            " or weapon arsenal at max upgrades.";
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+                }
+                update();
+            }
+        });
+
+        Button shieldButton = findViewById(R.id.upgradeShieldsButton);
+        shieldButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //update to check that player can purchase upgrades to shields
+                if ((player.getWallet() >= 750) &&
+                        (player.getShip().getCurrShieldSlots() <
+                                player.getShip().getMaxShieldSlots())) {
+                    player.getShip().setCurrShieldSlots(player.getShip().getMaxShieldSlots() + 1);
+                    player.setWallet(player.getWallet() - 750);
+                } else {
+                    String message = "Not enough money to upgrade shield array" +
+                            " or shield array at max upgrades.";
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+                }
+                update();
+            }
+        });
+
+        Button insuranceButton = findViewById(R.id.buyInsuranceButton);
+        insuranceButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                //update to check that player can buy insurance
+                if (player.getShip().getInsured()) {
+                    String message = "This ship is already insured";
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+                }else if ((player.getWallet() >= 2000) &&
+                        (!player.getShip().getInsured())) {
+                    player.getShip().setInsured(true);
+                    player.setWallet(player.getWallet() - 2000);
+                } else {
+                    String message = "Not enough money to buy insurance.";
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+                }
+                update();
+            }
+        });
+
+        Button escapePodButton = findViewById(R.id.buyEscapePodButton);
+        escapePodButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                //update to check that we need fuel when we change curr fuel
+                if (player.getShip().getEscapePod()) {
+                    String message = "This ship already has an escape pod installed";
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+                }else if ((player.getWallet() >= 250) &&
+                        (!player.getShip().getEscapePod())) {
+                    player.getShip().setEscapePod(true);
+                    player.setWallet(player.getWallet() - 250);
+                } else {
+                    String message = "Not enough money to buy escape pod.";
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+                }
+                update();
+            }
+        });
         update();
+
+
     }
 
     private void update() {
