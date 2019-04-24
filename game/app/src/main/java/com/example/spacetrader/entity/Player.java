@@ -149,6 +149,10 @@ public class Player implements Serializable {
         policeProb += 1;
     }
 
+    public int getPoliceProb() {
+        return policeProb;
+    }
+
     public int getPilotSkill() {return pilotSkill;}
 
     /**

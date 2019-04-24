@@ -1,5 +1,6 @@
 package com.example.spacetrader.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -71,7 +72,12 @@ public class TravelActivity extends AppCompatActivity {
                 Player player = model.player;
                 Ship ship = player.getShip();
 
-                player.increasePoliceProb();   //FOR POLICE ENCOUNTER
+                player.increasePoliceProb();
+
+                if (player.getPoliceProb() > 25) {
+                    Intent intent = new Intent(TravelActivity.this, PoliceActivity.class);
+                    startActivity(intent);
+                }
 
                 Planet planet = player.getCurrPlanet();
                 Star star = planet.getStar();
