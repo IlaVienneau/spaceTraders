@@ -153,6 +153,10 @@ public class Player implements Serializable {
         return policeProb;
     }
 
+    public void resetPoliceProb() {
+        policeProb = 0;
+    }
+
     public int getPilotSkill() {return pilotSkill;}
 
     /**
