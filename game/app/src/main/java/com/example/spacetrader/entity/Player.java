@@ -13,6 +13,8 @@ public class Player implements Serializable {
     private final String name;
     private final String password;
 
+    private int policeProb;
+
     private final ShipType shipType;
     private final Ship ship;
     private ShipInventory shipInventory;
@@ -49,6 +51,7 @@ public class Player implements Serializable {
         this.engineerSkill = engineerSkill;
         this.shipInventory = new ShipInventory();
         this.wallet = 1000;
+        policeProb = 0;
     }
 
     /**
@@ -141,6 +144,12 @@ public class Player implements Serializable {
                 "Trader Skill:" + traderSkill + "\n" +
                 "Engineer Skill:" + engineerSkill);
     }
+
+    public void increasePoliceProb() {
+        policeProb += 1;
+    }
+
+    public int getPilotSkill() {return pilotSkill;}
 
     /**
      * This method checks to see if the password the user entered was correct

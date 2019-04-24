@@ -71,6 +71,8 @@ public class TravelActivity extends AppCompatActivity {
                 Player player = model.player;
                 Ship ship = player.getShip();
 
+                player.increasePoliceProb();   //FOR POLICE ENCOUNTER
+
                 Planet planet = player.getCurrPlanet();
                 Star star = planet.getStar();
                 int prevX = star.getXCord();

@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
+
 public class TestGetMTLPsTest {
     //ArrayList<TradeGood> expectedArray;
 
@@ -21,7 +23,7 @@ public class TestGetMTLPsTest {
         List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(0);
+        List<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(0);
         assertEquals(expectedArray, actualArray);
     }
 
@@ -31,7 +33,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(1);
+        List<TradeGood> actualArray = (java.util.List<TradeGood>) TradeGood.getMTLPs(1);
         assertEquals(expectedArray, actualArray);
 
     }
@@ -43,7 +45,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
         expectedArray.add(new TradeGood("ore"));
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(2);
+        java.util.List<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(2);
         assertEquals(expectedArray, actualArray);
     }
 
@@ -56,7 +58,7 @@ public class TestGetMTLPsTest {
         expectedArray.add(new TradeGood("ore"));
         expectedArray.add(new TradeGood("games"));
         expectedArray.add(new TradeGood("firearms"));
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(3);
+        java.util.List<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(3);
         assertEquals(expectedArray, actualArray);
     }
 
