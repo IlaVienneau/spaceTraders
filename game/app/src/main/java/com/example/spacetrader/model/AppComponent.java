@@ -3,6 +3,7 @@ package com.example.spacetrader.model;
 import com.example.spacetrader.view.ConfigActivity;
 import com.example.spacetrader.view.LoginActivity;
 import com.example.spacetrader.view.MarketActivity;
+import com.example.spacetrader.view.PoliceActivity;
 import com.example.spacetrader.view.ShipInfoActivity;
 import com.example.spacetrader.view.TravelActivity;
 import com.example.spacetrader.view.UniverseMapActivity;
@@ -21,4 +22,6 @@ public interface AppComponent {
     void inject(TravelActivity activity);
     void inject(ShipInfoActivity activity);
     void inject(LoginActivity activity);
+    void inject(PoliceActivity activity);
+
 }

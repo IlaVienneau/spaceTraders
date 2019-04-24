@@ -21,9 +21,6 @@ public class TradeGood implements Serializable {
     private Resource cr;    // When this condition is present,
                             // the price of this resource is unusually low
     @Nullable
-
-
-    @Nullable
     private Resource er;    // When this condition is present, the resource is expensive
     private int basePrice;  //
 

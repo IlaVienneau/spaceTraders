@@ -58,6 +58,12 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".view.UniverseMapActivity">
         </activity>
+        <activity
+            android:name=".view.PoliceActivity"
+            android:label="Police"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".view.TravelActivity">
+        </activity>
     </application>
 
 </manifest>
