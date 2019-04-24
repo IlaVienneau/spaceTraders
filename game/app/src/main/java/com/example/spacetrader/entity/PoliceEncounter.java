@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class PoliceEncounter {
 
+
     public boolean flee(Player player) {
         Random rand = new Random();
         int randomChance = rand.nextInt(100) + 1;
