@@ -5,20 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Planet;
-import com.example.spacetrader.entity.PlanetInventory;
 import com.example.spacetrader.entity.Player;
-import com.example.spacetrader.entity.TradeGood;
+import com.example.spacetrader.entity.PoliceEncounter;
 import com.example.spacetrader.model.AppModule;
 
 import java.util.ArrayList;
@@ -54,23 +49,20 @@ public class PoliceActivity extends AppCompatActivity {
         fineTextView.setText("Fine: ");
 
         toolbar.setTitle("Police Encounter");
+        player = model.player;
 
         Button payFineButton = findViewById(R.id.payButton);
+        final PoliceEncounter police = new PoliceEncounter();
+
         payFineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((player.getWallet() > 5) &&
-                        (player.getShip().getCurrFuel() < player.getShip().getFuel())) {
-                    player.getShip().setCurrFuel(player.getShip().getCurrFuel() + 1);
-                    player.setWallet(player.getWallet() - 5);
-                } else {
-                    String message = "Not enough money to buy fuel or fuel tank full.";
-                    Toast toast = Toast.makeText(
-                            PoliceActivity.this, message,
-                            Toast.LENGTH_SHORT
-                    );
-                    toast.show();
-                }
+                police.pay(player);
+                Toast toast = Toast.makeText(
+                        PoliceActivity.this, "You paid the fine. Your wallet is now " + player.getWallet(),
+                        Toast.LENGTH_SHORT
+                );
+                toast.show();
             }
         });
 
@@ -78,20 +70,24 @@ public class PoliceActivity extends AppCompatActivity {
         fleeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ((player.getWallet() > 5) &&
-                        (player.getShip().getCurrFuel() < player.getShip().getFuel())) {
-                    player.getShip().setCurrFuel(player.getShip().getCurrFuel() + 1);
-                    player.setWallet(player.getWallet() - 5);
-                } else {
-                    String message = "Not enough money to buy fuel or fuel tank full.";
+                boolean success = police.flee(player);
+
+                if (success) {
                     Toast toast = Toast.makeText(
-                            PoliceActivity.this, message,
+                            PoliceActivity.this, "You got away!",
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+                } else {
+                    Toast toast = Toast.makeText(
+                            PoliceActivity.this, "They caught you! You lose half of your credits",
                             Toast.LENGTH_SHORT
                     );
                     toast.show();
                 }
+
             }
         });
 
-
+    }
 }
