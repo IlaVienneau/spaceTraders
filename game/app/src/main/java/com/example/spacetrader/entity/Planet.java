@@ -1,4 +1,6 @@
 package com.example.spacetrader.entity;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -7,11 +9,7 @@ import static com.example.spacetrader.entity.RadicalEvent.NONE;
 public class Planet implements Serializable {
 
     private final String name;
-    private final TechLevel techLevel;
-    private final PoliticalSystem politicalSystem;
-    private final Resource resource;
     private final Star star;
-    private boolean visited;
     private RadicalEvent radicalEvent;
     private final PlanetInventory inventory;
 
@@ -19,24 +17,18 @@ public class Planet implements Serializable {
      * This constructor makes an instance of a planet with the passed in attributes
      * @param name the name the planet will have
      * @param techLevel the tech level the planet will have
-     * @param politicalSystem the type of political system the planet will have
      * @param resource the resources the planet will have
      * @param star the star associated with the planet
      */
     public Planet(
             String name,
             TechLevel techLevel,
-            PoliticalSystem politicalSystem,
             Resource resource,
             Star star) {
         this.name = name;
         this.star = star;
-        this.techLevel = techLevel;
-        this.politicalSystem = politicalSystem;
-        this.resource = resource;
-        this.visited = false;
         this.radicalEvent = NONE;
-        this.inventory = new PlanetInventory(techLevel, politicalSystem, resource, radicalEvent);
+        this.inventory = new PlanetInventory(techLevel, resource, radicalEvent);
     }
 
 
@@ -47,34 +39,10 @@ public class Planet implements Serializable {
     public String getName() {return this.name;}
 
     /**
-     * This method gets the tech level of the planet
-     * @return the tech level of the planet
-     */
-    public TechLevel getTechLevel() {return this.techLevel;}
-
-    /**
-     * This method gets the type of political system of the planet
-     * @return the political system of the planet
-     */
-    public PoliticalSystem getPoliticalSystem() {return  this.politicalSystem;}
-
-    /**
-     * This method gets the resources on the planet
-     * @return the resources on the planet
-     */
-    public Resource getResource() {return  this.resource;}
-
-    /**
      * This method gets the star associated with the planet
      * @return the star associated with the planet
      */
     public Star getStar() {return this.star;}
-
-    /**
-     * This method gets the boolean of if the planet was visited or not yet
-     * @return the visited boolean of the planet
-     */
-    public boolean getVisited() {return this.visited;}
 
     /**
      * This method gets the radical event that occurred
@@ -84,14 +52,6 @@ public class Planet implements Serializable {
     public RadicalEvent getRadicalEvent() {return this.radicalEvent;}
 
     // Setters
-
-  /**
-     * This method sets the visited boolean of the planet to true
-     */
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
 
     /**
      * This method sets the type of radical event that should occur
@@ -117,6 +77,7 @@ public class Planet implements Serializable {
      * This method enables the planet to be represented as a string, simply as its name
      * @return the name of the planet
      */
+    @NotNull
     public String toString() {
         return name;
     }

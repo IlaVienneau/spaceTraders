@@ -13,99 +13,127 @@ import android.widget.Toast;
 import com.example.spacetrader.R;
 import com.example.spacetrader.SpaceTrader;
 import com.example.spacetrader.entity.Planet;
+import com.example.spacetrader.entity.PlanetInventory;
 import com.example.spacetrader.entity.Player;
 import com.example.spacetrader.entity.RadicalEvent;
 import com.example.spacetrader.entity.Ship;
 import com.example.spacetrader.entity.Star;
 import com.example.spacetrader.entity.StarType;
+import com.example.spacetrader.model.AppComponent;
 import com.example.spacetrader.model.AppModule;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
 import javax.inject.Inject;
 
+@SuppressWarnings("MagicNumber")
 public class TravelActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ListView travelListView;
     private ArrayList<Star> starsAvailable;
     private int currFuel;
 
+    @SuppressWarnings("WeakerAccess")
     @Inject
     AppModule.SpaceTraderModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((SpaceTrader) getApplication()).getAppComponent().inject(this);
+        AppComponent component =((SpaceTrader) getApplication()).getAppComponent();
+        //noinspection LawOfDemeter
+        component.inject(this);
 
         setContentView(R.layout.activity_travel);
 
-        Player player = model.player;
-        Ship ship = player.getShip();
-        currFuel = ship.getCurrFuel();
-
         toolbar = findViewById(R.id.toolbar);
         travelListView = findViewById(R.id.travelListView);
+
+        Player player = model.player;
+        if (player == null) {
+            return;
+        }
+
+        Ship ship = player.getShip();
+        if (ship == null) {
+            return;
+        }
+
+        currFuel = ship.getCurrFuel();
 
         travelListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Player player = model.player;
                 Ship ship = player.getShip();
-                Planet currentPlanet = player.getCurrPlanet();
-                Star currentStar = currentPlanet.getStar();
-                int prevX = currentStar.getXCord();
-                int prevY = currentStar.getYCord();
+
+                player.increasePoliceProb();   //FOR POLICE ENCOUNTER
+
+                Planet planet = player.getCurrPlanet();
+                Star star = planet.getStar();
+                int prevX = star.getXCord();
+                int prevY = star.getYCord();
                 Star nextStar = starsAvailable.get(position);
 
-                Planet nextPlanet = nextStar.getPlanets().values().iterator().next();
+                Map<String, Planet> nextStarPlanetMap = nextStar.getPlanets();
+                Collection<Planet> planetMapValues = nextStarPlanetMap.values();
+                Iterator<Planet> iterator = planetMapValues.iterator();
+                Planet nextPlanet = iterator.next();
                 player.setCurrPlanet(nextPlanet);
 
                 Random rand = new Random();
                 int randomChance = rand.nextInt(100) + 1;
 
+                Planet currentPlanet = player.getCurrPlanet();
+
                 if (randomChance <= 10) {
                     RadicalEvent[] radicalEvents = RadicalEvent.values();
                     int eventSelector = rand.nextInt(7);
                     RadicalEvent event = radicalEvents[eventSelector];
-                    player.getCurrPlanet().setRadicalEvent(event);
+                    currentPlanet.setRadicalEvent(event);
                 }
 
                 String message = "";
 
-                switch (player.getCurrPlanet().getRadicalEvent()) {
+                RadicalEvent radicalEvent = currentPlanet.getRadicalEvent();
+                currentPlanet.setRadicalEvent(radicalEvent);
+                String planetName = currentPlanet.getName();
+
+                switch (radicalEvent) {
                     case NONE:
-                        message = player.getCurrPlanet().getName()
+                        message = planetName
                                 + " welcomes you!";
                         break;
                     case BOREDOM:
-                        message = player.getCurrPlanet().getName()
+                        message = planetName
                                 + " is currently stricken by a fit of extreme boredom.";
                         break;
                     case COLD:
-                        message = player.getCurrPlanet().getName()
+                        message = planetName
                                 + " is currently stricken undergoing a deep freeze.";
                         break;
                     case WAR:
-                        message = player.getCurrPlanet().getName()
+                        message = planetName
                                 + " is currently rife with war.";
                         break;
                     case PLAGUE:
-                        message = player.getCurrPlanet().getName()
+                        message = planetName
                                 + " is currently stricken with a horrible plague.";
                         break;
                     case DROUGHT:
-                        message = player.getCurrPlanet().getName()
+                        message = planetName
                                 + " is currently going through a horrible drought.";
                         break;
                     case CROPFAIL:
-                        message = player.getCurrPlanet().getName()
+                        message = planetName
                                 + " is currently going through a horrible crop failure.";
                         break;
                     case LACKOFWORKERS:
-                        message = player.getCurrPlanet().getName()
+                        message = planetName
                                 + " is currently suffering from a lack of workers.";
                         break;
                 }
@@ -115,7 +143,8 @@ public class TravelActivity extends AppCompatActivity {
                 );
                 toast.show();
 
-                player.getCurrPlanet().getPlanetInventory().updatePrices();
+                PlanetInventory currentPlanetInventory = currentPlanet.getPlanetInventory();
+                currentPlanetInventory.updatePrices();
 
                 int newXCoordinate = nextStar.getXCord();
                 int newYCoordinate = nextStar.getYCord();
@@ -143,7 +172,8 @@ public class TravelActivity extends AppCompatActivity {
         int currXCoordinate = currentStar.getXCord();
         int currYCoordinate = currentStar.getYCord();
 
-        for (Map.Entry<String, Star> entry: model.universe.getStars().entrySet()) {
+        Map<String, Star> starsMap = model.universe.getStars();
+        for (Map.Entry<String, Star> entry: starsMap.entrySet()) {
             Star nextStar = entry.getValue();
 
             int nextXCoordinate = nextStar.getXCord();

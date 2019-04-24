@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
+@SuppressWarnings("CyclicClassDependency")
 @Singleton
 @Component(modules={AppModule.class})
 public interface AppComponent {

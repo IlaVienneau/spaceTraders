@@ -3,29 +3,30 @@ package com.example.spacetrader.entity;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+@SuppressWarnings("MagicNumber")
 public class TestGetShipCurrentCapacity {
-    Player actual;
+    private Player actual;
 
     @Before
     public void setUp() {
         actual = new Player("name", "pass",
                 ShipType.GNAT, 16, 0, 0,
-                0, Difficulty.EASY);
+                0);
     }
 
     @Test (expected = NullPointerException.class)
-    public void testNullPlayer() throws Exception {
+    public void testNullPlayer() {
         Player fake = null;
         fake.getShipCurrentCapacity();
     }
 
     @Test (expected = NullPointerException.class)
-    public void testNullInventory() throws Exception {
+    public void testNullInventory() {
         Player fake = new Player("name", "pass",
                 ShipType.GNAT, 16, 0, 0,
-                0, Difficulty.EASY);
+                0);
         fake.setShipInventory(null);
         fake.getShipCurrentCapacity();
     }
