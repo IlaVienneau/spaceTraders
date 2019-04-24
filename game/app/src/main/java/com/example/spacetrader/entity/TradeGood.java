@@ -12,11 +12,16 @@ public class TradeGood implements Serializable {
     private int mtlp;       // minimum tech level to produce
     private int ipl;        // price increase per tech level
 
-    private int var;        // variance ( maximum percentage that the price can vary above or below the base)
-    private RadicalEvent ie;// Radical price increase event, when this even happens on a planet, the price may increase astronomically
 
+    private int var;        // variance ( maximum percentage that
+                            // the price can vary above or below the base)
+    private RadicalEvent ie;// Radical price increase event, when this
+                            // even happens on a planet, the price may increase astronomically
     @Nullable
-    private Resource cr;    // When this condition is present, the price of this resource is unusually low
+    private Resource cr;    // When this condition is present,
+                            // the price of this resource is unusually low
+    @Nullable
+
 
     @Nullable
     private Resource er;    // When this condition is present, the resource is expensive

@@ -68,18 +68,14 @@ public class PlanetInventory implements Serializable {
             }
             price += var;
 
-            RadicalEvent ie = good.getIe();
-            if (ie != null && ie.equals(this.event)) {
+    
+            if (this.event.equals(good.getIe())) {
                 price *= 5;
             }
-
-            Resource cr = good.getCr();
-            if ((cr != null) && cr.equals(this.resource)) {
+            if (this.resource.equals(good.getCr())) {
                 price /= 2;
             }
-
-            Resource er = good.getEr();
-            if ((er != null) && er.equals(this.resource)) {
+            if (this.resource.equals(good.getEr())) {
                 price *= 2;
             }
 
