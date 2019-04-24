@@ -1,11 +1,13 @@
 package com.example.spacetrader.entity;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
 
 public class TestGetMTLPsTest {
     //ArrayList<TradeGood> expectedArray;
@@ -15,58 +17,54 @@ public class TestGetMTLPsTest {
         //ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testExceptions() throws Exception {
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(-1);
-    }
 
     @Test
     public void testTechLevel0() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(0);
+        List<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(0);
         assertEquals(expectedArray, actualArray);
     }
 
     @Test
     public void testTechLevel1() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(1);
+        List<TradeGood> actualArray = (java.util.List<TradeGood>) TradeGood.getMTLPs(1);
         assertEquals(expectedArray, actualArray);
 
     }
 
     @Test
     public void testTechLevel2() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
         expectedArray.add(new TradeGood("ore"));
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(2);
+        java.util.List<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(2);
         assertEquals(expectedArray, actualArray);
     }
 
     @Test
     public void testTechLevel3() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
         expectedArray.add(new TradeGood("ore"));
         expectedArray.add(new TradeGood("games"));
         expectedArray.add(new TradeGood("firearms"));
-        ArrayList<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(3);
+        java.util.List<TradeGood> actualArray = (ArrayList<TradeGood>) TradeGood.getMTLPs(3);
         assertEquals(expectedArray, actualArray);
     }
 
     @Test
     public void testTechLevel4() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
@@ -81,7 +79,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel5() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));
@@ -97,7 +95,7 @@ public class TestGetMTLPsTest {
 
     @Test
     public void testTechLevel6() {
-        ArrayList<TradeGood> expectedArray = new ArrayList<TradeGood>();
+        List<TradeGood> expectedArray = new ArrayList<TradeGood>();
         expectedArray.add(new TradeGood("water"));
         expectedArray.add(new TradeGood("furs"));
         expectedArray.add(new TradeGood("food"));

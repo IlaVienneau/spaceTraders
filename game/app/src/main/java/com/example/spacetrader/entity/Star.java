@@ -1,56 +1,35 @@
 package com.example.spacetrader.entity;
 
-import java.util.HashMap;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Star implements Serializable {
 
-    private String name;
-    private StarType starType;
-    private Resource resourceType;
-    private TechLevel techType;
+    private final String name;
+    private final StarType starType;
+    private final Resource resourceType;
+    private final TechLevel techType;
 
-    private int xCord;
-    private int yCord;
+    private final int xCord;
+    private final int yCord;
 
-    private HashMap<String, Planet> planets;
-
-    /**
-     * Constructor for Star
-     *
-     * @param name Name of the star
-     * @param starType type value of the star
-     * @param x x coordinate
-     * @param y y coordinate
-     * @param planets inventory of planets in this solar system.
-     */
-    public Star(
-            String name, StarType starType, int x, int y,
-            HashMap<String, Planet> planets) {
-        this.name = name;
-        this.starType = starType;
-
-        this.xCord = x;
-        this.yCord =  y;
-
-        this.planets = planets;
-    }
+    private final HashMap<String, Planet> planets;
 
     /**
      * Constructor for Star
-     *
-     * @param name Name of star
+     *  @param name Name of star
      * @param starType type of star
      * @param x x coordinate of star
      * @param y y coordinate of star
      * @param res resource level of star
      * @param lev technology level of star
-     * @param poly political system of star
      */
     public Star(
             String name, StarType starType, int x, int y,
-            Resource res, TechLevel lev, PoliticalSystem poly) {
+            Resource res, TechLevel lev) {
         this.name = name;
         this.starType = starType;
 
@@ -61,7 +40,7 @@ public class Star implements Serializable {
         this.planets = new HashMap<>();
 
         for (int i = 0; i < 10; i++) {
-            planets.put(name, new Planet(name, techType, poly, resourceType, this));
+            planets.put(name, new Planet(name, techType, resourceType, this));
         }
     }
 
@@ -114,15 +93,7 @@ public class Star implements Serializable {
 
     // Setters
 
-    /**
-     *  Sets the Star's inventory of planets to those in planets
-     *
-     * @param planets HashMap of planets
-     */
-    public void setPlanets(HashMap<String, Planet> planets) {
-        this.planets = planets;
-    }
-
+    @NotNull
     @Override
     public String toString() {
         return "Name:  " + name + ";  Coordinates:  (" + xCord + "," + yCord + ")" +
