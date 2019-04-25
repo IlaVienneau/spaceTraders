@@ -14,6 +14,7 @@ public class Player implements Serializable {
     private final String password;
 
     private int policeProb;
+    private int gobProb;
 
     private final ShipType shipType;
     private final Ship ship;
@@ -151,6 +152,18 @@ public class Player implements Serializable {
 
     public int getPoliceProb() {
         return policeProb;
+    }
+
+    public void increaseGobProb() {
+        gobProb += 1;
+    }
+
+    public int getGobProb() {
+        return gobProb;
+    }
+
+    public int getFighterSkill() {
+        return fighterSkill;
     }
 
     public int getPilotSkill() {return pilotSkill;}

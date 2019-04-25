@@ -74,8 +74,17 @@ public class TravelActivity extends AppCompatActivity {
 
                 player.increasePoliceProb();
 
+                player.increaseGobProb();
+
                 if (player.getPoliceProb() > 25) {
                     Intent intent = new Intent(TravelActivity.this, PoliceActivity.class);
+                    startActivity(intent);
+                }
+
+                Random gobRand = new Random();
+                int gobChance = gobRand.nextInt(101);
+                if (player.getGobProb() > 20 && gobChance < 10) {
+                    Intent intent = new Intent(TravelActivity.this, GoblinActivity.class);
                     startActivity(intent);
                 }
 
