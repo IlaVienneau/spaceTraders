@@ -165,13 +165,15 @@ public class Player implements Serializable {
 
     public int getFighterSkill() {
         return fighterSkill;
+    }
 
     public void resetPoliceProb() {
         policeProb = 0;
-
     }
 
-    public int getPilotSkill() {return pilotSkill;}
+    public int getPilotSkill() {
+        return pilotSkill;
+    }
 
     /**
      * This method checks to see if the password the user entered was correct

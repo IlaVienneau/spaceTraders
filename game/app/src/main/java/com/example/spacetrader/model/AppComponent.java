@@ -24,6 +24,5 @@ public interface AppComponent {
     void inject(ShipInfoActivity activity);
     void inject(LoginActivity activity);
     void inject(PoliceActivity activity);
-
     void inject(GoblinActivity activity);
 }
