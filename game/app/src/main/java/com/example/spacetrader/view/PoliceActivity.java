@@ -46,23 +46,27 @@ public class PoliceActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.policeToolbar);
         TextView fineTextView = (TextView) findViewById(R.id.fineTextView);
 
-        fineTextView.setText("Fine: ");
+        final PoliceEncounter police = new PoliceEncounter(player);
+
+        fineTextView.setText("Fine: " + police.getFine());
 
         toolbar.setTitle("Police Encounter");
         player = model.player;
+        player.resetPoliceProb();
 
         Button payFineButton = findViewById(R.id.payButton);
-        final PoliceEncounter police = new PoliceEncounter();
 
         payFineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                police.pay(player);
+                police.pay();
                 Toast toast = Toast.makeText(
-                        PoliceActivity.this, "You paid the fine. Your wallet is now " + player.getWallet(),
+                        PoliceActivity.this, "You paid the fine. Your wallet is now " + player.getWallet() + "₴",
                         Toast.LENGTH_SHORT
                 );
                 toast.show();
+
+                finish();
             }
         });
 
@@ -70,7 +74,7 @@ public class PoliceActivity extends AppCompatActivity {
         fleeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean success = police.flee(player);
+                boolean success = police.flee();
 
                 if (success) {
                     Toast toast = Toast.makeText(
@@ -79,12 +83,18 @@ public class PoliceActivity extends AppCompatActivity {
                     );
                     toast.show();
                 } else {
+                    int fine = police.getFine();
+
+                    // automatic pay for getting caught
+                    police.pay();
                     Toast toast = Toast.makeText(
-                            PoliceActivity.this, "They caught you! You lose half of your credits",
-                            Toast.LENGTH_SHORT
+                            PoliceActivity.this, "They caught you! You lose half of your credits (" + police.getFine() + "₴)",
+                            Toast.LENGTH_LONG
                     );
                     toast.show();
                 }
+
+                finish();
 
             }
         });

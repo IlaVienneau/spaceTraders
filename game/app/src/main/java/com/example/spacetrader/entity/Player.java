@@ -154,6 +154,7 @@ public class Player implements Serializable {
         return policeProb;
     }
 
+
     public void increaseGobProb() {
         gobProb += 1;
     }
@@ -164,6 +165,10 @@ public class Player implements Serializable {
 
     public int getFighterSkill() {
         return fighterSkill;
+
+    public void resetPoliceProb() {
+        policeProb = 0;
+
     }
 
     public int getPilotSkill() {return pilotSkill;}
