@@ -1,6 +1,7 @@
 package com.example.spacetrader.model;
 
 import com.example.spacetrader.view.ConfigActivity;
+import com.example.spacetrader.view.GoblinActivity;
 import com.example.spacetrader.view.LoginActivity;
 import com.example.spacetrader.view.MarketActivity;
 import com.example.spacetrader.view.PoliceActivity;
@@ -24,4 +25,5 @@ public interface AppComponent {
     void inject(LoginActivity activity);
     void inject(PoliceActivity activity);
 
+    void inject(GoblinActivity activity);
 }
