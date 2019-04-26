@@ -88,7 +88,8 @@ public class PoliceActivity extends AppCompatActivity {
                     // automatic pay for getting caught
                     police.pay();
                     Toast toast = Toast.makeText(
-                            PoliceActivity.this, "They caught you! You lose half of your credits (" + police.getFine() + "₴)",
+                            PoliceActivity.this, "They caught you! " +
+                                    "You lose half of your credits (" + police.getFine() + "₴)",
                             Toast.LENGTH_LONG
                     );
                     toast.show();
