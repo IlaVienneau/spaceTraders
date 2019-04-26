@@ -50,6 +50,8 @@ public class Ship implements Serializable {
 
     private static int grasshopperHull = avgHull;
 
+    private static int godHull = strongHull;
+
     public Ship(){
         this(ShipType.GNAT);
     }
@@ -113,17 +115,23 @@ public class Ship implements Serializable {
         int gnatCap = 15;
         int fleaMercenaryCapacity = 0;
         int fleaGadgetSlots = 0;
-        int fleaSheildSlots = 0;
+        int fleaShieldSlots = 0;
         int fleaWeaponSlots = 0;
         int fleaFuel = 20;
         int fleaCap = 5;
+        int godMercenaryCapactiy = Integer.MAX_VALUE;
+        int godGadgetSlots = Integer.MAX_VALUE;
+        int godShieldSlots = Integer.MAX_VALUE;
+        int godWeaponSlots = Integer.MAX_VALUE;
+        int godFuel = Integer.MAX_VALUE;
+        int godCap = Integer.MAX_VALUE;
         switch(type) {
             case FLEA:
                 maxCapacity = fleaCap;
                 fuel = fleaFuel;
                 maxHullStrength = fleaHull;
                 maxWeaponSlots = fleaWeaponSlots;
-                maxShieldSlots = fleaSheildSlots;
+                maxShieldSlots = fleaShieldSlots;
                 maxGadgetSlots = fleaGadgetSlots;
                 maxMercenaryCapacity = fleaMercenaryCapacity;
 
@@ -288,6 +296,22 @@ public class Ship implements Serializable {
                 currGadgetSlots = 0;
                 currMercenaryCapacity = 0;
                 break;
+            case GOD:
+                maxCapacity = godCap;
+                fuel = godFuel;
+                maxHullStrength = godHull;
+                maxWeaponSlots = godWeaponSlots;
+                maxShieldSlots = godShieldSlots;
+                maxGadgetSlots = godGadgetSlots;
+                maxMercenaryCapacity = godMercenaryCapactiy;
+
+                currCapacity = 0;
+                currFuel = fuel;
+                currHullStrength = maxHullStrength;
+                currWeaponSlots = 0;
+                currShieldSlots = 0;
+                currGadgetSlots = 0;
+                currMercenaryCapacity = 0;
         }
     }
 
