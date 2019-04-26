@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginLeft="55dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="204dp"
         android:layout_marginRight="204dp"
         android:text="Select a ship to upgrade"
