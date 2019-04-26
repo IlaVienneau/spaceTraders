@@ -41,7 +41,8 @@ public class Player implements Serializable {
                   int pilotSkill,
                   int fighterSkill,
                   int traderSkill,
-                  int engineerSkill) {
+                  int engineerSkill,
+                  int wallet) {
         this.name = name;
         this.password = password;
         this.shipType = shipType;
@@ -51,7 +52,7 @@ public class Player implements Serializable {
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
         this.shipInventory = new ShipInventory();
-        this.wallet = 1000;
+        this.wallet = wallet;
         policeProb = 0;
         gobProb = 0;
     }
