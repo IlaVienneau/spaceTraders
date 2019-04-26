@@ -16,8 +16,8 @@ public class Player implements Serializable {
     private int policeProb;
     private int gobProb;
 
-    private final ShipType shipType;
-    private final Ship ship;
+    private ShipType shipType;
+    private Ship ship;
     private ShipInventory shipInventory;
 
     private final int pilotSkill;
@@ -91,6 +91,10 @@ public class Player implements Serializable {
      */
     public Ship getShip() { return ship;}
 
+
+    public void setShip(ShipType type) {
+        this.ship = new Ship(type);
+    }
     /**
      * This method gets the current capacity of the player's ship
      * @return the current capacity of the player's ship
@@ -133,6 +137,10 @@ public class Player implements Serializable {
      * @return the current planet the player is on
      */
     public Planet getCurrPlanet() { return currPlanet;}
+
+    public void setShipType(ShipType type) {
+        this.shipType = type;
+    }
 
     /**
      * This methods represents the player as a string

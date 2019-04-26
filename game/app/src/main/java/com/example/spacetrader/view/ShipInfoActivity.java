@@ -1,5 +1,6 @@
 package com.example.spacetrader.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,6 +26,7 @@ public class ShipInfoActivity extends AppCompatActivity {
     private TextView currCapTextView;
     private TextView currFuelTextView;
     private TextView walletTextView;
+    private Toolbar toolbar;
 
     @SuppressWarnings("WeakerAccess")
     @Inject
@@ -38,7 +40,7 @@ public class ShipInfoActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_ship);
 
-        Toolbar toolbar = findViewById(R.id.shipToolBar);
+        toolbar = findViewById(R.id.shipToolBar);
         player = model.player;
 
         toolbar.setTitle("Ship Information");
@@ -110,6 +112,15 @@ public class ShipInfoActivity extends AppCompatActivity {
                     toast.show();
                 }
                 update();
+            }
+        });
+
+        Button upgradeShip = findViewById(R.id.upgradeShip);
+        upgradeShip.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(ShipInfoActivity.this, ShipyardActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -209,10 +220,13 @@ public class ShipInfoActivity extends AppCompatActivity {
         });
         update();
 
-
     }
 
+
     private void update() {
+        toolbar.setTitle("Ship Information");
+        toolbar.setSubtitle("" + player.getShipType() + "");
+
         Ship ship = player.getShip();
         int currCargoLoad = player.getShipCurrentCapacity();
         int maxCargoCapacity = ship.getMaxCapacity();

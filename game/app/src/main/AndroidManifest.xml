@@ -70,6 +70,13 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".view.TravelActivity">
         </activity>
+        <activity
+            android:name=".view.ShipyardActivity"
+            android:label="Goblin"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".view.ShipInfoActivityActivity">
+        </activity>
+
     </application>
 
 </manifest>
