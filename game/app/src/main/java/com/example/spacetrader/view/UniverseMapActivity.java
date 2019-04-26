@@ -64,13 +64,13 @@ public class UniverseMapActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Planet planet = model.player.getCurrPlanet();
-        update(planet);
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        Planet planet = model.player.getCurrPlanet();
+//        update(planet);
+//    }
 
     private void update(Planet planet) {
         Star star = planet.getStar();

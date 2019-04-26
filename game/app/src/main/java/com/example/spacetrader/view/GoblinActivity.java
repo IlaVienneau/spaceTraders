@@ -41,19 +41,17 @@ public class GoblinActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        this.player = model.player;
-        this.planet = player.getCurrPlanet();
+        player = model.player;
+        planet = player.getCurrPlanet();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.goblinToolbar);
         TextView fineTextView = (TextView) findViewById(R.id.tookTextView);
 
-        fineTextView.setText("They took: ");
-
         toolbar.setTitle("Space Goblin Encounter");
-        player = model.player;
 
         Button payGobButton = findViewById(R.id.payGobButton);
         final GoblinEncounter gob = new GoblinEncounter();
+        player.resetGobProb();
 
         payGobButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,11 +62,13 @@ public class GoblinActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT
                 );
                 toast.show();
+
+                finish();
             }
         });
 
-        Button fleeButton = findViewById(R.id.fleeButton);
-        fleeButton.setOnClickListener(new View.OnClickListener() {
+        Button fightButton = findViewById(R.id.fightGobButton);
+        fightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean success = gob.fight(player);
@@ -86,6 +86,8 @@ public class GoblinActivity extends AppCompatActivity {
                     );
                     toast.show();
                 }
+
+                finish();
 
             }
         });

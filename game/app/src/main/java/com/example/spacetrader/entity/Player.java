@@ -53,6 +53,7 @@ public class Player implements Serializable {
         this.shipInventory = new ShipInventory();
         this.wallet = 1000;
         policeProb = 0;
+        gobProb = 0;
     }
 
     /**
@@ -161,6 +162,10 @@ public class Player implements Serializable {
 
     public int getGobProb() {
         return gobProb;
+    }
+
+    public void resetGobProb() {
+        gobProb = 0;
     }
 
     public int getFighterSkill() {
