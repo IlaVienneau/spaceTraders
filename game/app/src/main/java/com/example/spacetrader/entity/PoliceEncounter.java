@@ -13,13 +13,19 @@ public class PoliceEncounter {
     public boolean flee() {
         int wallet = player.getWallet();
         Random rand = new Random();
+        int outOf = 10;
         int randomChance = rand.nextInt(100) + 1;
-        if (player.getPilotSkill() > 8) {
-            if (randomChance > 30) {
-                fine = (int) (player.getWallet() * .5);
-                return false;
-            }
-        } else if (randomChance > 10) {
+        if (player.getPilotSkill() >= 8) {
+            outOf += 20;
+        }
+        if (player.getPilotSkill() >= 12) {
+            outOf += 20;
+        }
+        if (player.getPilotSkill() >= 16) {
+            outOf += 20;
+        }
+
+        if (randomChance > outOf) {
             fine = (int) (player.getWallet() * .5);
             return false;
         }

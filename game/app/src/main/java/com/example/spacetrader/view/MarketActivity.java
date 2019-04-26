@@ -139,6 +139,14 @@ public class MarketActivity extends AppCompatActivity {
                     toast.show();
 
                     return;
+                } else if (player.getShipCurrentCapacity() == player.getShip().getMaxCapacity()) {
+                    Toast toast = Toast.makeText(
+                            MarketActivity.this, "Your ship's cargo is full!",
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+
+                    return;
                 }
 
                 stock.quantity -= 1;

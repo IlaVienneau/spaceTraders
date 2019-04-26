@@ -7,17 +7,21 @@ public class GoblinEncounter {
     public boolean fight(Player player) {
         Random rand = new Random();
         int randomChance = rand.nextInt(100) + 1;
+        int outOf = 20;
 
         if (player.getFighterSkill() > 10) {
-            if (randomChance > 50) {
-                player.setWallet(1);
-                return false;
-            }
-        } else {
-            if (randomChance > 20) {
-                player.setWallet(1);
-                return false;
-            }
+            outOf += 10;
+        }
+        for (int i = player.getShip().getCurrWeaponSlots(); i > 0; i--) {
+            outOf += 10;
+        }
+        for (int i = player.getShip().getCurrShieldSlots(); i > 0; i--) {
+            outOf += 10;
+        }
+
+        if (randomChance > outOf) {
+            player.setWallet(1);
+            return false;
         }
         return true;
 
