@@ -74,17 +74,35 @@ public class ShipInfoActivity extends AppCompatActivity {
 
         Button weaponButton = findViewById(R.id.upgradeWeaponsButton);
         weaponButton.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View view) {
                 //update to check that player can purchase upgrades to weapons
-                if ((player.getWallet() >= 500) &&
-                        (player.getShip().getCurrShieldSlots() <
+                if (player.getShip().getCurrWeaponSlots() >=
+                        player.getShip().getMaxWeaponSlots()) {
+
+                    String message = "Weapon arsenal already at max upgrades.";
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+
+                } else if ((player.getWallet() >= 500) &&
+                        (player.getShip().getCurrWeaponSlots() <
                                 player.getShip().getMaxWeaponSlots())) {
                     player.getShip().setCurrWeaponSlots(player.getShip().getCurrWeaponSlots() + 1);
                     player.setWallet(player.getWallet() - 500);
+
+                    String message = player.getShip().getCurrWeaponSlots() + " / "
+                            + player.getShip().getMaxWeaponSlots();
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+
                 } else {
-                    String message = "Not enough money to upgrade weapon arsenal" +
-                            " or weapon arsenal at max upgrades.";
+                    String message = "Not enough money to upgrade weapon arsenal.";
                     Toast toast = Toast.makeText(
                             ShipInfoActivity.this, message,
                             Toast.LENGTH_SHORT
@@ -100,14 +118,32 @@ public class ShipInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //update to check that player can purchase upgrades to shields
-                if ((player.getWallet() >= 750) &&
+                if (player.getShip().getCurrShieldSlots() >=
+                        player.getShip().getMaxShieldSlots()) {
+
+                    String message = "Shield Array already at max upgrades.";
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+
+                } else if ((player.getWallet() >= 750) &&
                         (player.getShip().getCurrShieldSlots() <
                                 player.getShip().getMaxShieldSlots())) {
-                    player.getShip().setCurrShieldSlots(player.getShip().getMaxShieldSlots() + 1);
+                    player.getShip().setCurrShieldSlots(player.getShip().getCurrShieldSlots() + 1);
                     player.setWallet(player.getWallet() - 750);
+
+                    String message = player.getShip().getCurrShieldSlots() + " / "
+                            + player.getShip().getMaxShieldSlots();
+                    Toast toast = Toast.makeText(
+                            ShipInfoActivity.this, message,
+                            Toast.LENGTH_SHORT
+                    );
+                    toast.show();
+
                 } else {
-                    String message = "Not enough money to upgrade shield array" +
-                            " or shield array at max upgrades.";
+                    String message = "Not enough money to upgrade shield array.";
                     Toast toast = Toast.makeText(
                             ShipInfoActivity.this, message,
                             Toast.LENGTH_SHORT
